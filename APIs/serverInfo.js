@@ -2,6 +2,7 @@ const exp = require('express')
 const serverInfoAPI = exp.Router()
 const path = require('path')
 
+
 serverInfoAPI.get('/srsdocument',(req,res)=>{
     console.log(path.join(__dirname))
     res.sendFile(path.join(__dirname,'../assets/specifications.docx'))
