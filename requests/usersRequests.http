@@ -1,0 +1,53 @@
+GET http://localhost:4000
+###
+POST http://localhost:4000/users/createUser
+Content-Type: application/json
+
+{
+    "userName":"Goutham",
+    "email":"gouth@mdp",
+    "password":"123",
+    "state":"telangana",
+    "city":"khammam",
+    "DateOfBirth":"10-06-2004",
+    "gender":"male",
+    "interests":[],
+    "profilePicture":"",
+    "DateAccountCreated":"",
+    "Profession":"",
+    "EducationalQualifications":[],
+    "data1":"",
+    "data2":"",
+    "data3":""
+}
+###
+GET http://localhost:4000/users/getAllUsers
+###
+POST http://localhost:4000/users/checkUserName
+Content-Type: application/json
+
+{
+    "userName":"goUThaM"
+}
+###
+POSt http://localhost:4000/users/getPassword
+Content-Type: application/json
+
+{
+    "userName":"GouthAm"
+}
+###
+POST http://localhost:4000/users/checkLoginCredentials
+Content-Type: application/json
+
+{
+    "userName":"GouthAm",
+    "password":"123"
+}
+###
+POST http://localhost:4000/users/getUserNameByEmailID
+Content-Type: application/json
+
+{
+    "email":"gouth@gmail.com"
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .header{
+            min-height: 100px;
+            background-color: rgb(136, 143, 148);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .body1{
+            min-height: 400px;
+            background-color: rgb(204, 201, 195);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer{
+            min-height: 300px;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            flex-wrap: wrap;
+        }
+        .child{
+            background-color: wheat;
+            padding: 30px;
+            border-radius: 50px;
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><h2>Social media platform "Server"</h2></div>
+    </div>
+    <div class="body1">
+        <div>
+            <a href="http://localhost:4000/serverInfo/srsdocument">Download SRS Document</a> <br/><br/><br/>
+            <div>
+                <p>Here is the server arechitecture</p>
+                <b>SERVER folder</b><br/>
+                <ol>
+                    <li>
+                        <b>APIs</b><br/>
+                        <ul>
+                            <li>
+                                <a href="http://localhost:4000/serverInfo/postsAPI">postsAPI.js</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:4000/serverInfo/usersAPI">usersAPI.js</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:4000/serverInfo/serverInfo">serverInfo.js</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Middlewares</b>
+                        <ul>
+                            <li>
+                                <a href="http://localhost:4000/serverInfo/DBaccess">DBaccess.js</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/serverInfo/serverFile">server.js</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/serverInfo/packageDotjson">package.json</a>
+                    </li>
+                </ol>
+            </div>
+            
+        </div>
+    </div>
+    <div class="footer">
+        <div class="child">
+            <h3>developed and maintained by :-</h3>
+            <ul>
+                <li>RP Ramesh - 22071A12J0</li>
+                <li>U Goutham Reddy - 22071A12K0</li>
+                <li>Y Sai Bharath - 22071A12K1</li>
+                <li>Y Abhishek - 22071A12K3</li>
+            </ul>
+        </div>
+        <div class="child">
+            <b>Contact us</b>
+            <p>services@socialmedia.com</p>
+            <p>insta : socialmedia_123</p>
+            <p>facebook : socialmedia_123</p>
+            <p>twitter : socialmedia_123</p>
+            <p>linkedin : socialmedia_123</p>
+        </div>
+        <div class="child">
+            <b>HELP</b>
+            <p>explore application</p>
+            <p>goto socila media platform</p>
+            <p>create account</p>
+            <p>login account</p>
+            <p>forgot username/password</p>
+        </div>
+    </div>
+</body>
+</html>
