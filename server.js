@@ -6,7 +6,9 @@ const mclient = require('mongodb').MongoClient
 require('dotenv').config()
 
 const usersAPI = require('./APIs/usersAPI')
+const postsAPI = require('./APIs/postsAPI')
 const serverInfoAPI = require('./APIs/serverInfo')
+const mediaAPI = require('./APIs/mediaAPI')
 
 app.use(exp.json())
 app.use(cors())
@@ -31,10 +33,11 @@ app.get('/',(req,res)=>{
 
 
 
-
-
 app.use('/users',usersAPI)
+app.use('/posts',postsAPI)
 app.use('/serverInfo',serverInfoAPI)
+app.use('/media',mediaAPI)
 
 
-app.listen(4000,()=>{console.log('server running on port 4000...')})
+
+app.listen(process.env.SERVER_PORT,()=>{console.log(`server running on port ${process.env.SERVER_PORT}...`)})
