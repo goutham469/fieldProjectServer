@@ -1,0 +1,12 @@
+.NewPostTextOverFlow{
+    max-width: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.NewPostTextOverFlow::-webkit-scrollbar{
+    display: none;
+}
+.newPostCurrentBody{
+    background-color: rgb(235, 235, 245);
+    width: fit-content;
+}
