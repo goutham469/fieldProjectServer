@@ -106,9 +106,7 @@ function NewPost() {
             try
             {
                 let base_url = process.env.REACT_APP_SERVER_BASE_URL;
-                console.log(base_url)
-
-                const response = await fetch(`http://localhost:4000/media/uploadPostImage`,{
+                const response = await fetch(`${base_url}/media/uploadPostImage`,{
                     method:'POST',
                     body:formData
                 });
@@ -154,8 +152,8 @@ function NewPost() {
             {
                 console.log("started to fetch server to upload video");
                 
-
-                let response = await fetch(`http://localhost:4000/media/uploadPostVideo`,{
+                let base_url = process.env.REACT_APP_SERVER_BASE_URL
+                let response = await fetch(`${base_url}/media/uploadPostVideo`,{
                     method:"POST",
                     body:formData
                 })
@@ -198,7 +196,8 @@ function NewPost() {
             try
             {
                 console.log("fetching server started");
-                let responseFromServer = await fetch(`http://localhost:4000/media/uploadPostAudio`,{
+                let base_url = process.env.REACT_APP_SERVER_BASE_URL
+                let responseFromServer = await fetch(`${base_url}/media/uploadPostAudio`,{
                     method:'POST',
                     body:formData
                 })
@@ -238,7 +237,8 @@ function NewPost() {
 
             try
             {
-                let responseFromServer = await fetch(`http://localhost:4000/media/uploadPostDocument`,{
+                let base_url = process.env.REACT_APP_SERVER_BASE_URL
+                let responseFromServer = await fetch(`${base_url}/media/uploadPostDocument`,{
                     method:"POST",
                     body:formData
                 })
@@ -267,7 +267,8 @@ function NewPost() {
     {
         event.preventDefault();
         console.log(postData)
-        await fetch(`http://localhost:4000/posts/getPostId`).then(data=>data.json()).then(async (data)=>{ updatePostId(data.postCount) })
+        let base_url = process.env.REACT_APP_SERVER_BASE_URL
+        await fetch(`${base_url}/posts/getPostId`).then(data=>data.json()).then(async (data)=>{ updatePostId(data.postCount) })
 
         let current_date = new Date()
             let postCompleteBody = {
@@ -288,7 +289,7 @@ function NewPost() {
 
             console.log(postCompleteBody)
 
-            let responseFromServer = await fetch(`http://localhost:4000/posts/createNewPost`,{
+            let responseFromServer = await fetch(`${base_url}/posts/createNewPost`,{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify(postCompleteBody)
@@ -384,17 +385,17 @@ function NewPost() {
             }
         </div>
 
-        <div className='container'>
+        <div className='newPostEditor'>
             <b className='text-center'>Editor</b>
             <br/>
             <br/>
-            <div className='container'>
+            <div>
                 {
                     (elementChoosen == 0)?
-                    <p>Click on the below tags to add elements you like.</p>
+                    <p  className='newPostSubEditor'>Click on the below tags to add elements you like.</p>
                     :
                     (elementChoosen == 1)?
-                    <div>
+                    <div  className='newPostSubEditor'>
                         <input placeholder='enter the heading' onChange={(event)=>updateHeadingElement(event.target.value)}/>
                         <br/>
                         <label>font-size :- {headingElementFontSize&&1?headingElementFontSize:12}</label>
@@ -420,7 +421,7 @@ function NewPost() {
                     </div>
                     :
                     (elementChoosen == 2)?
-                    <div>
+                    <div  className='newPostSubEditor'>
                         <textarea placeholder='your paragraph goes here...' onChange={(event)=>updateParaElement(event.target.value)}/>
                         <br/>
                         <label>font-size :- {paraElementFontSize&&1?paraElementFontSize:12}</label>
@@ -446,7 +447,7 @@ function NewPost() {
                     </div>
                     :
                     (elementChoosen == 3)?
-                    <form>
+                    <form  className='newPostSubEditor'>
                         <label>link Name</label>
                         <input type='text' placeholder='Link Name' onChange={(event)=>{updateLinkName(event.target.value)}}/>
                         <p>{linkNameError}</p>
@@ -460,26 +461,26 @@ function NewPost() {
                     </form>
                     :
                     (elementChoosen == 4)?
-                    <div>
+                    <div  className='newPostSubEditor'>
                         <input type='file' accept='image/*' onChange={(event)=>{addImage(event)}}/>
                     </div>
                     :
                     (elementChoosen == 5)?
-                    <div>
+                    <div  className='newPostSubEditor'>
                         <input type='file' accept='video/*' onChange={(event)=>{addVideo(event)}}/>
                     </div>
                     :
                     (elementChoosen == 6)?
-                    <div>
+                    <div  className='newPostSubEditor'>
                         <input type='file' accept='audio/*' onChange={(event)=>{addAudio(event)}}/>
                     </div>
                     :
                     (elementChoosen == 7)?
-                    <div>
+                    <div  className='newPostSubEditor'>
                         <input type='file' onChange={(event)=>{addDocument(event)}}/>
                     </div>
                     :
-                    <p>Invalid Element</p>
+                    <p  className='newPostSubEditor'>Invalid Element</p>
                     
                 }
                 <div className='flex'>

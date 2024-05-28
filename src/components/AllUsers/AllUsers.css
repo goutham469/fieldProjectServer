@@ -1,0 +1,12 @@
+.AllUsersComponentParent{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.AllUsersChildComponenent{
+    background-color: rgb(206, 206, 206);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+}

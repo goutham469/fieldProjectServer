@@ -33,7 +33,7 @@ function AllPosts() {
               // console.log(x)
 
               return <div className='AllPostsChildWindow'>
-                <a>{x.author}</a>
+                <a style={{textDecoration:"none"}} href=''>{x.author}</a>
                 <br/>
                 <label>posted on : {x.DatePosted}</label>
                 <label>modified on : {x.DareModified}</label>
@@ -84,6 +84,7 @@ function AllPosts() {
                                 return <div>
                                     <br/>
                                     <a key={index}
+                                    target='_blank'
                                     href={element.linkTo}
                                 >
                                     {element.value}
@@ -94,12 +95,12 @@ function AllPosts() {
                 
                             else if(element.type == 'img')
                             {
-                                return <img width="400px" height="300px" src={element.src}/>
+                                return <img style={{borderRadius:"20px"}} width="400px" height="300px" src={element.src}/>
                             }
                 
                             else if(element.type == 'video')
                             {
-                                return <video src={element.src} width="400px" height="300px" controls autoPlay loop/>
+                                return <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls autoPlay loop/>
                             }
                 
                             else if(element.type == 'audio')
@@ -126,10 +127,11 @@ function AllPosts() {
                     <p>Error 500!</p>
                   }
                 </div>
-                <div>
+                <div style={{display:"flex",justifyContent:"space-between"}}>
                   <label>likes = {x.likes}</label>
                   <label>likes = {x.upVotes}</label>
                   <label>likes = {x.downVotes}</label>
+                  <label>comments</label>
                 </div>
                 </div>
             }

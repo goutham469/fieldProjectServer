@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NewPost from './components/NewPost/NewPost';
 import SinglePost from './components/SinglePost/SinglePost';
 import AllPosts from './components/AllPosts/AllPosts';
+import AllUsers from './components/AllUsers/AllUsers';
 
 function App() {
   // console.log(process.env)
@@ -10,8 +11,9 @@ function App() {
   return (
     <div className="App">
       <h3 className='text-success'>Social media platform</h3>
-      <NewPost/>
-      <AllPosts/>
+      {/* <NewPost/> */}
+      {/* <AllPosts/> */}
+      <AllUsers/>
     </div>
   );
 }
