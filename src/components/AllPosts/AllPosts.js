@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './AllPosts.css'
+import { useNavigate } from 'react-router-dom'
 
 function AllPosts() {
+  let navigate = useNavigate();
+
   let [posts,updatePosts] = useState([])
   useEffect(()=>{
     async function getAllPosts()
@@ -25,7 +28,7 @@ function AllPosts() {
 
   return (
     <div>
-      <h3>AllPosts</h3>
+      <button className='btn btn-primary m-5' onClick={()=>{navigate('../newPost')}}>New Post</button>
       <div className='AllPostsParentWindow'>
         {
           posts.map(x=>

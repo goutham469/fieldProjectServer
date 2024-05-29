@@ -1,13 +1,14 @@
 .AllPostsParentWindow{
     display: flex;
     flex-wrap: wrap;
-    align-items:center;
-    justify-content:space-around;
+    justify-content:space-between;
     max-height: 1000px;
     overflow-y: scroll;
 }
 .AllPostsChildWindow{
     background-color: rgb(234, 234, 234);
     border-radius: 10px;
-    padding: 10px;
+    margin: 20px;
+    padding: 5px;
+    height: fit-content;
 }

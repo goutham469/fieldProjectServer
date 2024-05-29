@@ -1,0 +1,9 @@
+.LoginForm{
+    background-color: rgb(219, 146, 83);
+    border-radius: 20px;
+    padding: 30px;
+}
+.LoginInputField{
+    margin: 10px;
+    border-radius: 10px;
+}

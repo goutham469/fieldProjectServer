@@ -1,0 +1,9 @@
+.AppHeadertoDisplayFlex{
+    width: 100vw;
+    display: flex;
+    position: static;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: rgb(220, 217, 217);
+}
