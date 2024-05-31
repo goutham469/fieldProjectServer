@@ -4,8 +4,8 @@ POST http://localhost:4000/users/createUser
 Content-Type: application/json
 
 {
-    "userName":"Goutham",
-    "email":"gouth@mdp",
+    "userName":"reddy",
+    "email":"reddy@mdp",
     "password":"123",
     "state":"telangana",
     "city":"khammam",
@@ -16,7 +16,7 @@ Content-Type: application/json
     "DateAccountCreated":"",
     "Profession":"",
     "EducationalQualifications":[],
-    "data1":"",
+    "friends":[],
     "data2":"",
     "data3":""
 }
@@ -27,7 +27,7 @@ POST http://localhost:4000/users/checkUserName
 Content-Type: application/json
 
 {
-    "userName":"goUTh"
+    "userName":"reddy"
 }
 ###
 POSt http://localhost:4000/users/getPassword
@@ -50,4 +50,11 @@ Content-Type: application/json
 
 {
     "email":"gouth@gmail.com"
+}
+###
+POST http://localhost:4000/users/getNonFriends
+Content-Type: application/json
+
+{
+    "userName":"goutham"
 }

@@ -20,5 +20,6 @@ Content-Type: application/json
 
 {
     "userName":"goutham",
-    "friendUserName":"reddy"
+    "friendUserName":"reddy",
+    "profilePic":""
 }

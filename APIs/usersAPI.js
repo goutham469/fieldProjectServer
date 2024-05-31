@@ -88,6 +88,35 @@ usersAPI.post('/getUserNameByEmailID',DBAccessMiddleware,async (req,res)=>{
     }
 })
 
+usersAPI.post('/getNonFriends', DBAccessMiddleware, async (req, res) => {
+    try {
+        // Fetch the user data from the database
+        let responseFromDatabase = await req.usersCollection.find({"userName": req.body.userName}).toArray();
+        if (responseFromDatabase.length === 0) {
+            return res.status(404).send({error: "User not found"});
+        }
+
+        let user = responseFromDatabase[0];
+        let friendsOfUserName =[]
+        user.friends.forEach(x=>{
+            friendsOfUserName.push(x.userName)
+        })
+
+        // Fetch all users from the database
+        let allUsers = await req.usersCollection.find({}).toArray();
+
+        // Filter out friends from all users to get non-friends
+        let nonFriends = allUsers.filter(user => !friendsOfUserName.includes(user.userName) && user.userName !== req.body.userName)
+                                  .map(user => user.userName);
+
+        res.send(nonFriends);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({error: "An error occurred while fetching non-friends"});
+    }
+});
+
+
 
 
 
