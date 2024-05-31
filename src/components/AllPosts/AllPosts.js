@@ -28,7 +28,7 @@ function AllPosts() {
 
   return (
     <div>
-      <button className='btn btn-primary m-5' onClick={()=>{navigate('../newPost')}}>New Post</button>
+      <button style={{position:"absolute",top:"80px",left:"50px"}} onClick={()=>{navigate('../newPost')}}>+ Post</button>
       <div className='AllPostsParentWindow'>
         {
           posts.map(x=>
@@ -103,7 +103,7 @@ function AllPosts() {
                 
                             else if(element.type == 'video')
                             {
-                                return <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls autoPlay loop/>
+                                return <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop/>
                             }
                 
                             else if(element.type == 'audio')

@@ -2,10 +2,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-import NewPost from './components/NewPost/NewPost';
-import AllPosts from './components/AllPosts/AllPosts';
-import AllUsers from './components/AllUsers/AllUsers';
+
 import AppHeader from './components/AppHeader/AppHeader';
 
 import LandingPage from './components/LandingPage/LandingPage';
@@ -14,11 +13,29 @@ import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import SignUpUserName from './components/SignUp/SignUpUserName/SignUpUserName';
 
+import NewPost from './components/NewPost/NewPost';
+import AllPosts from './components/AllPosts/AllPosts';
+import AllUsers from './components/AllUsers/AllUsers';
+
 import MasterDashboard from './components/User/MasterDasboard/MasterDashboard';
 
+import ChatMainDashboard from './chatComponents/ChatMainDashboard/ChatMainDashboard';
+import ChatAllUsers from './chatComponents/ChatAllUsers/ChatAllUsers';
+import UserChat from './chatComponents/UserChat/UserChat';
+
+import Notifications from './notifications/Notifications/Notifications';
+import PostFeed from './notifications/PostFeed/PostFeed';
+
+import ProfileDashBoard from './Profile/ProfileDashBoard/ProfileDashBoard';
+
+import store from './store';
+import { Provider } from 'react-redux';
+
+
 function App() {
-  console.log(process.env)
-  console.log(process.env.REACT_APP_SERVER_BASE_URL)
+
+  // console.log(store,store.getState())
+  
   const router = createBrowserRouter([
     {
       path:'',
@@ -63,13 +80,42 @@ function App() {
         {
           path:'newpost',
           element:<NewPost/>
+        },
+        {
+          path:'chat',
+          element:<ChatMainDashboard/>,
+          children:[
+            {
+              path:'',
+              element:<ChatAllUsers/>
+            },
+            {
+              path:'ChatOf',
+              element:<UserChat/>
+            }
+          ]
+        },
+        {
+          path:'Notifications',
+          element:<Notifications/>
+        },
+        {
+          path:'ProfileDashBoard',
+          element:<ProfileDashBoard/>
         }
       ]
     }
   ])
   return (
     <div className="App">
-      <RouterProvider router={router}/>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Facebook</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Provider store={store}>
+        <RouterProvider router={router}/>
+      </Provider>
     </div>
   );
 }

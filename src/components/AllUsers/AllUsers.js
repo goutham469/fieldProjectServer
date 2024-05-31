@@ -10,12 +10,12 @@ function AllUsers() {
         function loadUsers()
         {
             let base_url = process.env.REACT_APP_SERVER_BASE_URL
-            fetch(`${base_url}/users/getAllUsers`).then(data=>data.json()).then(data=>{updateAllUsers(data)})
+            fetch(`${base_url}/users/getNonFriends`).then(data=>data.json()).then(data=>{updateAllUsers(data)})
             console.log("fetching all users completed");
         }
         loadUsers();
         console.log(allUsers)
-    })
+    },[])
 
   return (
     <div>

@@ -2,9 +2,19 @@ import React from 'react'
 import './HomeHeader.css'
 import { FaSquareFacebook } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+import store from '../../store';
 
 function HomeHeader() {
   let navigate = useNavigate();
+
+  useEffect(()=>{
+      if(store.getState().signed == true)
+      {
+          navigate('/user')
+      }
+  })
 
   return (
     <div className='HomeHeaderDisplayFlex'>

@@ -28,8 +28,8 @@ const SignUpUserName =()=>{
         }
         else
         {
-            // let base_url = process.env.REACT_APP_SERVER_BASE_URL;
-            let base_url = 'http://localhost:4000'
+            let base_url = process.env.REACT_APP_SERVER_BASE_URL;
+            // let base_url = 'http://localhost:4000'
         let responseFromDB = await fetch(`${base_url}/users/checkUserName`,{
             method:"POST",
             headers:{"Content-Type":"application/json"},

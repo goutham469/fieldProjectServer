@@ -1,12 +1,15 @@
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import './Login.css'
 import {Row,Col,Container,Card,Button} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 // import { GoogleLogin } from '@react-oauth/google';
 
+import store from '../../store';
+
 
 const Login =()=>{
     let navigate = useNavigate();
+
 
     let [userName,setUserName]=useState("");
     let [password,setPassword]=useState("");
@@ -31,8 +34,8 @@ const Login =()=>{
             {
                 updateErrorFromDB('');
                 updateStateColor('black')
-                // let base_url = process.env.REACT_APP_SERVER_BASE_URL;
-                let base_url = 'http://localhost:4000'
+                let base_url = process.env.REACT_APP_SERVER_BASE_URL;
+                // let base_url = 'http://localhost:4000'
                 let responseFromDB = await fetch(`${base_url}/users/checkLoginCredentials`,{
                     method:"POST",
                     headers:{"Content-Type":"application/json"},
@@ -47,7 +50,13 @@ const Login =()=>{
                     updateErrorFromDB('login success');
                     updateStateColor('green')
 
+                    store.dispatch({
+                        type:'login',
+                        userName:userName
+                    })
+
                     navigate('/user')
+                    console.log(store.getState())
                 }
                 else if(responseFromDB.message == 'user_name_not_exist')
                 {
