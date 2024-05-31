@@ -27,7 +27,7 @@ POST http://localhost:4000/users/checkUserName
 Content-Type: application/json
 
 {
-    "userName":"goUThaM"
+    "userName":"goUTh"
 }
 ###
 POSt http://localhost:4000/users/getPassword
@@ -41,7 +41,7 @@ POST http://localhost:4000/users/checkLoginCredentials
 Content-Type: application/json
 
 {
-    "userName":"GouthAm",
+    "userName":"GohAm",
     "password":"123"
 }
 ###

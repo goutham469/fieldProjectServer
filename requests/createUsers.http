@@ -1,0 +1,83 @@
+POST http://localhost:4000/users/createUser
+Content-Type: application/json
+
+{
+    "userName":"Goutham",
+    "email":"gouth@mdp",
+    "password":"123",
+    "state":"telangana",
+    "city":"khammam",
+    "DateOfBirth":"10-06-2004",
+    "gender":"male",
+    "interests":[],
+    "profilePicture":"",
+    "DateAccountCreated":"",
+    "Profession":"",
+    "EducationalQualifications":[],
+    "data1":"",
+    "data2":"",
+    "data3":""
+}
+###
+POST http://localhost:4000/users/createUser
+Content-Type: application/json
+
+{
+    "userName":"bharath",
+    "email":"bharath@google",
+    "password":"123",
+    "state":"telangana",
+    "city":"sathupally",
+    "DateOfBirth":"10-06-2004",
+    "gender":"male",
+    "interests":[],
+    "profilePicture":"",
+    "DateAccountCreated":"",
+    "Profession":"",
+    "EducationalQualifications":[],
+    "data1":"",
+    "data2":"",
+    "data3":""
+}
+###
+POST http://localhost:4000/users/createUser
+Content-Type: application/json
+
+{
+    "userName":"abhishek",
+    "email":"abhishek@mdp",
+    "password":"123",
+    "state":"telangana",
+    "city":"banswada",
+    "DateOfBirth":"10-06-2004",
+    "gender":"male",
+    "interests":[],
+    "profilePicture":"",
+    "DateAccountCreated":"",
+    "Profession":"",
+    "EducationalQualifications":[],
+    "data1":"",
+    "data2":"",
+    "data3":""
+}
+###
+POST http://localhost:4000/users/createUser
+Content-Type: application/json
+
+{
+    "userName":"ramesh",
+    "email":"ramesh@mdp",
+    "password":"123",
+    "state":"telangana",
+    "city":"vijayanagaram",
+    "DateOfBirth":"10-06-2004",
+    "gender":"male",
+    "interests":[],
+    "profilePicture":"",
+    "DateAccountCreated":"",
+    "Profession":"",
+    "EducationalQualifications":[],
+    "data1":"",
+    "data2":"",
+    "data3":""
+}

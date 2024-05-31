@@ -1,0 +1,19 @@
+POST http://localhost:4000/messages/getMessagesOfSenderToReceiver
+Content-Type: application/json
+
+{
+    "sender":"goutham",
+    "receiver":"reddy"
+}
+###
+POST http://localhost:4000/messages/sendMessage
+Content-Type: application/json
+
+{
+    "sender":"goutham",
+    "receiver":"reddy",
+    "message":{
+        "type":"p",
+        "value":"hi Reddy"
+    }
+}

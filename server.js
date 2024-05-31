@@ -11,6 +11,8 @@ const usersAPI = require('./APIs/usersAPI')
 const postsAPI = require('./APIs/postsAPI')
 const serverInfoAPI = require('./APIs/serverInfo')
 const mediaAPI = require('./APIs/mediaAPI')
+const chatsAPI = require('./APIs/chatsAPI')
+const messagesAPI = require('./APIs/messagesAPI')
 
 app.use(exp.json())
 app.use(cors())
@@ -22,10 +24,12 @@ mclient.connect(`${process.env.MONGODB_CONNECTION_URL}`).then(client=>{
     const usersCollection = DB.collection('users')
     const postsCollection = DB.collection('posts')
     const countCollection = DB.collection('count')
+    const chatsCollection = DB.collection('chats')
     
     app.set('usersCollection',usersCollection)
     app.set('postsCollection',postsCollection)
     app.set('countCollection',countCollection)
+    app.set('chatsCollection',chatsCollection)
 
     console.log("mongo DB connection successfull")
 })
@@ -105,6 +109,8 @@ app.use('/users',usersAPI)
 app.use('/posts',postsAPI)
 app.use('/serverInfo',serverInfoAPI)
 app.use('/media',mediaAPI)
+app.use('/chats',chatsAPI)
+app.use('/messages',messagesAPI)
 
 
 

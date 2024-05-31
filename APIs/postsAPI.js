@@ -1,14 +1,13 @@
 const exp = require('express')
 const postsAPI = exp.Router()
 const DBAccessMiddleware = require('../Middlewares/DBaccess')
+const bodyParser = require('body-parser')
 
 postsAPI.use(exp.json())
-
-
-
+postsAPI.use(bodyParser.urlencoded({ extended: true }))
 
 postsAPI.get('/getAllPosts',DBAccessMiddleware,async (req,res)=>{
-    console.log("requested")
+    // console.log("requested")
     let reponseFromDataBase = await req.postsCollection.find().toArray();
 
     res.send({"status":"success","data":reponseFromDataBase})
@@ -17,10 +16,9 @@ postsAPI.get('/getAllPosts',DBAccessMiddleware,async (req,res)=>{
 postsAPI.get('/getPostId',DBAccessMiddleware,async (req,res)=>{
 
     let responseFromDataBase = await req.countCollection.find().toArray()
-
     let currentCount = responseFromDataBase[0]
-    
-    console.log(currentCount)
+
+    // console.log(currentCount)
     currentCount = currentCount.postId;
     console.log(currentCount)
 
@@ -30,10 +28,11 @@ postsAPI.get('/getPostId',DBAccessMiddleware,async (req,res)=>{
 })
 
 postsAPI.post('/createNewPost',DBAccessMiddleware,async (req,res)=>{
+
     console.log(req.body)
     let reponseFromDataBase = await req.postsCollection.insertOne(req.body)
 
-    res.send(reponseFromDataBase)
+    res.send({"reponseFromDataBase":reponseFromDataBase})
 })
 
 

@@ -26,6 +26,8 @@ usersAPI.get('/getAllUsers', DBAccessMiddleware, async (req, res) => {
 });
 
 usersAPI.post('/checkUserName', DBAccessMiddleware, async (req, res) => {
+
+    console.log(req.body)
     
     let response = await req.usersCollection.find({"userName":req.body.userName.toLowerCase()}).toArray()
     if(response.length == 0)
@@ -85,6 +87,7 @@ usersAPI.post('/getUserNameByEmailID',DBAccessMiddleware,async (req,res)=>{
         }
     }
 })
+
 
 
 
