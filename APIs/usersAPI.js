@@ -107,7 +107,7 @@ usersAPI.post('/getNonFriends', DBAccessMiddleware, async (req, res) => {
 
         // Filter out friends from all users to get non-friends
         let nonFriends = allUsers.filter(user => !friendsOfUserName.includes(user.userName) && user.userName !== req.body.userName)
-                                  .map(user => user.userName);
+                                  .map(user => user);
 
         res.send(nonFriends);
     } catch (error) {
