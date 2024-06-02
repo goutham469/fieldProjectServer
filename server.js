@@ -91,6 +91,10 @@ async function imageElement()
 
 // videoElement();
 
+app.get('/firstRender',async (req,res)=>{
+    res.send({"status":true})
+})
+
 app.get('/image',async (req,res)=>{
     console.log(req.params)
     let result1 = await imageElement()
