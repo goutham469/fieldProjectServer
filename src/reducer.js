@@ -1,9 +1,20 @@
+let initialStateSignUp = {
+    userName : '',
+    email : '',
+    profilePic :''
+}
+
 let initialState = {
     signed:false,
     userName:'',
     personalData:{},
-    chatIdOpened:''
+    chatIdOpened:'',
+    signUpUserName:'',
+    signUpEmailId:'',
+    signUpProfilePic:''
 }
+
+
 
 function checkIsSigned()
 {
@@ -68,6 +79,18 @@ function reducer(state=initialState,action)
         case 'openChat':
             document.cookie = `chatIdOpened=${action.chatId}; path=/;`;
             return {...state,chatIdOpened:action.chatId}
+        case 'signUp':
+            switch(action.subType)
+            {
+                case 'userName':
+                    return {...state,signUpUserName:action.userName}
+                case 'email':
+                    return {...state,signUpEmailId:action.email}
+                case 'profilePic' :
+                    return {...state,signUpProfilePic:action.profilePic}
+                default:
+                    return state;
+            }
 
         default:
             return state;

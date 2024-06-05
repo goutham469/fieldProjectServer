@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './UserChat.css';
 import { useSelector } from 'react-redux';
 import { IoSendSharp } from "react-icons/io5";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import { IoArrowBackSharp } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 
 function UserChat() {
+  let navigate = useNavigate();
+
   const [chatsData, updateChatsData] = useState([]);
   const userName = useSelector((state) => state.userName);
   const chatIdOpened = useSelector((state) => state.chatIdOpened);
@@ -53,17 +58,27 @@ function UserChat() {
 
   return (
     <div className="UserChatOuterBoard">
+      <IoArrowBackSharp className='BackButtonToAllChats' size={40} onClick={()=>{navigate('../')}}/>
+      {
+        (chatIdOpened.profilePic)?<img src={chatIdOpened.profilePic}/>:<IoPersonCircleOutline size={40}/>
+      
+      }
+      
       <label>
-        UserChat : <b>{chatIdOpened}</b>
+        <b>{chatIdOpened}</b>
       </label>
       <div className="messagesBox">
         {
           chatsData.map((x, index) => {
             if (x.message.type === 'p') 
             {
-              if(x.sentByMe == true && x.message.value!=null)
+              if(x.sentByMe == true && x.message.value!=null )
               {
-                return <div className='ChatComponentParaElement' key={index}><div className='ChatComponentChild'>{x.message.value}</div></div>
+                return <div className='ChatComponentParaElement' key={index}><div className='ChatComponentChild'>{x.message.value}<sub style={{color:"yellow",padding:"10px"}}>{x.time.split(':')[0].substring(0,x.time.split(':')[0].length-3)}</sub></div></div>
+              }
+              else if(x.message.value!=null)
+              {
+                return <div className='ChatComponentParaElementLeft' key={index}><div className='ChatComponentChild'>{x.message.value}<sub style={{color:"yellow",padding:"10px"}}>{x.time.split(':')[0].substring(0,x.time.split(':')[0].length-3)}</sub></div></div>
               }
               
             }

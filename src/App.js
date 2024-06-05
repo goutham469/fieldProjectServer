@@ -12,6 +12,9 @@ import Description from './components/LandingPage/Description/Description';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import SignUpUserName from './components/SignUp/SignUpUserName/SignUpUserName';
+import GoogleOAuthVerification from './components/SignUp/GoogleOAuthVerification/GoogleOAuthVerification';
+import SignUpUploadProfilePic from './components/SignUp/SignUpUploadProfilePic/SignUpUploadProfilePic';
+import SetUpPassword from './components/SignUp/SetUpPassword/SetUpPassword';
 
 import NewPost from './components/NewPost/NewPost';
 import AllPosts from './components/AllPosts/AllPosts';
@@ -28,13 +31,37 @@ import PostFeed from './notifications/PostFeed/PostFeed';
 
 import ProfileDashBoard from './Profile/ProfileDashBoard/ProfileDashBoard';
 
+import AboutHeader from './about/AboutHeader/AboutHeader';
+import AboutHurdles from './about/AboutHurdles/AboutHurdles';
+import ApplicationDescription from './about/ApplicationDescription/ApplicationDescription';
+import TechStack from './about/TechStack/TechStack';
+
 import store from './store';
 import { Provider } from 'react-redux';
+import { useEffect } from 'react';
 
 
 function App() {
 
   // console.log(store,store.getState())
+  useEffect(()=>{
+    console.log("fetching server 1st time");
+    async function fetchServerInitially()
+    {
+      let base_url = process.env.REACT_APP_SERVER_BASE_URL;
+      let responseFromServer = await fetch(`${base_url}/firstRender`)
+      responseFromServer = await responseFromServer.json();
+
+
+      if(responseFromServer.status == true)
+      {
+        document.querySelector('.MasterContent2').style.display="block";
+        document.querySelector('.MasterContent1').style.display="none";
+      }
+    }
+
+    fetchServerInitially()
+  },[])
   
   const router = createBrowserRouter([
     {
@@ -56,6 +83,40 @@ function App() {
             {
               path:'',
               element:<SignUpUserName/>
+            },
+            {
+              path:'verifyEmail',
+              element:<GoogleOAuthVerification/>
+            },
+            {
+              path:'uploadProfilePic',
+              element:<SignUpUploadProfilePic/>
+            },
+            {
+              path:'SetUpPassword',
+              element:<SetUpPassword/>
+            }
+          ]
+        },
+        {
+          path:'about',
+          element:<AboutHeader/>,
+          children:[
+            {
+              path:'Hurdles',
+              element:<AboutHurdles/>
+            },
+            {
+              path:'',
+              element:<AboutHurdles/>
+            },
+            {
+              path:'description',
+              element:<ApplicationDescription/>
+            },
+            {
+              path:'techstack',
+              element:<TechStack/>
             }
           ]
         }
@@ -114,7 +175,15 @@ function App() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <Provider store={store}>
-        <RouterProvider router={router}/>
+        <div className='MasterContent1'>
+          <div>
+            <p>Sorry, Servers are Busy at this moment.</p>
+            <p>Please try again later</p>
+          </div>
+        </div>
+        <div className='MasterContent2'>
+          <RouterProvider router={router}/>
+        </div>
       </Provider>
     </div>
   );

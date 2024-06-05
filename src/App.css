@@ -1,0 +1,13 @@
+.MasterContent2{
+    display:none;
+}
+.MasterContent1{
+    font-size: 36px;
+    color: white;
+    padding: 20px;
+    background-image: url('./assets/serverBusy.png');
+    background-repeat: no-repeat;
+    width: 1000px;
+    height: 1000px;
+    object-fit: cover;
+}

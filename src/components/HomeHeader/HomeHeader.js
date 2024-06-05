@@ -24,7 +24,7 @@ function HomeHeader() {
         <div className='HomeHeaderDiplayFlexFlexEnd'>
             <div className='HomeHeaderHeaderButtons' onClick={(event)=>{event.preventDefault();navigate('/login')}}>Login</div>
             <div className='HomeHeaderHeaderButtons' onClick={(event)=>{event.preventDefault();navigate('/signUp')}}>Sign up</div>
-            <div className='HomeHeaderHeaderButtons'>About us</div>
+            <div className='HomeHeaderHeaderButtons' onClick={(event)=>{event.preventDefault();navigate('/about')}}>About us</div>
             <div className='HomeHeaderHeaderButtons'>help</div>
         </div>
     </div>
