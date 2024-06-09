@@ -65,3 +65,18 @@ Content-Type: application/json
 {
     "userName":"goutham"
 }
+###
+POST http://localhost:4000/users/getPersonalData
+Content-Type: application/json
+
+{
+    "user_name":"goutham"
+}
+###
+POST http://localhost:4000/users/updateProfilePic
+Content-Type: application/json
+
+{
+    "userName":"goutham",
+    "url":"ab123.com"
+}

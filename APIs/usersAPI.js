@@ -116,7 +116,19 @@ usersAPI.post('/getNonFriends', DBAccessMiddleware, async (req, res) => {
     }
 });
 
+usersAPI.post('/getPersonalData',DBAccessMiddleware,async(req,res)=>{
+    let responseFromDatabase = await req.usersCollection.find({"userName":req.body.user_name}).toArray()
+    responseFromDatabase = responseFromDatabase[0]
 
+    let responseFromDatabase2 = await req.postsCollection.find({"author":req.body.user_name}).toArray();
+
+    res.send({status:true,"personalData":responseFromDatabase,"postsData":responseFromDatabase2})
+})
+
+usersAPI.post('/updateProfilePic',DBAccessMiddleware,async (req,res)=>{
+    let responseFromDatabase = await req.usersCollection.updateOne({userName:req.body.userName},{$set:{"profilePicture":req.body.url}})
+    res.send(responseFromDatabase)
+})
 
 
 

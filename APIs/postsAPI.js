@@ -2,6 +2,7 @@ const exp = require('express')
 const postsAPI = exp.Router()
 const DBAccessMiddleware = require('../Middlewares/DBaccess')
 const bodyParser = require('body-parser')
+const { ObjectId } = require('mongodb')
 
 postsAPI.use(exp.json())
 postsAPI.use(bodyParser.urlencoded({ extended: true }))
@@ -35,6 +36,12 @@ postsAPI.post('/createNewPost',DBAccessMiddleware,async (req,res)=>{
     res.send({"reponseFromDataBase":reponseFromDataBase})
 })
 
+postsAPI.post('/deletePost',DBAccessMiddleware,async (req,res)=>{
+    let responseFromDataBase = await req.postsCollection.deleteOne({"_id":new ObjectId(req.body.postId)})
+    console.log(responseFromDataBase)
+
+    res.send(responseFromDataBase)
+})
 
 
 module.exports = postsAPI

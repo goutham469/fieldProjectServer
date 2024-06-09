@@ -78,7 +78,7 @@ const documentUpload = multer({ storage: documentCloudinaryStorage });
 
 mediaAPI.post('/uploadProfileImage',Profileupload.single('photo',async (req,res)=>{
   
-  console.log("requested for profilr pic upload");
+  console.log("requested for profile pic upload");
   console.log("url : ",req.file);
   res.send({"status":true,"file":req.file})
 }))

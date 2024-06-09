@@ -8,3 +8,11 @@ Content-Type: application/json
 GET http://localhost:4000/posts/getAllPosts
 ###
 GET http://localhost:4000/posts/getPostId
+###
+POST http://localhost:4000/posts/deletePost
+Content-Type: application/json
+
+{
+    "postId":"45"
+}
+
