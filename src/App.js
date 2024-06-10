@@ -15,6 +15,7 @@ import SignUpUserName from './components/SignUp/SignUpUserName/SignUpUserName';
 import GoogleOAuthVerification from './components/SignUp/GoogleOAuthVerification/GoogleOAuthVerification';
 import SignUpUploadProfilePic from './components/SignUp/SignUpUploadProfilePic/SignUpUploadProfilePic';
 import SetUpPassword from './components/SignUp/SetUpPassword/SetUpPassword';
+import SetUpExtraDetails from './components/SignUp/SignUpExtraDetails/SignUpExtraDetails';
 
 import NewPost from './components/NewPost/NewPost';
 import AllPosts from './components/AllPosts/AllPosts';
@@ -45,7 +46,7 @@ function App() {
 
   // console.log(store,store.getState())
   useEffect(()=>{
-    console.log("fetching server 1st time");
+    // console.log("fetching server 1st time");
     async function fetchServerInitially()
     {
       let base_url = process.env.REACT_APP_SERVER_BASE_URL;
@@ -91,6 +92,10 @@ function App() {
             {
               path:'uploadProfilePic',
               element:<SignUpUploadProfilePic/>
+            },
+            {
+              path:'setExtraDetails',
+              element:<SetUpExtraDetails/>
             },
             {
               path:'SetUpPassword',
@@ -179,6 +184,7 @@ function App() {
           <div>
             <p>Sorry, Servers are Busy at this moment.</p>
             <p>Please try again later</p>
+            
           </div>
         </div>
         <div className='MasterContent2'>

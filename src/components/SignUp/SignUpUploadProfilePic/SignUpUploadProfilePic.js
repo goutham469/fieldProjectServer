@@ -80,7 +80,7 @@ function SignUpUploadProfilePic() {
         // })
         updateImageImageURL(event.target.src)
         
-        navigate('../SetUpPassword',{state:{"userName":location.state.userName,"email":location.state.email,"ProfilePic":imageURL}})
+        navigate('../setExtraDetails',{state:{"userName":location.state.userName,"email":location.state.email,"ProfilePic":imageURL}})
     }
   return (
     <div>

@@ -3,11 +3,18 @@
 }
 .MasterContent1{
     font-size: 36px;
-    color: white;
+    color: rgb(255, 0, 0);
+    font-weight: 800;
     padding: 20px;
-    background-image: url('./assets/serverBusy.png');
+    background-image: url('./assets/image.png');
+    background-size: cover;
     background-repeat: no-repeat;
-    width: 1000px;
-    height: 1000px;
-    object-fit: cover;
+    background-position: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items:first baseline;
+    justify-content: center;
 }

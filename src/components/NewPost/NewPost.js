@@ -3,8 +3,24 @@ import './NewPost.css'
 import { TiTick } from "react-icons/ti";
 import { FaCaretLeft } from "react-icons/fa";
 import { FaCaretRight } from "react-icons/fa";
+import store from '../../store';
+
+
+import blodIcon from './asstets/blod.png'
+import textIcon from './asstets/text.png'
+import linkIcon from './asstets/link.png'
+import audioIcon from './asstets/audio.png'
+import documentIcon from './asstets/document.png'
+import videoIcon from './asstets/video.png'
+import imageIcon from './asstets/imageIcon.png'
+import { useNavigate } from 'react-router-dom';
+
+import PoPUpMessage from '../PopUpMessage/PoPUpMessage';
 
 function NewPost() {
+    let navigate = useNavigate();
+    let [MainPage,setMainPage] = useState(0)
+    let [message_to_pop_up,setmessage_to_pop_up] = useState('')
     let [postData,updatePostData] = useState([])
     let [postId,updatePostId] = useState();
     let [elementChoosen,updateElementChoosen] = useState(0)
@@ -267,46 +283,56 @@ function NewPost() {
     {
         event.preventDefault();
         console.log(postData)
-        let base_url = process.env.REACT_APP_SERVER_BASE_URL
-        await fetch(`${base_url}/posts/getPostId`).then(data=>data.json()).then(async (data)=>{ updatePostId(data.postCount) })
 
-        let current_date = new Date()
+        if(postData.length == 0)
+        {
+            setmessage_to_pop_up("empty post cannot be published")
+            setMainPage(1)
+        }
+        else
+        {
+            let base_url = process.env.REACT_APP_SERVER_BASE_URL
+            await fetch(`${base_url}/posts/getPostId`).then(data=>data.json()).then(async (data)=>{ updatePostId(data.postCount) })
+
+            let current_date = new Date()
             let postCompleteBody = {
                 "postId":postId,
-                "author":"store setup not completed",
+                "author":store.getState().userName,
                 "DatePosted" : `${current_date.getSeconds()}:${current_date.getMinutes()}:${current_date.getHours()}--${current_date.getDate()}:${current_date.getMonth()}:${current_date.getFullYear()}`,
                 "DateModified" : `${current_date.getSeconds()}:${current_date.getMinutes()}:${current_date.getHours()}--${current_date.getDate()}:${current_date.getMonth()}:${current_date.getFullYear()}`,
                 "likes":0,
                 "upVotes":0,
                 "downVotes":0,
                 "comments":[],
+                "views":1,
                 "content":postData,
                 "isBlockedByAuthor":false,
                 "isBlockedByAdmin":false,
                 "MetaTags":[],
                 "OtherData":{}
             };
-
-            console.log(postCompleteBody)
-
             let responseFromServer = await fetch(`${base_url}/posts/createNewPost`,{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify(postCompleteBody)
             })
             responseFromServer = await responseFromServer.json()
-            console.log(responseFromServer);
             if(responseFromServer.reponseFromDataBase.acknowledged == true)
             {
-                alert("Post published, your data is now Online.")
+                setmessage_to_pop_up("your post published, your data is now Online.")
+                setMainPage(1)
             }
             else
             {
                 alert("failed to reach server.")
             }
             
+
+        }
+        
     }
   return (
+    MainPage == 0 ?
     <div>
         <h4 className='text-center text-success '>New Post</h4>
         <div className='m-5 p-3 newPostCurrentBody'>
@@ -405,7 +431,7 @@ function NewPost() {
                         <button onClick={()=>{updateHeadingElementFontSize(headingElementFontSize+1)}}><FaCaretRight/></button>
                         <br/>
                         <label>text-align :- </label>
-                        <select>
+                        <select style={{margin:"10px"}}>
                             <option onClick={()=>{updateHeadingElementTextAlign('justify')}}>justify</option>
                             <option onClick={()=>{updateHeadingElementTextAlign('center')}}>center</option>
                             <option onClick={()=>{updateHeadingElementTextAlign('left')}}>left</option>
@@ -431,7 +457,7 @@ function NewPost() {
                         <button onClick={()=>{updateParaElementFontSize(paraElementFontSize+1)}}><FaCaretRight/></button>
                         <br/>
                         <label>text-align :- </label>
-                        <select>
+                        <select style={{margin:"10px"}}>
                             <option onClick={()=>{updateParaElementTextAlign('justify')}}>justify</option>
                             <option onClick={()=>{updateParaElementTextAlign('center')}}>center</option>
                             <option onClick={()=>{updateParaElementTextAlign('left')}}>left</option>
@@ -442,7 +468,7 @@ function NewPost() {
                         <input className='m-2'style={{height:"20px",width:"30px"}} type='color' onChange={(event)=>{updateParaElementTextColor(event.target.value)}}/>
 
                         <br/>
-                        <button onClick={(event)=>{addParagraph(event)}}><TiTick size={20}/></button>
+                        <button style={{margin:"10px"}} onClick={(event)=>{addParagraph(event)}}><TiTick size={20}/></button>
                         <p className='text-danger'>{paraElementError}</p>
                     </div>
                     :
@@ -462,40 +488,54 @@ function NewPost() {
                     :
                     (elementChoosen == 4)?
                     <div  className='newPostSubEditor'>
+                        <p>Image upload</p>
                         <input type='file' accept='image/*' onChange={(event)=>{addImage(event)}}/>
+                        <br/>
+                        <b>choose any kind of image file.</b>
                     </div>
                     :
                     (elementChoosen == 5)?
                     <div  className='newPostSubEditor'>
+                        <p>Video upload</p>
                         <input type='file' accept='video/*' onChange={(event)=>{addVideo(event)}}/>
+                        <br/>
+                        <b>choose any kind of video file.</b>
                     </div>
                     :
                     (elementChoosen == 6)?
                     <div  className='newPostSubEditor'>
+                        <p>Audio upload</p>
                         <input type='file' accept='audio/*' onChange={(event)=>{addAudio(event)}}/>
+                        <br/>
+                        <b>choose any kind of audio file.</b>
                     </div>
                     :
                     (elementChoosen == 7)?
                     <div  className='newPostSubEditor'>
+                        <p>Document upload</p>
                         <input type='file' onChange={(event)=>{addDocument(event)}}/>
+                        <br/>
+                        <b>choose any kind of document.</b>
                     </div>
                     :
                     <p  className='newPostSubEditor'>Invalid Element</p>
                     
                 }
                 <div className='flex'>
-                    <div className='childElement btn btn-warning m-2' onClick={(event)=>{event.preventDefault();updateElementChoosen(2)}}>Paragraph</div>
-                    <div className='childElement btn btn-warning m-2' onClick={(event)=>{event.preventDefault();updateElementChoosen(1)}}>Heading</div>
-                    <div className='childElement btn btn-warning m-2' onClick={(event)=>{event.preventDefault();updateElementChoosen(3)}}>Link</div>
-                    <div className='childElement btn btn-warning m-2' onClick={(event)=>{event.preventDefault();updateElementChoosen(4)}}>Image</div>
-                    <div className='childElement btn btn-warning m-2' onClick={(event)=>{event.preventDefault();updateElementChoosen(5)}}>video</div>
-                    <div className='childElement btn btn-warning m-2' onClick={(event)=>{event.preventDefault();updateElementChoosen(6)}}>audio</div>
-                    <div className='childElement btn btn-warning m-2' onClick={(event)=>{event.preventDefault();updateElementChoosen(7)}}>document</div>
+                    <div className='childElement btn  m-1' onClick={(event)=>{event.preventDefault();updateElementChoosen(2)}}><img style={{width:"20px"}} src={textIcon}/></div>
+                    <div className='childElement btn  m-1' onClick={(event)=>{event.preventDefault();updateElementChoosen(1)}}><img style={{width:"20px"}} src={blodIcon}/></div>
+                    <div className='childElement btn m-1' onClick={(event)=>{event.preventDefault();updateElementChoosen(3)}}><img style={{width:"20px"}} src={linkIcon}/></div>
+                    <div className='childElement btn m-1' onClick={(event)=>{event.preventDefault();updateElementChoosen(4)}}><img style={{width:"20px"}} src={imageIcon}/></div>
+                    <div className='childElement btn m-1' onClick={(event)=>{event.preventDefault();updateElementChoosen(5)}}><img style={{width:"20px"}} src={videoIcon}/></div>
+                    <div className='childElement btn m-1' onClick={(event)=>{event.preventDefault();updateElementChoosen(6)}}><img style={{width:"20px"}} src={audioIcon}/></div>
+                    <div className='childElement btn m-1' onClick={(event)=>{event.preventDefault();updateElementChoosen(7)}}><img style={{width:"20px"}} src={documentIcon}/></div>
                 </div>
                 <button className='btn btn-success m-2 p-3' onClick={(event)=>{postDataToServer(event)}}>POST</button>
             </div>
         </div>
     </div>
+    :
+    <PoPUpMessage message={message_to_pop_up} to_navigate="/user/home"/>
   )
 }
 

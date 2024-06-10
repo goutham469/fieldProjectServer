@@ -2,16 +2,27 @@ import React, { useEffect, useState } from 'react'
 import './AllPosts.css'
 import { useNavigate } from 'react-router-dom'
 
+
+import viewsIcon from './assets/views.png'
+import likeIcon from './assets/like.png'
+import commentIcon from './assets/comment.png'
+import store from '../../store'
+
+import CommentWindow from '../CommentWindow/CommentWindow'
+
 function AllPosts() {
   let navigate = useNavigate();
 
   let [posts,updatePosts] = useState([])
+  let [commentWindowData,updateCommentWindowData] = useState([])
+
+
   useEffect(()=>{
     async function getAllPosts()
     {
       let base_url = process.env.REACT_APP_SERVER_BASE_URL
 
-      console.log(base_url)
+      // console.log(base_url)
 
       let result = await fetch(`${base_url}/posts/getAllPosts`)
       result = await result.json()
@@ -20,128 +31,196 @@ function AllPosts() {
 
       updatePosts(result.data)
 
-      console.log("fetching posts completed :- ",posts)
+      // console.log("fetching posts completed :- ",posts)
     }
 
     getAllPosts();
   },[])
 
+  async function ShowCommentBox(event,PostId,PostComments,post)
+  {
+    event.preventDefault();
+    console.log(PostId)
+    updateCommentWindowData(post)
+    store.dispatch({type:"commentWindowOpen"})
+    document.querySelector('.toDisplayCommentBoxWithFlex').style.display='block';
+    console.log(store.getState())
+
+
+  }
+
+  async function IncrementLike(event,PostId)
+  {
+    event.preventDefault();
+    console.log(PostId)
+    const base_url = process.env.REACT_APP_SERVER_BASE_URL;
+    if(document.querySelector(`.like${PostId}`).style.backgroundColor == "red")
+    {
+      let responseFromServer = await fetch(`${base_url}/posts/UnLikePost`,
+        {
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({"PostId":PostId})
+        }
+        )
+        if(responseFromServer.ok)
+        {
+          document.querySelector(`.like${PostId}`).style.backgroundColor=null;
+          updatePosts(previousData=>previousData.map(post=>post._id == PostId ?{...post,likes:post.likes-1}:post))
+        }
+    }
+    else
+    {
+      let responseFromServer = await fetch(`${base_url}/posts/likePost`,
+        {
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({"PostId":PostId})
+        }
+      )
+      if(responseFromServer.ok)
+      {
+        document.querySelector(`.like${PostId}`).style.backgroundColor="red"
+        updatePosts(previousData=>previousData.map(post=>post._id == PostId ?{...post,likes:post.likes+1}:post))
+      }
+
+    }
+    
+  }
+
+  const styleSheet={
+    "newPostButton":{position:"absolute",top:"80px",left:"50px",backgroundColor:"white",border:"1px solid black",borderRadius:"7px"}
+  }
+
   return (
     <div>
-      <button style={{position:"absolute",top:"80px",left:"50px"}} onClick={()=>{navigate('../newPost')}}>+ Post</button>
-      <div className='AllPostsParentWindow'>
-        {
-          posts.map(x=>
-            {
-              // console.log(x)
+      <button style={styleSheet.newPostButton} onClick={(event)=>{event.preventDefault();navigate('../newPost')}}>+ Post</button>
 
-              return <div className='AllPostsChildWindow'>
-                <a style={{textDecoration:"none"}} href=''>{x.author}</a>
-                <br/>
-                <label>posted on : {x.DatePosted}</label>
-                <label>modified on : {x.DareModified}</label>
-                <br/>
-                <div>
-                  {
-                    (x.content && 1)?
-                    <div>
-                      {
-                      x.content.map(
-                        (element,index)=>
-                        {
-                          if(element.type == 'p')
-                            {
-                                return <p className='NewPostTextOverFlow'
-                                    key={index}
-                                    style={{
-                                        color:element.textColor,
-                                        fontSize:`${element.fontSize}px`,
-                                        textAlign:element.textAlign
-                                        }}
-                                >
-                                    {element.value}
-                                </p>
-                            }
-                
-                
-                            else if(element.type == 'b')
-                            {
-                
-                                return <div>
-                                    <b key={index}
-                                    style={{
-                                        color:element.textColor,
-                                        fontSize:`${element.fontSize}px`,
-                                        textAlign:element.textAlign
-                                    }}
-                                >
-                                    {element.value}
-                                </b>
-                                <br/>
-                                </div>
-                            }
-                            
-                            
-                            else if(element.type == 'link')
-                            {
-                                return <div>
-                                    <br/>
-                                    <a key={index}
-                                    target='_blank'
-                                    href={element.linkTo}
-                                >
-                                    {element.value}
-                                </a>
-                                <br/>
-                                </div>
-                            }
-                
-                            else if(element.type == 'img')
-                            {
-                                return <img style={{borderRadius:"20px"}} width="400px" height="300px" src={element.src}/>
-                            }
-                
-                            else if(element.type == 'video')
-                            {
-                                return <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop/>
-                            }
-                
-                            else if(element.type == 'audio')
-                            {
-                                return <audio src={element.src} controls />
-                            }
-                            
-                            else if(element.type == 'document')
-                            {
-                                return <div>
-                                    <a href={element.src}>{element.name}</a>
-                                    <p>size :- {String((element.size)/1024).split('.')[0]}KB</p>
-                                </div>
-                            }
-                            else if(element.type == 'none')
-                            {
-                              return <p>data not fetched</p>
-                            }
-                        }
-                      )
-                    }
-                    </div>
-                    :
-                    <p>Error 500!</p>
-                  }
-                </div>
-                <div style={{display:"flex",justifyContent:"space-between"}}>
-                  <label>likes = {x.likes}</label>
-                  <label>likes = {x.upVotes}</label>
-                  <label>likes = {x.downVotes}</label>
-                  <label>comments</label>
-                </div>
-                </div>
-            }
-          )
-          
+      <div className='toDisplayCommentBoxWithFlex'>
+        {
+          (store.getState().commentWindowStatus==true)?<CommentWindow data={commentWindowData} />:<div></div>
         }
       </div>
+      
+        <div className='AllPostsParentWindow'>
+          {
+            posts.map(x=>
+              {
+                // console.log(x)
+
+                return <div className='AllPostsChildWindow'>
+                  <a style={{textDecoration:"none"}} href=''>{x.author}</a>
+                  <br/>
+                  <label>posted on : {x.DatePosted}</label>
+                  <label>modified on : {x.DareModified}</label>
+                  <br/>
+                  <div>
+                    {
+                      (x.content && 1)?
+                      <div>
+                        {
+                        x.content.map(
+                          (element,index)=>
+                          {
+                            if(element.type == 'p')
+                              {
+                                  return <p className='NewPostTextOverFlow'
+                                      key={index}
+                                      style={{
+                                          color:element.textColor,
+                                          fontSize:`${element.fontSize}px`,
+                                          textAlign:element.textAlign
+                                          }}
+                                  >
+                                      {element.value}
+                                  </p>
+                              }
+                  
+                  
+                              else if(element.type == 'b')
+                              {
+                  
+                                  return <div>
+                                      <b key={index}
+                                      style={{
+                                          color:element.textColor,
+                                          fontSize:`${element.fontSize}px`,
+                                          textAlign:element.textAlign
+                                      }}
+                                  >
+                                      {element.value}
+                                  </b>
+                                  <br/>
+                                  </div>
+                              }
+                              
+                              
+                              else if(element.type == 'link')
+                              {
+                                  return <div>
+                                      <br/>
+                                      <a key={index}
+                                      target='_blank'
+                                      href={element.linkTo}
+                                  >
+                                      {element.value}
+                                  </a>
+                                  <br/>
+                                  </div>
+                              }
+                  
+                              else if(element.type == 'img')
+                              {
+                                  return <img style={{borderRadius:"20px"}} width="400px" height="300px" src={element.src}/>
+                              }
+                  
+                              else if(element.type == 'video')
+                              {
+                                  return <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop/>
+                              }
+                  
+                              else if(element.type == 'audio')
+                              {
+                                  return <audio src={element.src} controls />
+                              }
+                              
+                              else if(element.type == 'document')
+                              {
+                                  return <div>
+                                      <a href={element.src}>{element.name}</a>
+                                      <p>size :- {String((element.size)/1024).split('.')[0]}KB</p>
+                                  </div>
+                              }
+                              else if(element.type == 'none')
+                              {
+                                return <p>data not fetched</p>
+                              }
+                          }
+                        )
+                      }
+                      </div>
+                      :
+                      <p>Error 500!</p>
+                    }
+                  </div>
+                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                    <label>
+                      <img className={`btn like${x._id}`} width="40px" src={likeIcon} onClick={(event)=>{IncrementLike(event,x._id)}}/>
+                    {x.likes}</label>
+                    <label>
+                      <img className='btn' width="45px" src={commentIcon} onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
+                    {x.comments?x.comments.length:0}</label>
+                    <label>
+                      <img width="20px" src={viewsIcon}/>
+                    {x.views ? x.views :1}</label>
+                  </div>
+                  </div>
+              }
+            )
+            
+          }
+        </div>
+     
     </div>
   )
 }

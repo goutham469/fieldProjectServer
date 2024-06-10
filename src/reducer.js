@@ -11,7 +11,8 @@ let initialState = {
     chatIdOpened:'',
     signUpUserName:'',
     signUpEmailId:'',
-    signUpProfilePic:''
+    signUpProfilePic:'',
+    commentWindowStatus:false
 }
 
 
@@ -22,7 +23,7 @@ function checkIsSigned()
     let data = document.cookie;
     // console.log(data)
     data = data.split(';')
-    console.log(data)
+    // console.log(data)
 
     // let chatId = '';
     // let userName = '';
@@ -60,7 +61,7 @@ function checkIsSigned()
 function reducer(state=initialState,action)
 {
     state = checkIsSigned()
-    console.log(state)
+    // console.log(state)
     let base_url = process.env.REACT_APP_SERVER_BASE_URL;
     switch(action.type)
     {
@@ -91,6 +92,10 @@ function reducer(state=initialState,action)
                 default:
                     return state;
             }
+        case 'commentWindowOpen':
+            return {...state,commentWindowStatus:true}
+        case 'commentWindowClose':
+            return {...state,commentWindowStatus:false}
 
         default:
             return state;

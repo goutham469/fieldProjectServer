@@ -79,8 +79,12 @@ function AboutHurdles() {
                 <ul>
                     <li>The best one of all is the old and default one , by creating a <b>.css</b> file in the same folder.</li>
                     <li>using <b>style</b> attribute inside the component.</li>
-                    <li><p style={{color:"red",backgroundColor:"green",borderRadius:"5px"}}>content</p> , this is the most simple and quick approach.</li>
-                    <li>creating custom variables for styles , as <p style={style_variable_name}>content</p> , style_variable_name is an object </li>
+                    <li>
+                        <p style={{color:"red",backgroundColor:"green",borderRadius:"5px"}}>content</p>
+                     , this is the most simple and quick approach.</li>
+                    <li>creating custom variables for styles , as
+                         {/* <p style={style_variable_name}>content</p> */}
+                          , style_variable_name is an object </li>
                 </ul>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { getCurrentTime } from '../../../Functions/getDate';
 
 function SetUpPassword() {
 
@@ -43,13 +44,13 @@ function SetUpPassword() {
                     "userName":location.state.userName,
                     "email":location.state.email,
                     "password":firstPassword,
-                    "state":"telangana",
-                    "city":"khammam",
-                    "DateOfBirth":"10-06-2004",
-                    "gender":"male",
+                    "state":location.state.State,
+                    "city":location.state.city,
+                    "DateOfBirth":location.state.dateOfBirth,
+                    "gender":location.state.gender,
                     "interests":[],
                     "profilePicture":location.state.profilePic,
-                    "DateAccountCreated":"",
+                    "DateAccountCreated":getCurrentTime(),
                     "Profession":"",
                     "EducationalQualifications":[],
                     "friends":[],

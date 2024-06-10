@@ -1,0 +1,55 @@
+.CommentsWindowOuterEdge{
+    position:fixed;
+    top: 10px;
+    left: 5px;
+
+    background-color: rgb(146, 216, 163);
+
+    min-height: 100px;
+    width: 400px;
+    border-radius: 40px;
+    z-index: 5;
+
+    padding-bottom: 20px;
+}
+
+.toCloseCommentsPopUpWindow{
+    position: absolute;
+    top: 10px;
+    left: 300px;
+    border-radius: 20px;
+
+}
+
+.toCloseCommentsPopUpWindow:hover{
+    border-radius: 20px;
+}
+.OptionTypeForScrollingComments{
+    height: 400px;
+    overflow-y: scroll;
+}
+.comments0052{
+    background-color: rgb(165, 203, 237);
+    border-radius: 10px;
+    padding-left: 5px;
+}
+.NameOverFlow{
+    overflow-x: scroll;
+}
+.NameOverFlow::-webkit-scrollbar{
+    height: 3px;
+    
+}
+.comments0053{
+    background-color: rgb(115, 156, 192);
+    border-radius: 10px;
+    margin-right: 5px;
+    padding: 3px;
+    text-align: justify;
+}
+.CommentWindowPostCommentInput{
+    width: 200px;
+    margin-top: 10px;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+}

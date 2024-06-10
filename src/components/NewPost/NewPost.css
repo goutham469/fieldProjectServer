@@ -20,9 +20,9 @@
 .newPostSubEditor{
     background-color: rgb(158, 158, 158);
     border-radius: 20px;
-    text-align: center;
+    text-align: left;
     padding: 20px;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     width: fit-content;
     margin-left: 30px;
 }

@@ -6,4 +6,7 @@
 .LoginInputField{
     margin: 10px;
     border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
+    padding: 5px;
 }

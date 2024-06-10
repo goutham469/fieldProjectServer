@@ -21,6 +21,8 @@ const SignUpUserName =()=>{
                 userName:username
             })
             console.log(store.getState())
+
+            
             navigate('./verifyEmail',{state:{"userName":username}})
         }
 
