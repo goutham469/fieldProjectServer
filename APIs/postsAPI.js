@@ -43,5 +43,19 @@ postsAPI.post('/deletePost',DBAccessMiddleware,async (req,res)=>{
     res.send(responseFromDataBase)
 })
 
+postsAPI.post('/likePost',DBAccessMiddleware,async (req,res)=>{
+    let responseFromDataBase = await req.postsCollection.updateOne({"_id":new ObjectId(req.body.PostId)},{$inc:{"likes":1}})
+    res.send(responseFromDataBase)
+})
+
+postsAPI.post('/UnLikePost',DBAccessMiddleware,async (req,res)=>{
+    let responseFromDataBase = await req.postsCollection.updateOne({"_id":new ObjectId(req.body.PostId)},{$inc:{"likes":-1}})
+    res.send(responseFromDataBase)
+})
+
+postsAPI.post('/postComment',DBAccessMiddleware,async (req,res)=>{
+    let responseFromDataBase = await req.postsCollection.updateOne({"_id":new ObjectId(req.body.PostId)},{$push:{"comments":{"comment":req.body.comment,"likes":0,"userName":req.body.userName,"comments":[]}}})
+    res.send(responseFromDataBase)
+})
 
 module.exports = postsAPI

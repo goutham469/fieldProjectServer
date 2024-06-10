@@ -15,4 +15,19 @@ Content-Type: application/json
 {
     "postId":"45"
 }
+###
+POST http://localhost:4000/posts/likePost
+Content-Type: application/json
 
+{
+    "PostId":"6666906bd06a5385918c3f5a"
+}
+###
+POST http://localhost:4000/posts/postComment
+Content-Type: application/json
+
+{
+    "PostId":"6666906bd06a5385918c3f5a",
+    "comment":"Hi this is for testing comments functionality",
+    "userName":"goutham"
+}
