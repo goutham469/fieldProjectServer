@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 // import { GoogleLogin } from '@react-oauth/google';
 
 import store from '../../store';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 
 const Login =()=>{
@@ -13,7 +15,7 @@ const Login =()=>{
 
     let [userName,setUserName]=useState("");
     let [password,setPassword]=useState("");
-    let [errorFromDB,updateErrorFromDB] = useState('enter your credentials')
+    let [errorFromDB,updateErrorFromDB] = useState('')
     let [stateColor,updateStateColor] = useState('yellow')
     
     const handleLogin=async (e)=>{
@@ -75,44 +77,47 @@ const Login =()=>{
 
     };
 
-
-    // things related to google OAuth
-    const responseMessage = (response) => {
-        console.log(response);
-    };
-    const errorMessage = (error) => {
-        console.log(error);
-    };
+    async function success(response)
+    {
+        response = jwtDecode(response.credential).email;
+        console.log(response)
+    }
     return(
         <div >
             <div >
-              <h2 className='text-success'>Login</h2>
                 <form onSubmit={handleLogin} className='LoginForm'>
+                    <center><h5 style={{color:'#0000ff'}}>Login</h5></center>
+                    <label style={{marginLeft:"10px"}}>continue with</label>
+                    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}>
+                        <GoogleLogin onSuccess={success}/>
+                    </GoogleOAuthProvider>
+                    <center><label className='login-label-or'>or</label></center>
+                    <hr/>
+                    
+                    <label className='login-username-label'>username</label><br/>
                     <input 
                     type='text'
-                    className='LoginInputField'
-                    placeholder='Username'
+                    className='LoginInputField' 
                     onChange={(e)=>setUserName(e.target.value)}
                     />
-
                     <br/>
 
+                    <label className='login-password-label'>password</label><br/>
                     <input
                     type='password'
-                    className='LoginInputField'
-                    placeholder='Enter password'
+                    className='LoginInputField' 
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)}
                     />
-
                     <br/>
-                    <p style={{background:"white",color:{stateColor}}}>{errorFromDB}</p>
+                    <p style={{color:{stateColor},fontSize:'14px'}}>{errorFromDB}</p>
 
-                    <button  type="submit" className='btn btn-warning' >
-                      Login
-                    </button>
-                  </form>
-            {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
+                    <center>
+                        <button  type="submit" className='login-button' >
+                            Login
+                        </button>
+                    </center>
+                </form>
             </div>
 
         </div>

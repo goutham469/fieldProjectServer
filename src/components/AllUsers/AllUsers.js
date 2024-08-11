@@ -57,7 +57,7 @@ function AllUsers() {
                                 {
                                     return <div className='AllUsersChildComponenent'>
                                         {
-                                            x.profilePicture && 1 ?<img src={x.profilePicture}/>:<IoPersonCircleOutline color='green' size={200}/>
+                                            x.profilePicture && 1 ?<img width="200px" src={x.profilePicture}/>:<IoPersonCircleOutline color='green' size={200}/>
                                         }
                                         <br/>
                                         <label style={{textAlign:"justify",fontSize:"24px"}}>{x.userName}</label><br/>

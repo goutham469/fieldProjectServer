@@ -2,6 +2,9 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import store from '../../../store';
 
+import '../SignUp.css'
+import profileImage from '../profile.png'
+
 const SignUpUserName =()=>{
     let navigate = useNavigate();
 
@@ -13,8 +16,7 @@ const SignUpUserName =()=>{
         // e.preventDefault();
 
         if(await checkUserNameInDB())
-        {
-            alert('username created')
+        { 
             store.dispatch({
                 type:'signUp',
                 subType:'userName',
@@ -86,25 +88,30 @@ const SignUpUserName =()=>{
     
     return(
         <div className='container'>
-          <p>Create a Username </p>
-          <p>- this username uniquely identifies your identify</p>
+          <center>
+            <label>your a/c status</label>
+          <div style={{width:"300px",height:"15px",borderRadius:"5px",border:"1px solid black",display:"flex",padding:"0px"}}>
+          </div>
+            <br/>
+            <p>Create a Username </p>
+          </center>
           <div className='p-2'>
-                        <input 
-                        type='text'
-                        placeholder='create username'
-                        className='SignUpCreateUserName'
-                        onKeyUp={(e)=>{setUsername(e.target.value);
-                            // checkUserNameInDB(e)
-                        }}
-                        />
+                <img style={{position:"relative",left:"25px"}} width="17px" src={profileImage}/>
+                <input 
+                type='text'
+                placeholder='username'
+                className='SignUpCreateUserName'
+                onKeyUp={(e)=>{setUsername(e.target.value);
+                    // checkUserNameInDB(e)
+                }}
+                />
 
-            </div>
-                        <br/>
-                        <p style={{background:"white",color:statusColor}}>{userNameError}</p>
+            </div> 
+                <center><p style={{color:statusColor,fontSize:"13px"}}>{userNameError}</p></center>
 
-                        <div className='mx-auto'>
-                            <button variant="" type="submit" className='mx-auto ' onClick={()=>handleUsername()} > next </button>
-                        </div>
+                <center>
+                    <button className='signup-username-setup-button' onClick={()=>handleUsername()}>next</button>
+                </center>
 
         </div>
     )

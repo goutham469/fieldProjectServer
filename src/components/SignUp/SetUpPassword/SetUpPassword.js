@@ -64,14 +64,25 @@ function SetUpPassword() {
     }
   return (
     <div>
-        <form onSubmit={(event)=>{checkPasswords(event)}}>
-            <label>create a password</label><br/>
-            <input onChange={(event)=>updateFirstPassword(event.target.value)}/><br/>
-            <label>re-enter the password to conform</label><br/>
-            <input onChange={(event)=>updateSecondPassword(event.target.value)}/><br/>
-            <p style={{color:"red",backgroundColor:"white"}}>{passwordError}</p>
-            <button onClick={(event)=>{checkPasswords(event)}}>Create Account</button>
-        </form>
+        <center>
+            <label>your a/c status</label>
+            <div style={{width:"300px",height:"15px",borderRadius:"5px",border:"1px solid black",display:"flex",padding:"0px"}}>
+                <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopleft:"5px",borderBottomLeftRadius:"5px"}}></div>
+                <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopright:"5px"}}></div>
+                <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopright:"5px"}}></div>
+                <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopright:"5px"}}></div>
+            </div>
+        </center>
+        <center>
+            <form onSubmit={(event)=>{checkPasswords(event)}}>
+                <label style={{fontSize:"14px"}}>create a password</label><br/>
+                <input className='signup-extra-details-input' onChange={(event)=>updateFirstPassword(event.target.value)}/><br/>
+                <label style={{fontSize:"14px"}}>re-enter the password to conform</label><br/>
+                <input className='signup-extra-details-input' onChange={(event)=>updateSecondPassword(event.target.value)}/><br/>
+                <p style={{color:"red",fontSize:'13px'}}>{passwordError}</p>
+                <button  className='signup-username-setup-button' onClick={(event)=>{checkPasswords(event)}}>Create Account</button>
+            </form>
+        </center>
     </div>
   )
 }

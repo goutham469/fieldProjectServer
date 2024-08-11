@@ -1,6 +1,31 @@
-.SignUpForm{
-    background-color: rgb(219, 146, 83);
+.SignUp-Form{
+    background-color: #f2f4f7;
     border-radius: 20px;
     padding: 30px;
-    margin-top: 30px;
+    margin-top: 30px; 
+    text-align: left;
+}
+.SignUpCreateUserName{
+    background-color: #f2f4f7;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left:25px;
+}
+.signup-username-setup-button{
+    border-radius: 5px;
+    width: 60%;
+    background-color: green;
+    border: none;
+}
+.signup-username-setup-button:hover{
+    border: 1px solid green;
+    color: green;
+    background-color: #f2f4f7;
+    font-weight: 300;
+}
+/* extra details */
+.signup-extra-details-input{
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: #f2f4f7;
 }

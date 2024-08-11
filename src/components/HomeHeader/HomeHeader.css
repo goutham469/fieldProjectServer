@@ -1,14 +1,18 @@
 .HomeHeaderDisplayFlex{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     justify-content: space-between;
-    background-color:rgba(216, 71, 71, 0.27);
+    /* background-color: #f2f4f7; */
+    background-color: #f2f4f7;
 }
-.HomeHeaderDiplayFlexFlexEnd{
-    display: flex;
-    justify-content: space-between;
+.header-brand-text{
+    color: #0000ff;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
 }
-.HomeHeaderHeaderButtons{
+/* .HomeHeaderHeaderButtons{
     font-family:   monospace;
     color: black;
     font-size: 24px;
@@ -17,6 +21,27 @@
     margin: 3px;
 }
 .HomeHeaderHeaderButtons:hover{
-    color: rgb(255, 255, 255);
+    color: #0000ff;
     font-weight: 800;
+} */
+ .home-header-login-signup{
+    padding: 20px;
+    padding-right: 60px;
+ }
+ .home-header-login-signup-outer{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding-left: 3px;
+    font-weight: 500;
+ }
+.home-header-login{ 
+    background-color: #f2f7f6;
+    border-radius: 10px;
+    padding: 2px;
+}
+.home-header-signup{
+    background-color:#c4c4ff;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 2px; 
 }

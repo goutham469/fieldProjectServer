@@ -5,8 +5,8 @@ import { Outlet } from 'react-router-dom'
 function SignUp() {
   
   return (
-    <div style={{color:"white"}} className='SignUpForm'>
-      SignUp
+    <div className='SignUp-Form' style={{fontSize:"14px"}}>
+      <center><p style={{fontSize:'20px',fontWeight:'600',color:'#0000ff'}}>SignUp</p></center>
       <Outlet/>
     </div>
   )

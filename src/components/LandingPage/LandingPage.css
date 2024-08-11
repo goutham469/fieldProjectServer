@@ -1,8 +1,7 @@
-.landing-page {
-    position: relative;
-    width: 100%;
+.landing-page { 
+    /* width: 100vw; */
     height: 100vh; /* Adjust as necessary */
-    overflow: hidden;
+    /* overflow-y: scroll; */
   }
   
   .description-background-video {
@@ -24,8 +23,8 @@
     justify-content:first baseline;
     height: 100%;
     width: 100%;
-    color: rgb(159, 27, 27);
-    background-color: rgba(243, 93, 43, 0.251);
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     text-align: center;
     
   }

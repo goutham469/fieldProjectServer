@@ -7,7 +7,7 @@ import './LandingPage.css'; // Assuming you have a separate CSS file for styles
 function LandingPage() {
   return (
     <div className="landing-page">
-      <video className="description-background-video" src={bgVideo} autoPlay loop muted playsInline />
+      {/* <video className="description-background-video" src={bgVideo} autoPlay loop muted playsInline /> */}
       <div className="overlay">
         <HomeHeader />
         <Outlet />
@@ -15,5 +15,5 @@ function LandingPage() {
     </div>
   );
 }
-
+ 
 export default LandingPage;

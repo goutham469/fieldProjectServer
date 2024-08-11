@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+ 
 
 
 import AppHeader from './components/AppHeader/AppHeader';
@@ -49,16 +50,19 @@ function App() {
     // console.log("fetching server 1st time");
     async function fetchServerInitially()
     {
+
       let base_url = process.env.REACT_APP_SERVER_BASE_URL;
-      let responseFromServer = await fetch(`${base_url}/firstRender`)
-      responseFromServer = await responseFromServer.json();
-
-
-      if(responseFromServer.status == true)
+      try
       {
-        document.querySelector('.MasterContent2').style.display="block";
-        document.querySelector('.MasterContent1').style.display="none";
-      }
+        let responseFromServer = await fetch(`${base_url}/firstRender`)
+        responseFromServer = await responseFromServer.json();
+
+        if(responseFromServer.status == true)
+        {
+          document.querySelector('.MasterContent2').style.display="block";
+          document.querySelector('.MasterContent1').style.display="none";
+        }
+      }catch(err){console.log(err,"reason : the server is not running")}
     }
 
     fetchServerInitially()

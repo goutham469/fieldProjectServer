@@ -41,9 +41,16 @@ function GoogleOAuthVerification() {
 
   return (
     <div>
-      <h4>To Continue further verify your google account</h4>
-      <p>-this process makes sure there will be no <b>malicious users</b>.</p>
-      <p>click on the below google icon to verify your account</p>
+      <center>
+        <label>your a/c status</label>
+        <div style={{width:"300px",height:"15px",borderRadius:"5px",border:"1px solid black",display:"flex",padding:"0px"}}>
+          <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopleft:"5px",borderBottomLeftRadius:"5px"}}></div>
+        </div>
+      </center>
+      
+      <p style={{fontSize:"13px"}}>To Continue further verify your google account</p>
+      {/* <p>-this process makes sure there will be no <b>malicious users</b>.</p> */}
+      <p style={{fontSize:"14px"}}>click on the below google icon to verify your account</p>
       
         <GoogleLogin
             buttonText="Login with Google"

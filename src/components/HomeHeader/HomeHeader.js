@@ -1,10 +1,12 @@
 import React from 'react'
-import './HomeHeader.css'
-import { FaSquareFacebook } from "react-icons/fa6";
+import './HomeHeader.css' 
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import store from '../../store';
+
+import facebookIcon from './facebook.png'
+
 
 function HomeHeader() {
   let navigate = useNavigate();
@@ -15,17 +17,22 @@ function HomeHeader() {
           navigate('/user')
       }
   })
-
+ 
   return (
     <div className='HomeHeaderDisplayFlex'>
-        <div className='HomeHeaderHeaderButtons'>
-            <FaSquareFacebook color='blue' onClick={(event)=>{event.preventDefault();navigate('')}} size={50}/>
+        <div className='HomeHeaderHeaderButtons p-2'>
+            <img style={{marginLeft:"20px"}} width="200px"    onClick={()=>navigate('/')} src={facebookIcon}/>
         </div>
-        <div className='HomeHeaderDiplayFlexFlexEnd'>
-            <div className='HomeHeaderHeaderButtons' onClick={(event)=>{event.preventDefault();navigate('/login')}}>Login</div>
-            <div className='HomeHeaderHeaderButtons' onClick={(event)=>{event.preventDefault();navigate('/signUp')}}>Sign up</div>
-            <div className='HomeHeaderHeaderButtons' onClick={(event)=>{event.preventDefault();navigate('/about')}}>About us</div>
-            <div className='HomeHeaderHeaderButtons'>help</div>
+        <div>
+           <p className='header-brand-text'>Facebook helps you connect and share<br/> with the people in your life.</p>
+        </div>
+        <div className='home-header-login-signup'>
+            <div className='home-header-login-signup-outer'>
+                <label className='home-header-login'   onClick={(event)=>{event.preventDefault();navigate('/login')}}  >login</label>
+                <label className='home-header-signup'   onClick={(event)=>{event.preventDefault();navigate('/signUp')}}  >sign up</label>
+            </div>
+            {/* <div className='HomeHeaderHeaderButtons p-2' onClick={(event)=>{event.preventDefault();navigate('/login')}}>Login</div>
+            <div className='HomeHeaderHeaderButtons p-2' onClick={(event)=>{event.preventDefault();navigate('/signUp')}}>Sign up</div> */}
         </div>
     </div>
   )
