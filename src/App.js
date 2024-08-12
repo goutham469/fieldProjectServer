@@ -41,6 +41,7 @@ import TechStack from './about/TechStack/TechStack';
 import store from './store';
 import { Provider } from 'react-redux';
 import { useEffect } from 'react';
+import GamesHome from './games/GamesHome/GamesHome';
 
 
 function App() {
@@ -172,6 +173,10 @@ function App() {
         {
           path:'ProfileDashBoard',
           element:<ProfileDashBoard/>
+        },
+        {
+          path:'games',
+          element:<GamesHome/>
         }
       ]
     }

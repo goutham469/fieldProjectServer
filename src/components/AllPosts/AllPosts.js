@@ -93,9 +93,7 @@ function AllPosts() {
   }
 
   return (
-    <div>
-      <button style={styleSheet.newPostButton} onClick={(event)=>{event.preventDefault();navigate('../newPost')}}>+ Post</button>
-
+    <div> 
       <div className='toDisplayCommentBoxWithFlex'>
         {
           (store.getState().commentWindowStatus==true)?<CommentWindow data={commentWindowData} />:<div></div>

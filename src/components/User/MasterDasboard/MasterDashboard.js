@@ -15,7 +15,7 @@ function MasterDashboard() {
       navigate('/');
     }
   },[])
-  return (
+  return ( 
     <div className='MaterDashBoard'>
         <AppHeader/>
         <Outlet/>

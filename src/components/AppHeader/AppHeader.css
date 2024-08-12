@@ -4,6 +4,45 @@
     position: static;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20px;
-    background-color: rgb(220, 217, 217);
+    padding-top: 5px;
+    background-color: #ffffff;
+}
+.AppHeadertoDisplayFlex-navbar{
+    /* width: 500px; */
+    width: 50vw;
+    min-width: 300px;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.app-header-facebook-image{
+    width: 40px;
+    margin-bottom: 5px;
+}
+.app-header-search-icon{
+    width: 16px;
+    position: relative;
+    left: 20px;
+    bottom: 3px;
+}
+.app-header-search-input{
+    border-radius: 25px;
+    border: 0px solid black;
+    padding-left: 30px;
+    width: 200px;
+    height: 35px;
+    background-color: #f0f2f5;
+}
+/* .header-navbar-div{
+    padding: 7px;
+    padding-right: 7px;
+} */
+.header-icon-hover{
+    position: fixed;
+    background-color: #4b4c4f;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 2px;
 }
