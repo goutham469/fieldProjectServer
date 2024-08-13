@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react'
 import './AllPosts.css'
 import { useNavigate } from 'react-router-dom'
 
-
+import { IoPersonCircleOutline } from 'react-icons/io5'
+import { CiBookmark } from 'react-icons/ci'
 import viewsIcon from './assets/views.png'
 import likeIcon from './assets/like.png'
 import commentIcon from './assets/comment.png'
 import store from '../../store'
+
+import friendsIcon from './assets/friends.png'
+import groupsIcon from './assets/groups.png'
+import bookmarkIcon from './assets/bookmark.png'
+import facebookIcon from '../AppHeader/facebook.png'
 
 import CommentWindow from '../CommentWindow/CommentWindow'
 
@@ -93,24 +99,80 @@ function AllPosts() {
   }
 
   return (
-    <div> 
-      <div className='toDisplayCommentBoxWithFlex'>
+    <div style={{paddingTop:"50px",display:"flex",justifyContent:"space-around"}}>
+      {
+      window.innerWidth > 400 ?
+      <div className='all-posts-main-div'>
         {
-          (store.getState().commentWindowStatus==true)?<CommentWindow data={commentWindowData} />:<div></div>
+          /* <div className='toDisplayCommentBoxWithFlex'>
+          {
+            (store.getState().commentWindowStatus==true)?<CommentWindow data={commentWindowData} />:<div></div>
+          }
+        </div> */
         }
-      </div>
+        {/*left side */}
+        <div className='all-posts-left-div'>
+          <div className='all-posts-left-div-child'>
+            {
+              store.getState().profilePic?
+              <img src={store.getState().ProfilePic}/>
+              :
+              <IoPersonCircleOutline size={20}/>
+            }
+            <label className='all-posts-left-div-label'>{store.getState().userName}</label>
+          </div>
+          <div className='all-posts-left-div-child'>
+            <img className='all-posts-left-div-image' src={friendsIcon}/>
+            <label className='all-posts-left-div-label'>find friends</label>
+          </div>
+          <div className='all-posts-left-div-child'>
+            <img className='all-posts-left-div-image' src={groupsIcon}/>
+            <label className='all-posts-left-div-label'>groups</label>
+          </div>
+          <div className='all-posts-left-div-child'>
+            <img className='all-posts-left-div-image' src={bookmarkIcon}/>
+            <label className='all-posts-left-div-label'>bookmarks</label>
+          </div>
+          
+
+          <div className='all-posts-ads-main-div'>
+            <label>sponsored</label><br/>
+            <div className='all-posts-ads'>
+              <label>ads</label>
+              <img width="100px" src={facebookIcon}/>
+              <label>increase your<br/> social network</label>
+            </div>
+            <div className='all-posts-ads'>
+              <label>ads</label>
+              <img width="100px" src={facebookIcon}/>
+              <label>increase your<br/> social network</label>
+            </div>
+            <div className='all-posts-ads'>
+              <label>ads</label>
+              <img width="100px" src={facebookIcon}/>
+              <label>increase your<br/> social network</label>
+            </div>
+          </div>
+        </div>
       
-        <div className='AllPostsParentWindow'>
+
+        {/* right side */}
+        <div className='all-posts-posts-scroll'>
           {
             posts.map(x=>
               {
                 // console.log(x)
 
                 return <div className='AllPostsChildWindow'>
-                  <a style={{textDecoration:"none"}} href=''>{x.author}</a>
-                  <br/>
-                  <label>posted on : {x.DatePosted}</label>
-                  <label>modified on : {x.DareModified}</label>
+                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                    <a style={{textDecoration:"none"}} href=''>{x.author}</a>
+                    <CiBookmark size={25}  
+                     onClick={()=>{alert('post saved')}} 
+                     />
+                  </div>
+                  {/* <br/> */}
+                  {/* <label>posted on : {x.DatePosted}</label> */}
+                  {/* <label>modified on : {x.DareModified}</label> */}
                   <br/>
                   <div>
                     {
@@ -169,17 +231,23 @@ function AllPosts() {
                   
                               else if(element.type == 'img')
                               {
-                                  return <img style={{borderRadius:"20px"}} width="400px" height="300px" src={element.src}/>
+                                  return <div>
+                                    <center><img style={{borderRadius:"10px",maxWidth:"350px"}} src={element.src}/></center>
+                                    <br/>
+                                  </div>
                               }
                   
                               else if(element.type == 'video')
                               {
-                                  return <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop/>
+                                  return <div>
+                                    <center><video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop/></center>
+                                    <br/>
+                                  </div>
                               }
                   
                               else if(element.type == 'audio')
                               {
-                                  return <audio src={element.src} controls />
+                                  return <center><audio src={element.src} controls /></center>
                               }
                               
                               else if(element.type == 'document')
@@ -218,7 +286,14 @@ function AllPosts() {
             
           }
         </div>
-     
+        
+
+      </div>
+      :
+      <div>
+        mobile view ok
+      </div>
+      }
     </div>
   )
 }

@@ -1,7 +1,8 @@
 .AppHeadertoDisplayFlex{
+    position: fixed;
     width: 100vw;
     display: flex;
-    position: static;
+    /* position: static; */
     flex-wrap: wrap;
     justify-content: space-around;
     padding-top: 5px;
@@ -9,6 +10,7 @@
 }
 .AppHeadertoDisplayFlex-navbar{
     /* width: 500px; */
+    
     width: 50vw;
     min-width: 300px;
     

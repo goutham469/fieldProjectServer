@@ -67,7 +67,7 @@ function reducer(state=initialState,action)
     {
         case 'login':
             const now = new Date()
-            const expireTime = now.getTime() + 600 * 1000 // 6000 x 1000 milliseconds = 600 seconds = 100 min
+            const expireTime = now.getTime() + 60*60 * 1000 // 60 x 60 x 1000 milliseconds = 36000 seconds = 60 min
             now.setTime(expireTime);
 
             document.cookie = `username=${action.userName}; expires=${now.toUTCString()}; path=/;`;
