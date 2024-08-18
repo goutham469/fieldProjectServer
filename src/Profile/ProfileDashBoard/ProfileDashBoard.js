@@ -151,7 +151,7 @@ function ProfileDashBoard() {
 
 
       <h4>My posts</h4>
-      <div className='ProfileDashBoardToDisplayContainer'>
+      <div style={styleSheet.personalDataChildComponent}  className='ProfileDashBoardToDisplayContainer'>
         {
           postsData && postsData.length > 0 ?
           <div>
@@ -264,7 +264,7 @@ function ProfileDashBoard() {
             }
           </div>
           :
-          <div style={{margin:"20px",padding:"10px",backgroundColor:"yellow"}}>
+          <div style={{margin:"20px",padding:"10px"}}>
             OOPs , No posts yet!
           </div>
         }

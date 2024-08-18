@@ -6,11 +6,13 @@ import { Outlet } from 'react-router-dom'
 import io from 'socket.io-client'
 import store from '../../store'
 import { useSelector } from 'react-redux'
+import ChatAllUsers from '../ChatAllUsers/ChatAllUsers'
 
  
 function ChatMainDashboard() {
   let [socket,setSocket] = useState(null)
   // let {userName} = useSelector(store=>store.getState().useState)
+  const [displayWidth,setDisplayWidth] = useState(window.innerWidth);
 
   useEffect(()=>{
     // console.log(store.getState().userName);
@@ -21,11 +23,22 @@ function ChatMainDashboard() {
       })
       setSocket(socket);
     }  
+    window.addEventListener('resize',()=>{
+      setDisplayWidth(window.innerWidth)
+    })
   },[])
     
   return (
-    <div className='ChatMainDashBoardDisplayContainer'>
-        <Outlet/>
+    <div>
+        {
+          displayWidth > 600 ?
+          <div className='ChatMainDashBoardDisplayContainer'>
+            <ChatAllUsers />
+            <Outlet/>
+          </div>
+          :
+          <Outlet/>
+        }
     </div>
   )
 } 

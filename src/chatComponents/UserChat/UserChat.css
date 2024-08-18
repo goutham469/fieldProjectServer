@@ -3,9 +3,10 @@
     left: -100px;
 }
 .UserChatOuterBoard{
+    padding-top: 80px;
     background-color: rgb(226, 226, 226);
-    height: 90vh;
-    width: 85vw;
+    height: 80vh; 
+    min-width: 70vw;
     max-width: 800px;
     border-radius: 7px;
 
@@ -36,4 +37,8 @@
     margin-bottom: 3px;
     padding: 3px;
     max-width: 250px;
+}
+.messageSendingBox{
+    position: relative;
+    bottom: -25em;
 }

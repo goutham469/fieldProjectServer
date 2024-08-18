@@ -55,14 +55,14 @@ function UserChat() {
       })
     })
   }
-
+ 
   return (
     <div className="UserChatOuterBoard">
-      <IoArrowBackSharp className='BackButtonToAllChats' size={40} onClick={()=>{navigate('../')}}/>
+      <IoArrowBackSharp className='BackButtonToAllChats' size={20} onClick={()=>{navigate('../')}}/>
       {
         (chatIdOpened.profilePic)?<img src={chatIdOpened.profilePic}/>:<IoPersonCircleOutline size={40}/>
       
-      }
+      } 
       
       <label>
         <b>{chatIdOpened}</b>

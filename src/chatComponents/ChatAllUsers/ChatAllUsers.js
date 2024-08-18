@@ -27,8 +27,8 @@ function ChatAllUsers() {
     // console.log(chatUsers)
 
   return (
-    <div style={{height:"95vh",overflowY:"scroll"}}>
-        <input style={{width:"300px",height:"40px",borderRadius:"3px",margin:"10px",marginLeft:"50px"}} type='text' placeholder='Search any thing'/>
+    <div style={{height:"80vh",overflowY:"scroll",paddingLeft:"20px",paddingTop:"80px"}}>
+        <input style={{width:"300px",height:"40px",borderRadius:"5px"}} type='text' placeholder='Search any thing'/>
         {
             chatUsers&&chatUsers.length == 0?
             <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>

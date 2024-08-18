@@ -1,6 +1,6 @@
 .ChatMainDashBoardDisplayContainer{
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    justify-content: space-between;
     align-items: center;   
-    padding-top: 80px;
+    padding-top: 80px; 
 }

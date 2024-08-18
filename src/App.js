@@ -43,6 +43,7 @@ import { Provider } from 'react-redux';
 import { useEffect } from 'react';
 import GamesHome from './games/GamesHome/GamesHome';
 import UserDetails from './components/UserDetails/UserDetails';
+import Googleac from './components/Login/Googleac';
 
 
 function App() {
@@ -82,6 +83,10 @@ function App() {
         {
           path:'login',
           element:<Login/>
+        },
+        {
+          path:'googleAuth',
+          element:<Googleac/>
         },
         {
           path:'SignUp',

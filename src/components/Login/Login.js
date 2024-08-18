@@ -81,12 +81,14 @@ const Login =()=>{
     {
         response = jwtDecode(response.credential).email;
         console.log(response)
+        navigate('/googleAuth',{state:response})
     }
     return(
         <div >
             <div >
                 <form onSubmit={handleLogin} className='LoginForm'>
                     <center><h5 style={{color:'#0000ff'}}>Login</h5></center>
+                    
                     <label style={{marginLeft:"10px"}}>continue with</label>
                     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}>
                         <GoogleLogin onSuccess={success}/>
@@ -116,6 +118,12 @@ const Login =()=>{
                         <button  type="submit" className='login-button' >
                             Login
                         </button>
+                    </center>
+
+
+                    <br/>
+                    <center>
+                        <a href='' onClick={()=>navigate('/signup')}>did't had account, <b>Sign up</b></a>
                     </center>
                 </form>
             </div>
