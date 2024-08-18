@@ -29,7 +29,7 @@ function AppHeader() {
           <div className='header-navbar-div'> 
             <FaHome size={30}
              color={(componentChoosenColor==1)?"blue":"black"}
-              onClick={()=>{navigate('./home');updateComponentChoosenColor(1)}}
+              onClick={()=>{navigate('./');updateComponentChoosenColor(1)}}
               onMouseEnter={()=>setHeaderIconHover(1)}
               onMouseLeave={()=>setHeaderIconHover(0)}
               />

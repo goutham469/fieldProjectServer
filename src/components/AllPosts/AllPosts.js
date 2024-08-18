@@ -42,7 +42,7 @@ function AllPosts() {
       // console.log("fetching posts completed :- ",posts)
     }
     window.addEventListener('resize',()=>{
-      console.log("window width changed , size = ",window.innerWidth);
+      // console.log("window width changed , size = ",window.innerWidth);
       setWindowWidth(window.innerWidth);
     })
 
@@ -174,7 +174,11 @@ function AllPosts() {
 
                 return <div className='AllPostsChildWindow'>
                   <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <a style={{textDecoration:"none"}} href=''>{x.author}</a>
+                    <a
+                     style={{textDecoration:"none"}}  href=''  
+                     onClick={()=>navigate('name',{"state":x.author})} 
+                     >{x.author}
+                     </a>
                     <CiBookmark size={25}  
                      onClick={()=>{alert('post saved')}} 
                      />
@@ -325,7 +329,10 @@ function AllPosts() {
                 // console.log(x)
                 return <div className='AllPostsChildWindow-mobile'>
                   <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <a style={{textDecoration:"none"}} href=''>{x.author}</a>
+                    <a  
+                     style={{textDecoration:"none"}}  href=''  
+                     onClick={()=>navigate('name',{"state":x.author})} 
+                     >{x.author}</a>
                     <CiBookmark size={25}  
                      onClick={()=>{alert('post saved')}} 
                      />

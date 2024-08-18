@@ -57,7 +57,7 @@ const Login =()=>{
                         userName:userName
                     })
 
-                    navigate('/user/home')
+                    navigate('/user/')
                     // console.log(store.getState())
                 }
                 else if(responseFromDB.message == 'user_name_not_exist')

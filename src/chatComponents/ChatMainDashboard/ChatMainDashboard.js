@@ -13,7 +13,7 @@ function ChatMainDashboard() {
   // let {userName} = useSelector(store=>store.getState().useState)
 
   useEffect(()=>{
-    console.log(store.getState().userName);
+    // console.log(store.getState().userName);
     if(store.getState().userName)
     {
       let socket = io('http://localhost:8080',{

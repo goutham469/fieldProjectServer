@@ -32,7 +32,7 @@ function checkIsSigned()
         x = x.split('=')
         // console.log(x)
         
-        if(x[0] == ' username')
+        if(x[0] == 'username' || x[0] == ' username')
         {
             if(x[1] != '')
             {

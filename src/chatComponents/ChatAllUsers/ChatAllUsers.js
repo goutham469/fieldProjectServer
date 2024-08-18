@@ -24,7 +24,7 @@ function ChatAllUsers() {
         getData();
     },[])
  
-    console.log(chatUsers)
+    // console.log(chatUsers)
 
   return (
     <div style={{height:"95vh",overflowY:"scroll"}}>

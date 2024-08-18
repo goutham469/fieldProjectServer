@@ -6,8 +6,12 @@ import './AllUsers.css'
 import personImage from './person.png'
 
 import store from '../../store';
+import { useNavigate } from 'react-router-dom';
+
 
 function AllUsers() {
+    const navigate = useNavigate()
+
     let [allUsers,updateAllUsers] = useState([])
 
     useEffect(()=>{
@@ -19,10 +23,10 @@ function AllUsers() {
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify({"userName":store.getState().userName})
             }).then(data=>data.json()).then(data=>{updateAllUsers(data)})
-            console.log("fetching all users completed");
+            // console.log("fetching all users completed");
         }
         loadUsers();
-        console.log(allUsers)
+        // console.log(allUsers)
     },[])
 
     async function followUser(event,userName)
@@ -61,7 +65,9 @@ function AllUsers() {
                                             x.profilePicture && 1 ?<img width="200px" src={x.profilePicture}/>:<img className='allusers-person-image' src={personImage}/>
                                         }
                                         <br/>
-                                        <label className='allusers-user-child-username'>{x.userName}</label><br/>
+                                        <label className='allusers-user-child-username' 
+                                        onClick={()=>navigate('../name',{state:x.userName})}
+                                        >{x.userName}</label><br/>
                                         
                                         <center>
                                             <button className='allusers-user-child-button-add-friend' onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button><br/>

@@ -31,8 +31,8 @@ function ProfileDashBoard() {
     }
     getData();
 
-    console.log(personalData)
-    console.log(postsData)
+    // console.log(personalData)
+    // console.log(postsData)
   },[])
 
   async function uploadProfilePic(event)

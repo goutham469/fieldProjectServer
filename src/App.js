@@ -42,6 +42,7 @@ import store from './store';
 import { Provider } from 'react-redux';
 import { useEffect } from 'react';
 import GamesHome from './games/GamesHome/GamesHome';
+import UserDetails from './components/UserDetails/UserDetails';
 
 
 function App() {
@@ -135,18 +136,18 @@ function App() {
     {
       path:'user',
       element:<MasterDashboard/>,
-      children:[
+      children:[ 
         {
           path:'',
           element:<AllPosts/>
         },
         {
-          path:'home',
-          element:<AllPosts/>
-        },
-        {
           path:'people',
           element:<AllUsers/>
+        },
+        {
+          path:'name',
+          element:<UserDetails/>
         },
         {
           path:'newpost',
