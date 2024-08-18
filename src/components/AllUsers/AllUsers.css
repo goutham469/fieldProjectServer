@@ -5,8 +5,45 @@
     justify-content: space-between;
 }
 .AllUsersChildComponenent{
-    background-color: rgb(206, 206, 206);
+    background-color: #ffffff;
     border-radius: 10px;
     margin: 10px;
-    padding: 5px;
+    padding-bottom: 5px;
+}
+.allusers-person-image{
+    width: 200px;
+}
+.allusers-user-child-username{
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    width: 150px;
+    overflow-y: hidden;
+}
+.allusers-user-child-username:hover{
+    text-decoration: underline;
+}
+.allusers-user-child-button-add-friend{
+    border-radius: 5px;
+    border: none;
+    background-color:#dfe9f0;
+    color: #005fc6;
+    font-weight: 600;
+    width: 80%;
+    margin: 3px;
+}
+.allusers-user-child-button-add-friend:hover{
+    background-color: #e8f0ff;
+}
+.allusers-user-child-button-remove-friend{
+    border-radius: 5px;
+    border: none;
+    background-color: #d8dadf;
+    color:black;
+    font-weight: 600;
+    width: 80%;
+    margin: 3px;
+}
+.allusers-user-child-button-remove-friend:hover{
+    background-color: #d4dbe5;
 }

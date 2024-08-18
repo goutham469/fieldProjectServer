@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import facebookIcon from './facebook.png'
 import serachIcon from '../LandingPage/assets/search.png'
 import gamesIcon from './games.png'
+import gamesHoverIcon from './gamesHover.png'
 
 
 function AppHeader() {
@@ -80,10 +81,22 @@ function AppHeader() {
               headerIconHover == 5&&<div className='header-icon-hover'>profile</div>
             }
           </div>
+          <div className='header-navbar-div'>
+            <img width="30px" height="30px"   
+            src={(componentChoosenColor==6)?gamesHoverIcon:gamesIcon} 
+            onClick={()=>{navigate('./games');updateComponentChoosenColor(6)}}
+            onMouseEnter={()=>setHeaderIconHover(6)}
+            onMouseLeave={()=>setHeaderIconHover(0)}
+             />
+            {
+              headerIconHover == 6&&<div className='header-icon-hover'>games</div>
+            }
+          </div>
+
         </div>
         <div style={{width:"100px",display:"flex",justifyContent:"space-around"}}>
-          <img width="30px" height="30px" onClick={()=>navigate('./games')} src={gamesIcon}/>
-          <IoPersonCircleOutline size={30}/>
+          {/* <img width="30px" height="30px" onClick={()=>navigate('./games')} src={gamesIcon}/>
+          <IoPersonCircleOutline size={30}/> */}
         </div>
     </div>
   )

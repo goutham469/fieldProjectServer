@@ -12,7 +12,7 @@ function ProfileDashBoard() {
   let [postsData,setPostsData] = useState([])
 
   const styleSheet = {
-    personalDataChildComponent:{width:"40em",backgroundColor:"yellow",padding:"10px",margin:"10px"}
+    personalDataChildComponent:{width:"40em",backgroundColor:"#b2b2b2",padding:"10px",margin:"10px",borderRadius:"10px"}
   }
 
   useEffect(()=>{
@@ -101,7 +101,7 @@ function ProfileDashBoard() {
     }
 
   return (
-    <div>
+    <div style={{paddingTop:"80px"}}>
       <button  className='logoutButton'   onClick={(event)=>{ store.dispatch({type:'logout'}); navigate('/') }}> Logout </button>
 
       <div className='ProfileDashBoardToDisplayContainer'>
@@ -157,7 +157,7 @@ function ProfileDashBoard() {
           <div>
             {
               postsData.map(x=>{
-                return <div className='AllPostsChildWindow'>
+                return <div style={{width:"300px"}} className='AllPostsChildWindow'>
                 <a style={{textDecoration:"none"}} href=''>{x.author}</a>
                 <button style={{border:"none",backgroundColor:"none",position:"relative",left:"8em"}} onClick={(event)=>{deletePost(event,x._id)}}><img style={{width:"23px"}} src={deleteIcon}/></button>
                 <br/>

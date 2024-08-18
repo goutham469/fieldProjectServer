@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import { IoPersonCircleOutline } from "react-icons/io5";
 import './AllUsers.css'
 
+import personImage from './person.png'
+
 import store from '../../store';
 
 function AllUsers() {
@@ -40,13 +42,12 @@ function AllUsers() {
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({"userName":store.getState().userName})
         }).then(data=>data.json()).then(data=>{updateAllUsers(data)})
-
+ 
     }
 
   return (
-    <div>
-        <h3 className='text-success text-center'>All Users</h3>
-        <input style={{width:"300px",height:"40px",marginLeft:"50px"}} placeholder='search using the userName (or) email'/>
+    <div style={{paddingTop:"90px"}}>
+        <input style={{width:"300px",height:"35px",marginLeft:"50px",borderRadius:"10px",border:"1px solid black",padding:"2px"}} placeholder='search using user-name'/>
         <div className='AllUsersComponentParent'>
             {
                 allUsers.length > 0 ?
@@ -57,15 +58,15 @@ function AllUsers() {
                                 {
                                     return <div className='AllUsersChildComponenent'>
                                         {
-                                            x.profilePicture && 1 ?<img width="200px" src={x.profilePicture}/>:<IoPersonCircleOutline color='green' size={200}/>
+                                            x.profilePicture && 1 ?<img width="200px" src={x.profilePicture}/>:<img className='allusers-person-image' src={personImage}/>
                                         }
                                         <br/>
-                                        <label style={{textAlign:"justify",fontSize:"24px"}}>{x.userName}</label><br/>
-                                        <label>lives in {x.city}</label>
-                                        <div>
-                                            <button className='m-2' onClick={(event)=>{followUser(event,x.userName)}}>follow</button>
-                                            <button className='m-2'>remove</button>
-                                        </div>
+                                        <label className='allusers-user-child-username'>{x.userName}</label><br/>
+                                        
+                                        <center>
+                                            <button className='allusers-user-child-button-add-friend' onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button><br/>
+                                            <button className='allusers-user-child-button-remove-friend'>Remove</button>
+                                        </center>
                                     </div>
                                 }
                             )

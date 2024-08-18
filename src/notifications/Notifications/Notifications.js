@@ -2,7 +2,9 @@ import React from 'react'
 
 function Notifications() {
   return (
-    <div>Notifications</div>
+    <div style={{paddingTop:"80px",height:"100vh"}}>
+      Notifications
+    </div>
   )
 }
 

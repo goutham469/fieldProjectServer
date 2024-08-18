@@ -23,14 +23,14 @@ function ChatAllUsers() {
         }
         getData();
     },[])
-
+ 
     console.log(chatUsers)
 
   return (
-    <div>
+    <div style={{height:"95vh",overflowY:"scroll"}}>
         <input style={{width:"300px",height:"40px",borderRadius:"3px",margin:"10px",marginLeft:"50px"}} type='text' placeholder='Search any thing'/>
         {
-            (chatUsers.length == 0)?
+            chatUsers&&chatUsers.length == 0?
             <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
                 <div style={{backgroundColor:"#91b7e6",margin:"10px",padding:"10px",borderRadius:"10px"}}>
                     <p>No Friends yet, start sending requests to friends.</p>
@@ -38,11 +38,11 @@ function ChatAllUsers() {
                 </div>
             </div>
             :
-            chatUsers.map(user=><SingleChat data={user}/>)
+            chatUsers&&chatUsers.map(user=><SingleChat data={user}/>)
             
         }
     </div>
-  )
+  ) 
 }
 
 export default ChatAllUsers

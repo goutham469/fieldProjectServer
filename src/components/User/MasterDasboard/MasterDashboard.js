@@ -7,14 +7,14 @@ import store from '../../../store'
 
 function MasterDashboard() {
   let navigate = useNavigate()
-
+  
   useEffect(()=>{
-    // console.log(store,store.getState())
+    console.log(store,store.getState())
     if(store.getState().signed == false)
     {
       navigate('/');
     }
-  },[])
+  },[]) 
   return ( 
     <div className='MaterDashBoard'>
         <AppHeader/>

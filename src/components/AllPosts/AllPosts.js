@@ -6,6 +6,7 @@ import { IoPersonCircleOutline } from 'react-icons/io5'
 import { CiBookmark } from 'react-icons/ci'
 import viewsIcon from './assets/views.png'
 import likeIcon from './assets/like.png'
+import likedIcon from './assets/liked.png'
 import commentIcon from './assets/comment.png'
 import store from '../../store'
 
@@ -21,6 +22,7 @@ function AllPosts() {
 
   let [posts,updatePosts] = useState([])
   let [commentWindowData,updateCommentWindowData] = useState([])
+  const [windowWidth,setWindowWidth] = useState(window.innerWidth)
 
 
   useEffect(()=>{
@@ -39,6 +41,10 @@ function AllPosts() {
 
       // console.log("fetching posts completed :- ",posts)
     }
+    window.addEventListener('resize',()=>{
+      console.log("window width changed , size = ",window.innerWidth);
+      setWindowWidth(window.innerWidth);
+    })
 
     getAllPosts();
   },[])
@@ -55,12 +61,12 @@ function AllPosts() {
 
   }
 
-  async function IncrementLike(event,PostId)
+  async function IncrementLike(event,PostId,type)
   {
     event.preventDefault();
     console.log(PostId)
     const base_url = process.env.REACT_APP_SERVER_BASE_URL;
-    if(document.querySelector(`.like${PostId}`).style.backgroundColor == "red")
+    if(type == "unlike")
     {
       let responseFromServer = await fetch(`${base_url}/posts/UnLikePost`,
         {
@@ -71,7 +77,7 @@ function AllPosts() {
         )
         if(responseFromServer.ok)
         {
-          document.querySelector(`.like${PostId}`).style.backgroundColor=null;
+          // document.querySelector(`.like${PostId}`).style.backgroundColor=null;
           updatePosts(previousData=>previousData.map(post=>post._id == PostId ?{...post,likes:post.likes-1}:post))
         }
     }
@@ -86,7 +92,7 @@ function AllPosts() {
       )
       if(responseFromServer.ok)
       {
-        document.querySelector(`.like${PostId}`).style.backgroundColor="red"
+        // document.querySelector(`.like${PostId}`).style.backgroundColor="red"
         updatePosts(previousData=>previousData.map(post=>post._id == PostId ?{...post,likes:post.likes+1}:post))
       }
 
@@ -101,7 +107,7 @@ function AllPosts() {
   return (
     <div style={{paddingTop:"50px",display:"flex",justifyContent:"space-around"}}>
       {
-      window.innerWidth > 400 ?
+      windowWidth > 700 ?
       <div className='all-posts-main-div'>
         {
           /* <div className='toDisplayCommentBoxWithFlex'>
@@ -158,6 +164,9 @@ function AllPosts() {
 
         {/* right side */}
         <div className='all-posts-posts-scroll'>
+          <div onClick={()=>{navigate('../newpost')}} className='AllPostsChildWindow'>
+            <p>+ new post</p>
+          </div>
           {
             posts.map(x=>
               {
@@ -270,8 +279,23 @@ function AllPosts() {
                     }
                   </div>
                   <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <label>
-                      <img className={`btn like${x._id}`} width="40px" src={likeIcon} onClick={(event)=>{IncrementLike(event,x._id)}}/>
+                    <label> 
+                        <img className={`like${x._id}liked`} src={likedIcon} width="17px"
+                          style={{display:"none"}}
+                         onClick={(event)=>{
+                          IncrementLike(event,x._id,"unlike");
+                          document.querySelector(`.like${x._id}liked`).style.display='none';
+                          document.querySelector(`.like${x._id}notliked`).style.display='inline';
+                          }}/> 
+
+                        <img className={`like${x._id}notliked`}  src={likeIcon} width="15px"
+                         onClick={(event)=>{
+                          IncrementLike(event,x._id,"like");
+                          document.querySelector(`.like${x._id}notliked`).style.display='none'
+                          document.querySelector(`.like${x._id}liked`).style.display='inline';
+                          }}/>  
+                      
+                        {/* <img className={`like${x._id}`} width="15px" src={likeIcon} onClick={(event)=>{IncrementLike(event,x._id)}}/> */}
                     {x.likes}</label>
                     <label>
                       <img className='btn' width="45px" src={commentIcon} onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
@@ -290,8 +314,152 @@ function AllPosts() {
 
       </div>
       :
-      <div>
-        mobile view ok
+      <div style={{paddingTop:"30px"}}>
+        <div onClick={()=>{navigate('../newpost')}} className='AllPostsChildWindow-mobile'>
+          <p>+ new post</p>
+        </div>
+        
+        {
+            posts.map(x=>
+              {
+                // console.log(x)
+                return <div className='AllPostsChildWindow-mobile'>
+                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                    <a style={{textDecoration:"none"}} href=''>{x.author}</a>
+                    <CiBookmark size={25}  
+                     onClick={()=>{alert('post saved')}} 
+                     />
+                  </div>
+                  {/* <br/> */}
+                  {/* <label>posted on : {x.DatePosted}</label> */}
+                  {/* <label>modified on : {x.DareModified}</label> */}
+                  <br/>
+                  <div>
+                    {
+                      (x.content && 1)?
+                      <div>
+                        {
+                        x.content.map(
+                          (element,index)=>
+                          {
+                            if(element.type == 'p')
+                              {
+                                  return <p className='NewPostTextOverFlow'
+                                      key={index}
+                                      style={{
+                                          color:element.textColor,
+                                          fontSize:`${element.fontSize}px`,
+                                          textAlign:element.textAlign
+                                          }}
+                                  >
+                                      {element.value}
+                                  </p>
+                              }
+                  
+                  
+                              else if(element.type == 'b')
+                              {
+                  
+                                  return <div>
+                                      <b key={index}
+                                      style={{
+                                          color:element.textColor,
+                                          fontSize:`${element.fontSize}px`,
+                                          textAlign:element.textAlign
+                                      }}
+                                  >
+                                      {element.value}
+                                  </b>
+                                  <br/>
+                                  </div>
+                              }
+                              
+                              
+                              else if(element.type == 'link')
+                              {
+                                  return <div>
+                                      <br/>
+                                      <a key={index}
+                                      target='_blank'
+                                      href={element.linkTo}
+                                  >
+                                      {element.value}
+                                  </a>
+                                  <br/>
+                                  </div>
+                              }
+                  
+                              else if(element.type == 'img')
+                              {
+                                  return <div>
+                                    <center><img style={{borderRadius:"10px",maxWidth:"250px"}} src={element.src}/></center>
+                                    <br/>
+                                  </div>
+                              }
+                  
+                              else if(element.type == 'video')
+                              {
+                                  return <div>
+                                    <center><video style={{borderRadius:"20px"}} src={element.src} width="300px" height="200px" controls loop/></center>
+                                    <br/>
+                                  </div>
+                              }
+                  
+                              else if(element.type == 'audio')
+                              {
+                                  return <center><audio src={element.src} controls /></center>
+                              }
+                              
+                              else if(element.type == 'document')
+                              {
+                                  return <div>
+                                      <a href={element.src}>{element.name}</a>
+                                      <p>size :- {String((element.size)/1024).split('.')[0]}KB</p>
+                                  </div>
+                              }
+                              else if(element.type == 'none')
+                              {
+                                return <p>data not fetched</p>
+                              }
+                          }
+                        )
+                      }
+                      </div>
+                      :
+                      <p>Error 500!</p>
+                    }
+                  </div>
+                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                    <label> 
+                        <img className={`like${x._id}liked`} src={likedIcon} width="17px"
+                          style={{display:"none"}}
+                         onClick={(event)=>{
+                          IncrementLike(event,x._id,"unlike");
+                          document.querySelector(`.like${x._id}liked`).style.display='none';
+                          document.querySelector(`.like${x._id}notliked`).style.display='inline';
+                          }}/> 
+
+                        <img className={`like${x._id}notliked`}  src={likeIcon} width="15px"
+                         onClick={(event)=>{
+                          IncrementLike(event,x._id,"like");
+                          document.querySelector(`.like${x._id}notliked`).style.display='none'
+                          document.querySelector(`.like${x._id}liked`).style.display='inline';
+                          }}/>  
+                      
+                        {/* <img className={`like${x._id}`} width="15px" src={likeIcon} onClick={(event)=>{IncrementLike(event,x._id)}}/> */}
+                    {x.likes}</label>
+                    <label>
+                      <img className='btn' width="45px" src={commentIcon} onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
+                    {x.comments?x.comments.length:0}</label>
+                    <label>
+                      <img width="20px" src={viewsIcon}/>
+                    {x.views ? x.views :1}</label>
+                  </div>
+                  </div>
+              }
+            )
+            
+          }
       </div>
       }
     </div>
