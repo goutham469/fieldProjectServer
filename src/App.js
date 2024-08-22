@@ -185,6 +185,10 @@ function App() {
           element:<GamesHome/>
         }
       ]
+    },
+    {
+      path:'*',
+      element:<h1>404 Route not found.</h1>
     }
   ])
   return (

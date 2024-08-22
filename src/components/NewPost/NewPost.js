@@ -535,7 +535,7 @@ function NewPost() {
         </div>
     </div>
     :
-    <PoPUpMessage message={message_to_pop_up} to_navigate="/user/home"/>
+    <PoPUpMessage message={message_to_pop_up} to_navigate="/user"/>
   )
 }
 

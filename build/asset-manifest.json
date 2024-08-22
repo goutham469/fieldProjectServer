@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.43e00b27.css",
+    "main.js": "/static/js/main.87e189f8.js",
+    "static/js/453.494b4240.chunk.js": "/static/js/453.494b4240.chunk.js",
+    "static/media/facebook.png": "/static/media/facebook.0d0ce4eb01a95e1f7d2f.png",
+    "static/media/videocall.png": "/static/media/videocall.fb796be7b7447c97ad59.png",
+    "static/media/image.png": "/static/media/image.eabb7dffb7412f84fbb4.png",
+    "static/media/games.png": "/static/media/games.af8bd1742a0308a5b9a2.png",
+    "static/media/friends.png": "/static/media/friends.182af71e8e282115e991.png",
+    "static/media/getStarted.png": "/static/media/getStarted.63b880348c5692a966d5.png",
+    "static/media/groups.png": "/static/media/groups.9c7c1525e92fcde4fa6e.png",
+    "static/media/deleteIcon.png": "/static/media/deleteIcon.2d9e0250a2a3a4375258.png",
+    "static/media/chats.png": "/static/media/chats.df33afa85363ff26be05.png",
+    "static/media/video.png": "/static/media/video.618169b021d0c86d3095.png",
+    "static/media/comment.png": "/static/media/comment.43a2497d4267d0c89693.png",
+    "static/media/person.png": "/static/media/person.a86d6c29a0c71d53ce7f.png",
+    "static/media/pin.png": "/static/media/pin.0c51ba3fba607b400d11.png",
+    "static/media/views.png": "/static/media/views.6ebc4b1a5a6535f4a060.png",
+    "static/media/profile.png": "/static/media/profile.50530d2c26441c68fa91.png",
+    "static/media/like.png": "/static/media/like.a05daae36eea4798cf55.png",
+    "static/media/search.png": "/static/media/search.2144bd6aff06931bd18b.png",
+    "static/media/imageIcon.png": "/static/media/imageIcon.c0efa29608dc0c77574a.png",
+    "static/media/link.png": "/static/media/link.be9a9aa7c90ff905d690.png",
+    "static/media/audio.png": "/static/media/audio.d91fdc0f131894a0a7cd.png",
+    "static/media/document.png": "/static/media/document.e2cf71ce0bbe1f49bde7.png",
+    "static/media/blod.png": "/static/media/blod.d0109737bebd5b756f8c.png",
+    "static/media/liked.png": "/static/media/liked.cc93e7ae237e33ca8516.png",
+    "static/media/bookmark.png": "/static/media/bookmark.90f83ded6688f2f16b10.png",
+    "static/media/text.png": "/static/media/text.7e5d2ddac7f16709c43b.png",
+    "index.html": "/index.html",
+    "main.43e00b27.css.map": "/static/css/main.43e00b27.css.map",
+    "main.87e189f8.js.map": "/static/js/main.87e189f8.js.map",
+    "453.494b4240.chunk.js.map": "/static/js/453.494b4240.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.43e00b27.css",
+    "static/js/main.87e189f8.js"
+  ]
+}
