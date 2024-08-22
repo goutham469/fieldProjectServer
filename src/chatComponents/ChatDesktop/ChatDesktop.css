@@ -1,0 +1,60 @@
+.chatDesktop-main-div{
+    padding-top: 50px;
+    width: 100%;
+    background-color: rgb(136, 151, 164);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+    
+}
+.chatDesktop-left{
+    overflow-y: scroll;
+    background-color: #f0f2f5;
+    width: 100%;
+    width: 400px;
+}
+.chatDesktop-right{
+    background-color: aliceblue;
+    width: 100%;
+}
+.chatDesktop-right-sub{
+    display: flex;
+    flex-direction: column;
+}
+.chatDesktop-right-top{
+    background-color: #d7d8da;
+    border-bottom: 2px solid black;
+}
+.chatDesktop-right-sub-main{
+    display: flex;
+    flex-direction: column;
+}
+.chatDesktop-messagesBox{
+    padding-top: 10px;
+    overflow-y: scroll; 
+    height: 80vh;
+    padding-bottom: 50px;
+}
+.message-sending-input-div{
+    position: static; 
+    text-align: center;
+    width: 100%;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    background-color: #d7d8da;
+    border-top: 2px solid black;
+}
+::-webkit-scrollbar{
+    width: 8px; 
+}
+::-webkit-scrollbar-thumb{
+    width: 5px;
+    background-color: #99a6ba;
+    border-radius: 5px;
+}
+.message-sending-input-div-attachIcon{
+    position: relative;
+    right: 5px;
+}

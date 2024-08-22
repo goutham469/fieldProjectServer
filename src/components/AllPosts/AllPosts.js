@@ -105,7 +105,7 @@ function AllPosts() {
   }
 
   return (
-    <div style={{paddingTop:"50px",display:"flex",justifyContent:"space-around"}}>
+    <div style={{paddingTop:"50px",display:"flex"}}>
       {
       windowWidth > 700 ?
       <div className='all-posts-main-div'>
@@ -164,7 +164,7 @@ function AllPosts() {
 
         {/* right side */}
         <div className='all-posts-posts-scroll'>
-          <div onClick={()=>{navigate('../newpost')}} className='AllPostsChildWindow'>
+          <div onClick={()=>{navigate('./newpost')}} className='AllPostsChildWindow'>
             <p>+ new post</p>
           </div>
           {
@@ -319,7 +319,7 @@ function AllPosts() {
       </div>
       :
       <div style={{paddingTop:"30px"}}>
-        <div onClick={()=>{navigate('../newpost')}} className='AllPostsChildWindow-mobile'>
+        <div onClick={()=>{navigate('/user/newpost')}} className='AllPostsChildWindow-mobile'>
           <p>+ new post</p>
         </div>
         

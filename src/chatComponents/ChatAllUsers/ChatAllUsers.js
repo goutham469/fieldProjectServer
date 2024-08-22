@@ -25,10 +25,10 @@ function ChatAllUsers() {
     },[])
  
     // console.log(chatUsers)
-
+ 
   return (
-    <div style={{height:"80vh",overflowY:"scroll",paddingLeft:"20px",paddingTop:"80px"}}>
-        <input style={{width:"300px",height:"40px",borderRadius:"5px"}} type='text' placeholder='Search any thing'/>
+    <div style={{height:"100vh",overflowY:"scroll",paddingLeft:"2px",paddingTop:"80px",width:"100%"}}>
+        <input style={{width:"100%",height:"40px",borderRadius:"5px"}} type='text' placeholder='Search any thing'/>
         {
             chatUsers&&chatUsers.length == 0?
             <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>

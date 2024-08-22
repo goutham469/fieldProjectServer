@@ -22,7 +22,7 @@ function SingleChat(props) {
       navigate('./ChatOf');
     }
   return (
-    <div className='SingleChat' onClick={(event)=>{openChatOf(event)}}>
+    <div className='SingleChat-mobile' onClick={(event)=>{openChatOf(event)}}>
         {
             userData.profilePic ?
             <img width="50px" height="50px" style={{borderRadius:"50px"}} src={userData.profilePic}/>
@@ -35,7 +35,7 @@ function SingleChat(props) {
             :
             <label style={{fontSize:"20px",overflowX:"hidden"}}>userName</label>
         }
-    </div>
+    </div> 
   )
 }
 

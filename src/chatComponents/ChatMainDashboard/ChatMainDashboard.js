@@ -7,6 +7,7 @@ import io from 'socket.io-client'
 import store from '../../store'
 import { useSelector } from 'react-redux'
 import ChatAllUsers from '../ChatAllUsers/ChatAllUsers'
+import ChatDesktop from '../ChatDesktop/ChatDesktop'
 
  
 function ChatMainDashboard() {
@@ -31,11 +32,8 @@ function ChatMainDashboard() {
   return (
     <div>
         {
-          displayWidth > 600 ?
-          <div className='ChatMainDashBoardDisplayContainer'>
-            <ChatAllUsers />
-            <Outlet/>
-          </div>
+          displayWidth > 600 ? 
+            <ChatDesktop /> 
           :
           <Outlet/>
         }

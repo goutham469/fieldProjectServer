@@ -221,12 +221,12 @@ function ProfileDashBoard() {
                 
                             else if(element.type == 'img')
                             {
-                                return <img style={{borderRadius:"20px"}} width="400px" height="300px" src={element.src}/>
+                                return <img style={{borderRadius:"20px"}} width="300px"   src={element.src}/>
                             }
                 
                             else if(element.type == 'video')
                             {
-                                return <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop/>
+                                return <video style={{borderRadius:"20px"}} src={element.src} width="300px" controls loop/>
                             }
                 
                             else if(element.type == 'audio')
