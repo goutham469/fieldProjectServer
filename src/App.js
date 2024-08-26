@@ -46,6 +46,9 @@ import UserDetails from './components/UserDetails/UserDetails';
 import Googleac from './components/Login/Googleac';
 
 import socket from './socket';
+import SnakeGame from './games/SnakeGame/SnakeGame';
+import DinoGame from './games/Dino/DinoGame';
+import PacManGame from './games/PacManGame/PacManGame';
 
 
 function App() {
@@ -200,7 +203,25 @@ function App() {
         },
         {
           path:'games',
-          element:<GamesHome/>
+          element:<GamesHome/>,
+          children:[
+            {
+              path:'',
+              element:<SnakeGame/>
+            },
+            {
+              path:'snake',
+              element:<SnakeGame/>
+            },
+            {
+              path:'dino',
+              element:<DinoGame/>
+            },
+            {
+              path:'pacman',
+              element:<PacManGame/>
+            }
+          ]
         }
       ]
     },
