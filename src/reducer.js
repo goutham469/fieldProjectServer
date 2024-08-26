@@ -1,3 +1,5 @@
+import socket from "./socket";
+
 let initialStateSignUp = {
     userName : '',
     email : '',
@@ -67,14 +69,17 @@ function reducer(state=initialState,action)
     {
         case 'login':
             const now = new Date()
-            const expireTime = now.getTime() + 60*60 * 1000 // 60 x 60 x 1000 milliseconds = 36000 seconds = 60 min
+            const expireTime = now.getTime() + 24*60*60 * 1000 // 60 x 60 x 1000 milliseconds = 36000 seconds = 24*60 min = 1 day
             now.setTime(expireTime);
 
             document.cookie = `username=${action.userName}; expires=${now.toUTCString()}; path=/;`;
+            
+            socket.emit('login',{"userName":action.userName})
 
             return {...state, signed:true,userName:action.userName}
         case 'logout':
             document.cookie = "username=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            socket.emit("logout",{"socketId":socket.id})
 
             return {...state,signed:false,userName:''}
         case 'openChat':

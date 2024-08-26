@@ -7,6 +7,7 @@ import { IoArrowBackSharp } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
 import attachIcon from '../ChatDesktop/pin.png'
+import ChatTime from '../../components/Time/ChatTime';
 
 function UserChat() {
   let navigate = useNavigate();
@@ -94,6 +95,7 @@ function UserChat() {
                   <div className='ChatComponentChild'>
                     {x.message.value}
                     {/* <sub style={{color:"yellow",padding:"10px"}}>{x.time.split(':')[0].substring(0,x.time.split(':')[0].length-3)}</sub> */}
+                    <ChatTime time={x.time}/>
                   </div>
                   </div>
               }

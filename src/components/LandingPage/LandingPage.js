@@ -3,14 +3,16 @@ import HomeHeader from '../HomeHeader/HomeHeader';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 // import bgVideo from './Description/background.mp4';
-
-import './LandingPage.css'; // Assuming you have a separate CSS file for styles
+import './LandingPage.css';  
 
 import store from '../../store';
 
 
 function LandingPage() { 
   let navigate = useNavigate();
+
+  
+  
 
   // useEffect(()=>{
   //   if(store.getState().signed == true)

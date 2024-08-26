@@ -4,12 +4,15 @@ import './MasterDashBoard.css'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 import store from '../../../store'
+import socket from '../../../socket'
 
 function MasterDashboard() {
-  let navigate = useNavigate()
+  let navigate = useNavigate() 
   
-  useEffect(()=>{
-    // console.log(store,store.getState())
+  useEffect(()=>{ 
+    
+    
+
     if(store.getState().signed == false)
     {
       navigate('/');

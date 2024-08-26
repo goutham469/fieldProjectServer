@@ -45,12 +45,30 @@ import GamesHome from './games/GamesHome/GamesHome';
 import UserDetails from './components/UserDetails/UserDetails';
 import Googleac from './components/Login/Googleac';
 
+import socket from './socket';
+
 
 function App() {
 
   // console.log(store,store.getState())
-  useEffect(()=>{
-    // console.log("fetching server 1st time");
+
+  function connect() {
+    socket.on('connect', () => {
+      console.log('connected to socket.io server, id = ', socket.id);
+    });
+
+    socket.on('disconnect', () => {
+      console.log('disconnected from socket.io server');
+    });
+
+    console.log('socket connection success');
+  }
+
+  connect();
+
+  useEffect(()=>{ 
+    connect();
+    
     async function fetchServerInitially()
     {
 
@@ -67,7 +85,7 @@ function App() {
         }
       }catch(err){console.log(err,"reason : the server is not running")}
     }
-
+    
     fetchServerInitially()
   },[])
   

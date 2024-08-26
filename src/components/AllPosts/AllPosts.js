@@ -16,6 +16,7 @@ import bookmarkIcon from './assets/bookmark.png'
 import facebookIcon from '../AppHeader/facebook.png'
 
 import CommentWindow from '../CommentWindow/CommentWindow'
+import Time from '../Time/Time'
 
 function AllPosts() {
   let navigate = useNavigate();
@@ -186,6 +187,7 @@ function AllPosts() {
                   {/* <br/> */}
                   {/* <label>posted on : {x.DatePosted}</label> */}
                   {/* <label>modified on : {x.DareModified}</label> */}
+                  <Time time={x.DatePosted}></Time>
                   <br/>
                   <div>
                     {
@@ -340,6 +342,7 @@ function AllPosts() {
                   {/* <br/> */}
                   {/* <label>posted on : {x.DatePosted}</label> */}
                   {/* <label>modified on : {x.DareModified}</label> */}
+                  <Time time={x.DatePosted}/>
                   <br/>
                   <div>
                     {

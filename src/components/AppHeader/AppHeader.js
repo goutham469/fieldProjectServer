@@ -21,7 +21,7 @@ function AppHeader() {
   return (
     <div className='AppHeadertoDisplayFlex'>
         <div>
-          <img className='app-header-facebook-image' onClick={()=>window.location.href=`${process.env.REACT_APP_CLIENT_BASE_URL}/user`} src={facebookIcon}/>
+          <img className='app-header-facebook-image' onClick={()=> navigate('/user')} src={facebookIcon}/>
           <img className='app-header-search-icon' src={serachIcon}/>
           <input className='app-header-search-input' placeholder='Search Facebook'/>
         </div>

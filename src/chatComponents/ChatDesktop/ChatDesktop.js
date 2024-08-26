@@ -1,10 +1,14 @@
 import React from 'react'
 import './ChatDesktop.css'
-import store from '../../store'
+import store from '../../store' 
 import { useEffect,useState,useSelector } from 'react'
 import { IoPersonCircleOutline,IoSendSharp } from 'react-icons/io5'
 
 import attachIcon from './pin.png'
+import Time from '../../components/Time/Time'
+
+import socket from '../../socket'
+import ChatTime from '../../components/Time/ChatTime'
 
 function ChatDesktop() {
     let [chatUsers,updateChatUsers] = useState([])
@@ -31,6 +35,18 @@ function ChatDesktop() {
             updateChatUsers(responseFromServer.friends) 
         }
         getData();
+
+        // socket.emit('login',{"userName":store.getState().userName})
+
+        socket.on("receiveMessage",(data)=>{
+            console.log(data);
+            console.log("message received")
+    
+            updateChatsData(prevData=>[...prevData,{"message":data.message,sentByMe:false,time:""}])
+        })
+
+        
+
     },[])
 
     async function openChat(name)
@@ -78,7 +94,12 @@ function ChatDesktop() {
         // console.log(date) 
         updateChatsData(prevData=>([...prevData,{"message":{"type":'p',"value":messageToMeSent},"sentByMe":true,"time":date}]));
         updateMessageToMeSent('');
+
+        socket.emit("sendMessage",{"receiver":chatChoosen,"sender":userName,"message":{"type":'p',"value":messageToMeSent}})
+        console.log("socket message sent !")
     }
+
+    
     
 
   return (
@@ -135,6 +156,8 @@ function ChatDesktop() {
                                             <div className='ChatComponentChild'>
                                                 {x.message.value}
                                                 {/* <sub style={{color:"yellow",padding:"10px"}}>{x.time.split(':')[0].substring(0,x.time.split(':')[0].length-3)}</sub> */}
+                                                {/* <Time time={x.time}/> */}
+                                                <ChatTime time={x.time}/>
                                             </div>
                                         </div>
                                     }
@@ -144,6 +167,8 @@ function ChatDesktop() {
                                             <div className='ChatComponentChild'>
                                                 {x.message.value}
                                                 {/* <sub style={{color:"yellow",padding:"10px"}}>{x.time.split(':')[0].substring(0,x.time.split(':')[0].length-3)}</sub> */}
+                                                {/* <Time time={x.time}/> */}
+                                                <ChatTime time={x.time}/>
                                             </div>
                                         </div>
                                     }
