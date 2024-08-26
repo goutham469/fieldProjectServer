@@ -49,7 +49,7 @@ POST http://localhost:4000/users/getUserNameByEmailID
 Content-Type: application/json
 
 {
-    "email":"gouth@gmail.com"
+    "email":"uppinurigouthamreddy@gmail.com"
 }
 ###
 POST http://localhost:4000/users/getNonFriends
