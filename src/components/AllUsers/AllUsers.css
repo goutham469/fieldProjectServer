@@ -1,8 +1,20 @@
+.all-users-navbar-main{
+    width: 300px;
+}
+.all-users-navbars{
+    background-color: #c7c9cd;
+    border-radius: 5px;
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+}
 .AllUsersComponentParent{
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
+    align-items: center; 
+
+    height: 81vh;
+    overflow-y: scroll;
 }
 .AllUsersChildComponenent{
     background-color: #ffffff;

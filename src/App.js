@@ -49,6 +49,8 @@ import socket from './socket';
 import SnakeGame from './games/SnakeGame/SnakeGame';
 import DinoGame from './games/Dino/DinoGame';
 import PacManGame from './games/PacManGame/PacManGame';
+import BookMarks from './components/BookMarks/BookMarks';
+import FriendRequests from './components/FriendRequests/FriendRequests';
 
 
 function App() {
@@ -195,11 +197,25 @@ function App() {
         },
         {
           path:'Notifications',
-          element:<Notifications/>
+          element:<Notifications/>,
+          children:[
+            {
+              path:'',
+              element:<h1>Notifications</h1>
+            },
+            {
+              path:'requests',
+              element:<FriendRequests/>
+            }
+          ]
         },
         {
           path:'ProfileDashBoard',
           element:<ProfileDashBoard/>
+        },
+        {
+          path:'bookmarks',
+          element:<BookMarks/>
         },
         {
           path:'games',

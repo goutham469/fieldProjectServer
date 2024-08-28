@@ -106,40 +106,43 @@ function ProfileDashBoard() {
 
       <div className='ProfileDashBoardToDisplayContainer'>
         <div style={styleSheet.personalDataChildComponent}>
-          {
-            personalData && personalData.profilePicture ? 
+          <div>
+            {
+              personalData && personalData.profilePicture ? 
+                <div>
+                  <img style={{width:"150px"}} src={personalData.profilePicture}/>
+                  <br/>
+                  <button className='btn btn-success m-2' onClick={(event)=>{setPersonalData(data=>({...data,profilePicture:''}));}}>change</button>
+              </div>
+              :
               <div>
-                <img style={{width:"150px"}} src={personalData.profilePicture}/>
-                <br/>
-                <button className='btn btn-success m-2' onClick={(event)=>{setPersonalData(data=>({...data,profilePicture:''}));}}>change</button>
-            </div>
-            :
-            <div>
-                <p>You have not upload your profile pic,Do it now!</p>
-                <input type='file' accept='image/*' onChange={(event)=>{uploadProfilePic(event)}}/>
-            </div>
-          }
-        </div>
+                  <p>You have not upload your profile pic,Do it now!</p>
+                  <input type='file' accept='image/*' onChange={(event)=>{uploadProfilePic(event)}}/>
+              </div>
+            }
+          </div>
 
-        <div style={styleSheet.personalDataChildComponent}>
-          <label>username : <b>{store.getState().userName}</b></label>
-          <p>email : {personalData && personalData.email ?personalData.email:"500 not found"}</p>
-          <p>city : {personalData && personalData.city ?personalData.city:"500 not found"}</p>
-          <p>state : {personalData && personalData.state ?personalData.state:"500 not found"}</p>
-          <p>password : {personalData && personalData.password ?personalData.password:"500 not found"}</p>
-          <p>date of birth  : {personalData && personalData.DateOfBirth ?personalData.DateOfBirth:"500 not found"}</p>
-          <p>gender : {personalData && personalData.gender ?personalData.gender:"500 not found"}</p>
-          <p>Account created on : {personalData && personalData.DateAccountCreated ?personalData.DateAccountCreated:"500 not found"}</p>
+          <div>
+            <label>username : <b>{store.getState().userName}</b></label>
+            <p>email : {personalData && personalData.email ?personalData.email:"500 not found"}</p>
+            <p>city : {personalData && personalData.city ?personalData.city:"500 not found"}</p>
+            <p>state : {personalData && personalData.state ?personalData.state:"500 not found"}</p>
+            <p>password : {personalData && personalData.password ?personalData.password:"500 not found"}</p>
+            <p>date of birth  : {personalData && personalData.DateOfBirth ?personalData.DateOfBirth:"500 not found"}</p>
+            <p>gender : {personalData && personalData.gender ?personalData.gender:"500 not found"}</p>
+            <p>Account created on : {personalData && personalData.DateAccountCreated ?personalData.DateAccountCreated:"500 not found"}</p>
+          </div>
         </div>
+ 
 
         <div style={styleSheet.personalDataChildComponent}>
           <h4>friends</h4>
           {
             personalData && personalData.friends ?
-            <div>
+            <div style={{maxHeight:"80vh",overflowY:"scroll"}}>
               {
                 personalData.friends.map(x=>{
-                  return <p style={{backgroundColor:"black",color:"white",width:"fit-content",borderRadius:"5px",padding:"3px",margin:"2px"}}>{x.userName}</p>
+                  return <p style={{backgroundColor:"#6b6b6b",color:"white",width:"200px",borderRadius:"5px",padding:"3px",margin:"2px"}}>{x.userName}</p>
                 })
               }
             </div>
@@ -151,13 +154,13 @@ function ProfileDashBoard() {
 
 
       <h4>My posts</h4>
-      <div style={styleSheet.personalDataChildComponent}  className='ProfileDashBoardToDisplayContainer'>
+      <div  className=''>
         {
           postsData && postsData.length > 0 ?
           <div>
             {
               postsData.map(x=>{
-                return <div style={{width:"300px"}} className='AllPostsChildWindow'>
+                return <div style={{width:"300px"}} className='AllPostsChildWindow-mobile'>
                 <a style={{textDecoration:"none"}} href=''>{x.author}</a>
                 <button style={{border:"none",backgroundColor:"none",position:"relative",left:"8em"}} onClick={(event)=>{deletePost(event,x._id)}}><img style={{width:"23px"}} src={deleteIcon}/></button>
                 <br/>

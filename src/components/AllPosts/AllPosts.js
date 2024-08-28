@@ -14,6 +14,7 @@ import friendsIcon from './assets/friends.png'
 import groupsIcon from './assets/groups.png'
 import bookmarkIcon from './assets/bookmark.png'
 import facebookIcon from '../AppHeader/facebook.png'
+import personIcon from '../AllUsers/person.png'
 
 import CommentWindow from '../CommentWindow/CommentWindow'
 import Time from '../Time/Time'
@@ -119,7 +120,7 @@ function AllPosts() {
         }
         {/*left side */}
         <div className='all-posts-left-div'>
-          <div className='all-posts-left-div-child'>
+          <div    onClick={()=>navigate('./ProfileDashBoard')}     className='all-posts-left-div-child'>
             {
               store.getState().profilePic?
               <img src={store.getState().ProfilePic}/>
@@ -128,7 +129,7 @@ function AllPosts() {
             }
             <label className='all-posts-left-div-label'>{store.getState().userName}</label>
           </div>
-          <div className='all-posts-left-div-child'>
+          <div  onClick={()=>navigate('./people')}    className='all-posts-left-div-child'>
             <img className='all-posts-left-div-image' src={friendsIcon}/>
             <label className='all-posts-left-div-label'>find friends</label>
           </div>
@@ -136,19 +137,15 @@ function AllPosts() {
             <img className='all-posts-left-div-image' src={groupsIcon}/>
             <label className='all-posts-left-div-label'>groups</label>
           </div>
-          <div className='all-posts-left-div-child'>
+          <div className='all-posts-left-div-child'     onClick={()=>navigate('./bookmarks')}>
             <img className='all-posts-left-div-image' src={bookmarkIcon}/>
             <label className='all-posts-left-div-label'>bookmarks</label>
           </div>
           
 
           <div className='all-posts-ads-main-div'>
-            <label>sponsored</label><br/>
-            <div className='all-posts-ads'>
-              <label>ads</label>
-              <img width="100px" src={facebookIcon}/>
-              <label>increase your<br/> social network</label>
-            </div>
+            <center><b>sponsored</b></center>
+            <br/>
             <div className='all-posts-ads'>
               <label>ads</label>
               <img width="100px" src={facebookIcon}/>
@@ -166,7 +163,9 @@ function AllPosts() {
         {/* right side */}
         <div className='all-posts-posts-scroll'>
           <div onClick={()=>{navigate('./newpost')}} className='AllPostsChildWindow'>
-            <p>+ new post</p>
+            <b>+ new post</b>
+            <br/>
+            <label>express your thoughts, ideas.</label>
           </div>
           {
             posts.map(x=>
@@ -175,11 +174,14 @@ function AllPosts() {
 
                 return <div className='AllPostsChildWindow'>
                   <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <a
-                     style={{textDecoration:"none"}}  href=''  
-                     onClick={()=>navigate('name',{"state":x.author})} 
-                     >{x.author}
-                     </a>
+                    <div>
+                      <img style={{width:"30px",marginRight:"5px",borderRadius:"20px"}} src={x.profilePic?x.profilePic:personIcon}/>
+                      <a
+                      style={{textDecoration:"none"}}  href=''  
+                      onClick={()=>navigate('name',{"state":x.author})} 
+                      >{x.author}
+                      </a>
+                    </div>
                     <CiBookmark size={25}  
                      onClick={()=>{alert('post saved')}} 
                      />
@@ -284,8 +286,9 @@ function AllPosts() {
                       <p>Error 500!</p>
                     }
                   </div>
-                  <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <label> 
+                  <div style={{display:"flex",justifyContent:"space-between",borderTop:"1px solid black",marginTop:"20px"}}>
+                    <label>
+                      <b style={{marginRight:"5px"}}>like</b>
                         <img className={`like${x._id}liked`} src={likedIcon} width="17px"
                           style={{display:"none"}}
                          onClick={(event)=>{
@@ -302,13 +305,16 @@ function AllPosts() {
                           }}/>  
                       
                         {/* <img className={`like${x._id}`} width="15px" src={likeIcon} onClick={(event)=>{IncrementLike(event,x._id)}}/> */}
-                    {x.likes}</label>
+                    {x.likes}</label> 
                     <label>
+                      <b>comment</b>
                       <img className='btn' width="45px" src={commentIcon} onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
-                    {x.comments?x.comments.length:0}</label>
+                      {x.comments?x.comments.length:0}
+                    </label>
                     <label>
                       <img width="20px" src={viewsIcon}/>
-                    {x.views ? x.views :1}</label>
+                      {x.views ? x.views :1}
+                    </label>
                   </div>
                   </div>
               }

@@ -8,13 +8,13 @@
     height: 50px;
     top: 100px;
     right: 30px;
+    width: 200px;
 
-    border-radius: 10px;
-    background-color: rgb(0, 0, 0);
-    color: white;
+    border-radius: 10px; 
+    color: rgb(0, 0, 0);
 }
 .logoutButton:hover{
-    background-color: white;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(241, 240, 240);
     font-weight: 600;
 }
