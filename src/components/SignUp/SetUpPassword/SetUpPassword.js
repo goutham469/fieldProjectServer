@@ -49,7 +49,7 @@ function SetUpPassword() {
                     "DateOfBirth":location.state.dateOfBirth,
                     "gender":location.state.gender,
                     "interests":[],
-                    "profilePicture":location.state.profilePic,
+                    "profilePicture":"",
                     "DateAccountCreated":getCurrentTime(),
                     "Profession":"",
                     "EducationalQualifications":[],
@@ -65,7 +65,8 @@ function SetUpPassword() {
   return (
     <div>
         <center>
-            <label>your a/c status</label>
+        <b>Steps:- 3 of 4 completed.</b><br/>
+        <b>final Step</b>
             <div style={{width:"300px",height:"15px",borderRadius:"5px",border:"1px solid black",display:"flex",padding:"0px"}}>
                 <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopleft:"5px",borderBottomLeftRadius:"5px"}}></div>
                 <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopright:"5px"}}></div>

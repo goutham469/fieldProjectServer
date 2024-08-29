@@ -18,9 +18,9 @@ function GoogleOAuthVerification() {
   let userNameFromSignUp = location.state.userName;
 
   const onSuccess = (response) => {
-    console.log('Login Success:', response);
+    // console.log('Login Success:', response);
     const decodedToken = jwtDecode(response.credential);
-    console.log('Decoded Token:', decodedToken);
+    // console.log('Decoded Token:', decodedToken);
     if(decodedToken.email_verified)
     {
       store.dispatch({
@@ -28,9 +28,10 @@ function GoogleOAuthVerification() {
         subType:'email',
         email:decodedToken.email
     })
-    console.log(store.getState())
+    // console.log(store.getState())
     
-      navigate('../uploadProfilePic',{state:{"userName":userNameFromSignUp,"email":decodedToken.email}})
+      // navigate('../uploadProfilePic',{state:{"userName":userNameFromSignUp,"email":decodedToken.email}})
+      navigate('../setExtraDetails',{state:{"userName":location.state.userName,"email":decodedToken.email }})
     }
     // You can now send the decoded token to your server for further verification
   };
@@ -42,15 +43,18 @@ function GoogleOAuthVerification() {
   return (
     <div>
       <center>
-        <label>your a/c status</label>
+        <b>Steps:- 1 of 4 completed.</b>
         <div style={{width:"300px",height:"15px",borderRadius:"5px",border:"1px solid black",display:"flex",padding:"0px"}}>
-          <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopleft:"5px",borderBottomLeftRadius:"5px"}}></div>
+          <div style={{width:"70px",height:"15px",backgroundColor:"green",BorderRadiusTopleft:"5px",borderBottomLeftRadius:"5px"}}></div>
         </div>
       </center>
-      
-      <p style={{fontSize:"13px"}}>To Continue further verify your google account</p>
+
+      <br/>
+      <b style={{fontSize:"13px"}}>Verify your google account</b>
       {/* <p>-this process makes sure there will be no <b>malicious users</b>.</p> */}
-      <p style={{fontSize:"14px"}}>click on the below google icon to verify your account</p>
+      <br/>
+      <br/>
+      <p style={{fontSize:"14px"}}>Click on the below google icon <br/> to verify your account</p>
       
         <GoogleLogin
             buttonText="Login with Google"

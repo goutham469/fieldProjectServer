@@ -108,7 +108,16 @@ function AllUsers() {
                                             {
                                                 return <div className='AllUsersChildComponenent'>
                                                     {
-                                                        x.profilePicture && 1 ?<img className='allusers-person-image' src={x.profilePicture}/>:<img className='allusers-person-image' src={personImage}/>
+                                                        x.profilePicture && 1 ?
+                                                        <img 
+                                                        className='allusers-person-image' src={x.profilePicture}
+                                                        onClick={()=>navigate('../name',{state:x.userName})}
+                                                        />
+                                                        :
+                                                        <img 
+                                                        className='allusers-person-image' src={personImage}
+                                                        onClick={()=>navigate('../name',{state:x.userName})}
+                                                        />
                                                     }
                                                     <br/>
                                                     <label className='allusers-user-child-username' 
@@ -129,7 +138,16 @@ function AllUsers() {
                                             {
                                                 return <div className='AllUsersChildComponenent'>
                                                     {
-                                                        x.profilePicture && 1 ?<img className='allusers-person-image' src={x.profilePicture}/>:<img className='allusers-person-image' src={personImage}/>
+                                                        x.profilePicture && 1 ?
+                                                        <img
+                                                         className='allusers-person-image' src={x.profilePicture}
+                                                         onClick={()=>navigate('../name',{state:x.userName})}
+                                                         />
+                                                         :
+                                                         <img 
+                                                         className='allusers-person-image' src={personImage}
+                                                         onClick={()=>navigate('../name',{state:x.userName})}
+                                                         />
                                                     }
                                                     <br/>
                                                     <label className='allusers-user-child-username' 

@@ -22,8 +22,7 @@ function SignUpExtraDetails() {
 
         navigate('../SetUpPassword',{state:{
             "userName":location.state.userName,
-            "email":location.state.email,
-            "ProfilePic":location.state.ProfilePic,
+            "email":location.state.email, 
             "State":state1,
             "city":city,
             "dateOfBirth":date,
@@ -33,11 +32,10 @@ function SignUpExtraDetails() {
   return (
     <div>
         <form style={{textAlign:"center"}}>
-            <label>your a/c status</label>
+            <b>Steps:- 2 of 4 completed.</b>
             <div style={{width:"300px",height:"15px",borderRadius:"5px",border:"1px solid black",display:"flex",padding:"0px"}}>
-                <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopleft:"5px",borderBottomLeftRadius:"5px"}}></div>
-                <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopright:"5px"}}></div>
-                <div style={{width:"60px",height:"15px",backgroundColor:"green",BorderRadiusTopright:"5px"}}></div>
+                <div style={{width:"70px",height:"15px",backgroundColor:"green",BorderRadiusTopleft:"5px",borderBottomLeftRadius:"5px"}}></div>
+                <div style={{width:"80px",height:"15px",backgroundColor:"green",BorderRadiusTopright:"5px"}}></div>
             </div>
 
             <input className='signup-extra-details-input' placeholder='state' required onChange={(event)=>{setState1(event.target.value)}}/><br/>

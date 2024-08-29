@@ -3,6 +3,9 @@ import './ProfileDashBoard.css'
 import deleteIcon from './deleteIcon.png'
 
 import { useNavigate } from 'react-router-dom';
+import profileIcon from "../ProfileDashBoard/profile.png" 
+import { IoLogOutOutline } from "react-icons/io5";
+import { FiEdit2 } from "react-icons/fi";
 
 import store from '../../store'
 
@@ -25,6 +28,8 @@ function ProfileDashBoard() {
         body:JSON.stringify({"user_name":store.getState().userName})
       })
       responseFromServer = await responseFromServer.json()
+
+      console.log(responseFromServer.personalData)
 
       setPersonalData(responseFromServer.personalData)
       setPostsData(responseFromServer.postsData)
@@ -102,12 +107,11 @@ function ProfileDashBoard() {
 
   return (
     <div style={{paddingTop:"80px"}}>
-      <button  className='logoutButton'   onClick={(event)=>{ store.dispatch({type:'logout'}); navigate('/') }}> Logout </button>
 
       <div className='ProfileDashBoardToDisplayContainer'>
         <div style={styleSheet.personalDataChildComponent}>
           <div>
-            {
+            {/* {
               personalData && personalData.profilePicture ? 
                 <div>
                   <img style={{width:"150px"}} src={personalData.profilePicture}/>
@@ -119,7 +123,30 @@ function ProfileDashBoard() {
                   <p>You have not upload your profile pic,Do it now!</p>
                   <input type='file' accept='image/*' onChange={(event)=>{uploadProfilePic(event)}}/>
               </div>
-            }
+            } */}
+            <div style={{display:"flex",justifyContent:"space-between"}}>
+                <div>
+                  <img style={{width:"150px"}} src={personalData.profilePicture?personalData.profilePicture:profileIcon}/>
+                  <br/>
+                  <div 
+                    onClick={(event)=>{setPersonalData(data=>({...data,profilePicture:''}));}} 
+                    className='m-2' 
+                    style={{border:"1px solid black",backgroundColor:"#b2b2b2",borderRadius:"5px"}}
+                    >
+                    <FiEdit2 size={17}/>
+                    <label 
+                    style={{backgroundColor:"#b2b2b2",borderRadius:"5px"}}
+                    >
+                    Change picture
+                    </label>
+                  </div>
+                </div>
+                
+                <div className='logoutButton' onClick={(event)=>{ store.dispatch({type:'logout'}); navigate('/') }}  >
+                  <IoLogOutOutline color="black" size={25}/>
+                  <button style={{backgroundColor:"#b2b2b2",border:"none"}}> Logout </button>
+                </div>
+            </div>
           </div>
 
           <div>

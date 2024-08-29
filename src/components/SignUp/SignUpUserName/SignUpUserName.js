@@ -12,8 +12,9 @@ const SignUpUserName =()=>{
     let [userNameError,updateUserNameError] = useState();
     let [statusColor,updateStatusColor] = useState('red')
 
-    async function handleUsername(){
-        // e.preventDefault();
+    async function handleUsername(e)
+    {
+        e.preventDefault();
 
         if(await checkUserNameInDB())
         { 
@@ -89,13 +90,15 @@ const SignUpUserName =()=>{
     return(
         <div className='container'>
           <center>
-            <label>your a/c status</label>
+            {/* <label>your a/c status</label>
           <div style={{width:"300px",height:"15px",borderRadius:"5px",border:"1px solid black",display:"flex",padding:"0px"}}>
-          </div>
+          </div> */}
             <br/>
-            <p>Create a Username </p>
+            <p>Create your user-name </p>
+            <p>this name uniquely identifies you.</p>
           </center>
-          <div className='p-2'>
+          <form>
+            <div className='p-2'>
                 <img style={{position:"relative",left:"25px"}} width="17px" src={profileImage}/>
                 <input 
                 type='text'
@@ -107,11 +110,12 @@ const SignUpUserName =()=>{
                 />
 
             </div> 
-                <center><p style={{color:statusColor,fontSize:"13px"}}>{userNameError}</p></center>
+            <center><p style={{color:statusColor,fontSize:"13px"}}>{userNameError}</p></center>
 
-                <center>
-                    <button className='signup-username-setup-button' onClick={()=>handleUsername()}>next</button>
-                </center>
+            <center>
+                <button className='signup-username-setup-button' onClick={(event)=>handleUsername(event)}>next</button>
+            </center>
+          </form>
 
         </div>
     )
