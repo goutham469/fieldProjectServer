@@ -59,3 +59,29 @@
 .allusers-user-child-button-remove-friend:hover{
     background-color: #d4dbe5;
 }
+
+.AllUsersChildComponenent-mobile{
+    display: flex; 
+    width: 100%; 
+    background-color: rgb(177, 177, 165);
+    border-bottom: 1px solid black; 
+    border-radius: 10px;
+    margin: 10px;
+
+}
+.allusers-person-image{
+    width: 70px;
+    border-radius: 40px;
+    margin: 10px;
+}
+.all-users-add-friend-mobile{ 
+    margin-top: 20px;
+
+    background-color: none;
+    border: 1px solid black;
+    background-color: #c7c9cd;
+    border-radius: 5px;
+    margin-right: 10px;
+
+    font-weight: 500;
+}

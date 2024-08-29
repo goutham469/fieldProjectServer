@@ -18,6 +18,7 @@ function AllUsers() {
     let [allUsers,updateAllUsers] = useState([])
 
     const [windowWidth,setWindowWidth] = useState(window.innerWidth)
+    const [searchQuery,setSearchQuery] = useState()
 
     useEffect(()=>{
         function loadUsers()
@@ -60,7 +61,7 @@ function AllUsers() {
     <div>
         {
             windowWidth > 600 ?
-            <div style={{paddingTop:"90px",display:"flex",justifyContent:"space-between"}}>
+            <div style={{paddingTop:"90px",display:"flex"}}>
 
 
                 <div className='all-users-navbar-main'>
@@ -89,18 +90,46 @@ function AllUsers() {
 
 
                 <div>
-                    <input style={{width:"300px",height:"35px",marginLeft:"50px",borderRadius:"10px",border:"1px solid black",padding:"2px"}} placeholder='search using user-name'/>
+                    <input 
+                    onChange={(event)=>setSearchQuery(event.target.value)}
+                    style={{width:"300px",height:"35px",marginLeft:"50px",borderRadius:"10px",border:"1px solid black",padding:"2px"}}
+                    placeholder='search using user-name'
+                    />
                     <div >
                         {
                             allUsers.length > 0 ?
                             <div className='AllUsersComponentParent'>
                                 {
-                                    allUsers.map(
+                                    searchQuery && allUsers.filter(x=>{
+                                        return searchQuery.toLowerCase() === "" ? "" :
+                                        x.userName.toLowerCase().includes(searchQuery)
+                                    }).map(
                                         x=>
                                             {
                                                 return <div className='AllUsersChildComponenent'>
                                                     {
-                                                        x.profilePicture && 1 ?<img width="200px" src={x.profilePicture}/>:<img className='allusers-person-image' src={personImage}/>
+                                                        x.profilePicture && 1 ?<img className='allusers-person-image' src={x.profilePicture}/>:<img className='allusers-person-image' src={personImage}/>
+                                                    }
+                                                    <br/>
+                                                    <label className='allusers-user-child-username' 
+                                                    onClick={()=>navigate('../name',{state:x.userName})}
+                                                    >{x.userName}</label><br/>
+                                                    
+                                                    <center>
+                                                        <button className='allusers-user-child-button-add-friend' onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button><br/>
+                                                        <button className='allusers-user-child-button-remove-friend'>Remove</button>
+                                                    </center>
+                                                </div>
+                                            }
+                                        )
+                                }
+                                {
+                                    !searchQuery && allUsers.map(
+                                        x=>
+                                            {
+                                                return <div className='AllUsersChildComponenent'>
+                                                    {
+                                                        x.profilePicture && 1 ?<img className='allusers-person-image' src={x.profilePicture}/>:<img className='allusers-person-image' src={personImage}/>
                                                     }
                                                     <br/>
                                                     <label className='allusers-user-child-username' 
@@ -123,29 +152,66 @@ function AllUsers() {
                 </div>
             </div>
             :
-            <div style={{paddingTop:"90px"}}>
-                <input style={{width:"300px",height:"35px",marginLeft:"50px",borderRadius:"10px",border:"1px solid black",padding:"2px"}} placeholder='search using user-name'/>
+            <div style={{paddingTop:"90px",height:"100vh",overflowY:"scroll"}}>
+                <input
+                onChange={(event)=>setSearchQuery(event.target.value)}
+                 style={{width:"300px",height:"35px",marginLeft:"50px",borderRadius:"10px",border:"1px solid black",padding:"2px"}}
+                  placeholder='search using user-name'
+                  />
                 <div className='AllUsersComponentParent-mobile'>
                     {
                         allUsers.length > 0 ?
-                        <div className='AllUsersComponentParent'>
+
+                        <div >
                             {
-                                allUsers.map(
+                                searchQuery && allUsers.filter(x=>{
+                                    return searchQuery.toLowerCase() === "" ? "" :
+                                    x.userName.toLowerCase().includes(searchQuery)
+                                }).map(
                                     x=>
                                         {
                                             return <div className='AllUsersChildComponenent-mobile'>
-                                                {
-                                                    x.profilePicture && 1 ?<img width="100px" src={x.profilePicture}/>:<img width="100px" className='allusers-person-image' src={personImage}/>
-                                                }
-                                                <br/>
-                                                <label className='allusers-user-child-username' 
-                                                onClick={()=>navigate('../name',{state:x.userName})}
-                                                >{x.userName}</label><br/>
-                                                
-                                                <center>
-                                                    <button className='allusers-user-child-button-add-friend' onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button><br/>
-                                                    <button className='allusers-user-child-button-remove-friend'>Remove</button>
-                                                </center>
+                                                <div    onClick={()=>navigate('../name',{state:x.userName})}    >
+                                                    {
+                                                        x.profilePicture && 1 ?<img className='allusers-person-image' src={x.profilePicture}/>:<img  className='allusers-person-image' src={personImage}/>
+                                                    } 
+                                                </div>
+                                                <div>
+                                                    <label className='allusers-user-child-username' 
+                                                    onClick={()=>navigate('../name',{state:x.userName})}
+                                                    >{x.userName}</label>
+                                                    <br/>
+                                                    <sub>{x.Profession ? x.Profession :"new to facebook"}</sub><br/>
+
+                                                    <button className='all-users-add-friend-mobile'  onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button>
+                                                    
+                                                    <button className='all-users-add-friend-mobile'  >Remove</button>
+                                                </div> 
+                                            </div>
+                                        }
+                                    )
+                            }
+                            {
+                                !searchQuery&&allUsers.map(
+                                    x=>
+                                        {
+                                            return <div className='AllUsersChildComponenent-mobile'>
+                                                <div    onClick={()=>navigate('../name',{state:x.userName})}    >
+                                                    {
+                                                        x.profilePicture && 1 ?<img className='allusers-person-image' src={x.profilePicture}/>:<img  className='allusers-person-image' src={personImage}/>
+                                                    } 
+                                                </div>
+                                                <div>
+                                                    <label className='allusers-user-child-username' 
+                                                    onClick={()=>navigate('../name',{state:x.userName})}
+                                                    >{x.userName}</label>
+                                                    <br/>
+                                                    <sub>{x.Profession ? x.Profession :"new to facebook"}</sub><br/>
+
+                                                    <button className='all-users-add-friend-mobile'  onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button>
+                                                    
+                                                    <button className='all-users-add-friend-mobile'  >Remove</button>
+                                                </div> 
                                             </div>
                                         }
                                     )
