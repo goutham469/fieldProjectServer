@@ -36,14 +36,28 @@ function Googleac() {
               data.map(x=>
               <p 
               style={{border:"1px solid black",borderRadius:"5px",padding:"2px"}}
-              onClick={()=>{
-                store.dispatch({
-                  type:'login',
-                  userName:x
-              })
+
+
+              onClick={async ()=>{
+                let data = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/v2/users/all-details`,{
+                  headers:{"Content-Type":"application/json"},
+                  method:"POST",
+                  body:JSON.stringify({user_name:x})
+                  })
+                  data = await data.json(); 
+
+
+                  store.dispatch({
+                      type:'login',
+                      userName:x,
+                      data:data
+                  })
 
               navigate('/user/')
               }}
+
+
+
               >{x}</p>
             )
             }

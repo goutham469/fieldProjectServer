@@ -8,37 +8,20 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
 
 import store from '../../store'
+import { useSelector } from 'react-redux';
 
-function ProfileDashBoard() {
+function ProfileDashBoard() { 
+
   let navigate = useNavigate();
-  let [personalData,setPersonalData] = useState({})
-  let [postsData,setPostsData] = useState([])
+  let [personalData,setPersonalData] = useState(useSelector((state)=>state.personalData))
+  let [postsData,setPostsData] = useState(useSelector((state)=>state.posts))
 
   const styleSheet = {
-    personalDataChildComponent:{width:"40em",backgroundColor:"#b2b2b2",padding:"10px",margin:"10px",borderRadius:"10px"}
-  }
-
-  useEffect(()=>{
-    async function getData()
-    {
-      let base_url = process.env.REACT_APP_SERVER_BASE_URL;
-      let responseFromServer = await fetch(`${base_url}/users/getPersonalData`,{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({"user_name":store.getState().userName})
-      })
-      responseFromServer = await responseFromServer.json()
-
-      console.log(responseFromServer.personalData)
-
-      setPersonalData(responseFromServer.personalData)
-      setPostsData(responseFromServer.postsData)
+      personalDataChildComponent:{width:"40em",backgroundColor:"#b2b2b2",padding:"10px",margin:"10px",borderRadius:"10px"}
     }
-    getData();
 
-    // console.log(personalData)
-    // console.log(postsData)
-  },[])
+    console.log(postsData)
+
 
   async function uploadProfilePic(event)
     {
@@ -105,6 +88,7 @@ function ProfileDashBoard() {
       }
     }
 
+
   return (
     <div style={{paddingTop:"80px"}}>
 
@@ -126,10 +110,11 @@ function ProfileDashBoard() {
             } */}
             <div style={{display:"flex",justifyContent:"space-between"}}>
                 <div>
-                  <img style={{width:"150px"}} src={personalData.profilePicture?personalData.profilePicture:profileIcon}/>
+                  <img style={{width:"150px"}} src={personalData&&personalData.profilePicture?personalData.profilePicture:profileIcon}/>
+                  {/* <h1>Welcome, {personalData}</h1> */}
                   <br/>
                   <div 
-                    onClick={(event)=>{setPersonalData(data=>({...data,profilePicture:''}));}} 
+                    // onClick={(event)=>{setPersonalData(data=>({...data,profilePicture:''}));}} 
                     className='m-2' 
                     style={{border:"1px solid black",backgroundColor:"#b2b2b2",borderRadius:"5px"}}
                     >

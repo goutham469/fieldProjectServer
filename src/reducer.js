@@ -12,9 +12,9 @@ let initialState = {
     personalData:{},
     chatIdOpened:'',
     signUpUserName:'',
-    signUpEmailId:'',
-    signUpProfilePic:'',
-    commentWindowStatus:false
+    signUpEmailId:'', 
+    commentWindowStatus:false,
+    navbarStatus:0
 }
 
 
@@ -22,68 +22,42 @@ let initialState = {
 function checkIsSigned()
 {
     let toSendData = initialState;
-    let data = document.cookie;
-    // console.log(data)
-    data = data.split(';')
-    // console.log(data)
+    if(localStorage.getItem("username"))
+    {
+        // signed
+        toSendData.signed=true;
+        toSendData.userName = localStorage.getItem("username")
+        toSendData.personalData = JSON.parse(localStorage.getItem("userdata")).personalData
+        toSendData.posts = JSON.parse(localStorage.getItem("userdata")).postsData
 
-    // let chatId = '';
-    // let userName = '';
-
-    data.forEach(x=>{
-        x = x.split('=')
-        // console.log(x)
-        
-        if(x[0] == 'username' || x[0] == ' username')
-        {
-            if(x[1] != '')
-            {
-                toSendData =  {
-                    signed:true,
-                    userName:x[1],
-                    personalData:{},
-                    chatIdOpened:''
-                }
-            }
-        }
-    })
-    data.forEach(x=>{
-        x = x.split('=')
-        {
-            if(x[0] == ' chatIdOpened')
-            {
-                toSendData.chatIdOpened = x[1]
-            }
-        }
-    })
+    }
+    // console.log(toSendData)
     
     return toSendData;
 }
 
-function reducer(state=initialState,action)
+function reducer(state=checkIsSigned(),action)
 {
-    state = checkIsSigned()
-    // console.log(state)
-    let base_url = process.env.REACT_APP_SERVER_BASE_URL;
+    // console.log(state) 
     switch(action.type)
     {
-        case 'login':
-            const now = new Date()
-            const expireTime = now.getTime() + 24*60*60 * 1000 // 60 x 60 x 1000 milliseconds = 36000 seconds = 24*60 min = 1 day
-            now.setTime(expireTime);
+        case 'login':  
 
-            document.cookie = `username=${action.userName}; expires=${now.toUTCString()}; path=/;`;
+            localStorage.setItem("userdata",JSON.stringify(action.data))
+            localStorage.setItem("username",action.userName)
             
             socket.emit('login',{"userName":action.userName})
 
             return {...state, signed:true,userName:action.userName}
-        case 'logout':
-            document.cookie = "username=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        case 'logout': 
+            localStorage.clear()
+
             socket.emit("logout",{"socketId":socket.id})
 
             return {...state,signed:false,userName:''}
         case 'openChat':
-            document.cookie = `chatIdOpened=${action.chatId}; path=/;`;
+            // document.cookie = `chatIdOpened=${action.chatId}; path=/;`;
+            localStorage.setItem("chatIdOpened",action.chatId)
             return {...state,chatIdOpened:action.chatId}
         case 'signUp':
             switch(action.subType)
@@ -103,6 +77,7 @@ function reducer(state=initialState,action)
             return {...state,commentWindowStatus:false}
 
         default:
+            console.log(state)
             return state;
     }
 }

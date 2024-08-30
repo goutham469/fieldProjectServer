@@ -54,25 +54,24 @@ import FriendRequests from './components/FriendRequests/FriendRequests';
 
 
 function App() {
+ 
 
-  // console.log(store,store.getState())
+  // function connect() {
+  //   socket.on('connect', () => {
+  //     console.log('connected to socket.io server, id = ', socket.id);
+  //   });
 
-  function connect() {
-    socket.on('connect', () => {
-      console.log('connected to socket.io server, id = ', socket.id);
-    });
+  //   socket.on('disconnect', () => {
+  //     console.log('disconnected from socket.io server');
+  //   });
 
-    socket.on('disconnect', () => {
-      console.log('disconnected from socket.io server');
-    });
+  //   console.log('socket connection success');
+  // }
 
-    console.log('socket connection success');
-  }
-
-  connect();
+  // connect();
 
   useEffect(()=>{ 
-    connect();
+    // connect();
     
     async function fetchServerInitially()
     {

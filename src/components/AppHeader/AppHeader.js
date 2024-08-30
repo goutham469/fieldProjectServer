@@ -16,8 +16,13 @@ import gamesHoverIcon from './gamesHover.png'
 function AppHeader() {
   let navigate = useNavigate(); 
  
-  let [componentChoosenColor,updateComponentChoosenColor] = useState(0);
+  let [componentChoosenColor,updateComponentChoosenColor] = useState(localStorage.getItem('appnavbar'));
   let [headerIconHover,setHeaderIconHover] = useState(0)
+  function handleClick(value)
+  {
+    localStorage.setItem("appnavbar",value)
+    updateComponentChoosenColor(value)
+  }
   return (
     <div className='AppHeadertoDisplayFlex'>
         <div>
@@ -29,7 +34,9 @@ function AppHeader() {
           <div className='header-navbar-div'> 
             <FaHome size={30}
              color={(componentChoosenColor==1)?"blue":"black"}
-              onClick={()=>{navigate('./');updateComponentChoosenColor(1)}}
+
+              onClick={()=>{navigate('./');handleClick(1)}}
+
               onMouseEnter={()=>setHeaderIconHover(1)}
               onMouseLeave={()=>setHeaderIconHover(0)}
               />
@@ -40,7 +47,7 @@ function AppHeader() {
           <div className='header-navbar-div'>
             <IoMdPeople 
             size={30} color={(componentChoosenColor==2)?"blue":"black"}
-             onClick={()=>{navigate('./people');updateComponentChoosenColor(2)}}
+             onClick={()=>{navigate('./people');handleClick(2)}}
              onMouseEnter={()=>setHeaderIconHover(2)}
               onMouseLeave={()=>setHeaderIconHover(0)}
               />
@@ -51,7 +58,7 @@ function AppHeader() {
           <div className='header-navbar-div'>
             <IoChatbubbleEllipsesOutline
              size={30} color={(componentChoosenColor==3)?"blue":"black"} 
-             onClick={()=>{navigate('./chat');updateComponentChoosenColor(3)}}
+             onClick={()=>{navigate('./chat');handleClick(3)}}
              onMouseEnter={()=>setHeaderIconHover(3)}
               onMouseLeave={()=>setHeaderIconHover(0)}
               />
@@ -62,7 +69,7 @@ function AppHeader() {
           <div className='header-navbar-div'>
             <FaRegBell 
             size={30} color={(componentChoosenColor==4)?"blue":"black"} 
-            onClick={()=>{navigate('./Notifications');updateComponentChoosenColor(4)}}
+            onClick={()=>{navigate('./Notifications');handleClick(4)}}
             onMouseEnter={()=>setHeaderIconHover(4)}
             onMouseLeave={()=>setHeaderIconHover(0)}
               />
@@ -73,7 +80,7 @@ function AppHeader() {
           <div className='header-navbar-div'>
             <IoPersonCircleOutline 
             size={30} color={(componentChoosenColor==5)?"blue":"black"} 
-            onClick={()=>{navigate('./ProfileDashBoard');updateComponentChoosenColor(5)}}
+            onClick={()=>{navigate('./ProfileDashBoard');handleClick(5)}}
             onMouseEnter={()=>setHeaderIconHover(5)}
             onMouseLeave={()=>setHeaderIconHover(0)}
               />
@@ -84,7 +91,7 @@ function AppHeader() {
           <div className='header-navbar-div'>
             <img width="30px" height="30px"   
             src={(componentChoosenColor==6)?gamesHoverIcon:gamesIcon} 
-            onClick={()=>{navigate('./games');updateComponentChoosenColor(6)}}
+            onClick={()=>{navigate('./games');handleClick(6)}}
             onMouseEnter={()=>setHeaderIconHover(6)}
             onMouseLeave={()=>setHeaderIconHover(0)}
              />

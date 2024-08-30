@@ -1,5 +1,5 @@
-import { createStore } from "@reduxjs/toolkit";
-import reducer from "./reducer";
+import { createStore } from "redux";
+import reducer from "./reducer"; 
 
 const store = createStore(reducer)
 // const appDefaults = createStore(appdefaults)

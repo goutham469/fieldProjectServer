@@ -52,9 +52,18 @@ const Login =()=>{
                     updateErrorFromDB('login success');
                     updateStateColor('green')
 
+                    let data = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/v2/users/all-details`,{
+                        headers:{"Content-Type":"application/json"},
+                        method:"POST",
+                        body:JSON.stringify({user_name:userName})
+                    })
+                    data = await data.json(); 
+
+
                     store.dispatch({
                         type:'login',
-                        userName:userName
+                        userName:userName,
+                        data:data
                     })
 
                     navigate('/user/')

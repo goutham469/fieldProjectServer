@@ -26,7 +26,7 @@ function AllPosts() {
   let [commentWindowData,updateCommentWindowData] = useState([])
   const [windowWidth,setWindowWidth] = useState(window.innerWidth)
 
-
+ 
   useEffect(()=>{
     async function getAllPosts()
     {
@@ -122,8 +122,9 @@ function AllPosts() {
         <div className='all-posts-left-div'>
           <div    onClick={()=>navigate('./ProfileDashBoard')}     className='all-posts-left-div-child'>
             {
-              store.getState().profilePic?
-              <img src={store.getState().ProfilePic}/>
+              store.getState().personalData.profilePicture?
+              <img style={{width:"30px",marginRight:"10px",marginLeft:"10px"}}
+               src={store.getState().personalData.profilePicture}/>
               :
               <IoPersonCircleOutline size={20}/>
             }
@@ -257,14 +258,16 @@ function AllPosts() {
                               else if(element.type == 'video')
                               {
                                   return <div>
-                                    <center><video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop/></center>
+                                    <center>
+                                      <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop controlsList='nodownload'/>
+                                      </center>
                                     <br/>
                                   </div>
                               }
                   
                               else if(element.type == 'audio')
                               {
-                                  return <center><audio src={element.src} controls /></center>
+                                  return <center><audio src={element.src} controls controlsList='nodownload'/></center>
                               }
                               
                               else if(element.type == 'document')
@@ -416,14 +419,16 @@ function AllPosts() {
                               else if(element.type == 'video')
                               {
                                   return <div>
-                                    <center><video style={{borderRadius:"20px"}} src={element.src} width="300px" height="200px" controls loop/></center>
+                                    <center>
+                                      <video style={{borderRadius:"20px"}} src={element.src} width="300px" height="200px" controls loop controlsList='nodownload'/>
+                                      </center>
                                     <br/>
                                   </div>
                               }
                   
                               else if(element.type == 'audio')
                               {
-                                  return <center><audio src={element.src} controls /></center>
+                                  return <center><audio src={element.src} controls controlsList='nodownload'/></center>
                               }
                               
                               else if(element.type == 'document')
