@@ -1,0 +1,28 @@
+.NewPostTextOverFlow{
+    max-width: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.NewPostTextOverFlow::-webkit-scrollbar{
+    display: none;
+}
+.newPostCurrentBody{
+    background-color: rgb(235, 235, 245);
+    width: fit-content;
+}
+.newPostEditor{
+    background-color: rgb(200, 200, 200);
+    border-radius: 10px;
+    width: fit-content;
+    margin-left: 30px;
+    padding: 10px;
+}
+.newPostSubEditor{
+    background-color: rgb(158, 158, 158);
+    border-radius: 20px;
+    text-align: left;
+    padding: 20px;
+    /* justify-content: space-around; */
+    width: fit-content;
+    margin-left: 30px;
+}

@@ -1,0 +1,18 @@
+.ProfileDashBoardToDisplayContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.logoutButton{ 
+    height: 50px; 
+    width: 100px;
+
+    border-radius: 10px; 
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+}
+/* .logoutButton:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(241, 240, 240);
+    font-weight: 600;
+} */

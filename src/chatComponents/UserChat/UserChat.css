@@ -1,0 +1,71 @@
+.BackButtonToAllChats{
+    position: relative;
+    left: 5px;
+    margin-right: 10px;
+}
+.UserChatOuterBoard-mobile{
+    padding-top: 80px;
+    background-color: rgb(226, 226, 226);
+    height: 100vh; 
+    min-width: 70vw;
+    max-width: 800px; 
+    padding-bottom: 100px;
+
+    text-align: center;
+}
+.userChat-header{
+    background-color: #afafaf;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.ChatComponentParaElement{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    display: flex;
+    justify-content: end;
+}
+.ChatComponentParaElementLeft{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    display: flex;
+    justify-content: start;
+    max-width: 250px;
+}
+.ChatComponentChild{
+    width: fit-content;
+    background-color: rgb(0, 0, 0);
+    border-top-left-radius: 10px;
+    color: white;
+    border-bottom-right-radius: 20px;
+
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 3px;
+    padding: 3px;
+    max-width: 250px;
+}
+.messagesBox-mobile{
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 10px;
+}
+.messageSendingBox{
+    position: relative;
+    bottom: -25em;
+}
+.message-sending-input-div-mobile{ 
+    background-color: #afafaf;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding-top: 3px;
+    border-top: 2px solid black;
+}
+.message-send-button{
+    background-color: #afafaf;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 10px;
+}

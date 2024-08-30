@@ -1,0 +1,71 @@
+.all-posts-main-div{
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+.all-posts-posts-scroll{
+    margin-top: 25px;  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    /* max-height: 1000px; */
+    /* width: 600px; */
+    overflow-y: scroll;
+}
+.all-posts-left-div{ 
+    margin-left: 20px;
+}
+.all-posts-left-div-child{
+    margin: 10px;
+    padding: 10px;
+    /* background-color: rgb(156, 164, 170); */
+    border-radius: 10px; 
+}
+.all-posts-left-div-child:hover{
+    background-color: #e4e6e9;
+}
+.all-posts-left-div-image{
+    width: 30px;
+}
+.all-posts-left-div-label{
+    padding-left: 5px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.AllPostsChildWindow{
+    background-color: #ffffff;
+    
+    box-shadow: 3px 3px 5px #806868, -3px -3px 5px #806868;
+
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px;
+    /* text-align: center; */
+    width: 35em;
+}
+.AllPostsChildWindow-mobile{
+    background-color: #ffffff; 
+    box-shadow: 0px 5px 5px black;
+    border-radius: 10px; 
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 10px;
+    width: 95vw;
+}
+.toDisplayCommentBoxWithFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.all-posts-ads-main-div{ 
+    background-color: #d3c7c7;
+    padding: 10px;
+    border-radius: 20px;
+}
+.all-posts-ads{ 
+    background-color: #e4e6e9;
+    border-radius: 10px;
+    padding: 7px;
+    margin: 10px;
+    width: 20em;
+}

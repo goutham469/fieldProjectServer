@@ -1,0 +1,12 @@
+.SingleChat{
+    background-color: rgb(221, 217, 217);
+    border-radius: 10px;
+    padding: 0px;
+    margin: 5px;
+    width: 300px;
+}
+.SingleChat-mobile{
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    margin: 0px;
+}
