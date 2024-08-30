@@ -1,0 +1,21 @@
+.admin-tablerow0{
+    background-color: #FFD7C4;
+}
+.admin-tablerow1{
+    background-color: #ffefc4;
+}
+table{
+    border: 3px solid rgb(255, 255, 255);
+    margin-top: 30px;  
+}
+th,td{
+    border: 1px solid black;
+    padding: 2px;
+} 
+th{  
+    border-left: 3px solid white;
+    border-bottom: 3px solid rgb(255, 234, 0);
+}
+td{
+    color: black;
+}

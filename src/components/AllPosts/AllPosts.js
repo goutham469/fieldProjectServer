@@ -102,6 +102,18 @@ function AllPosts() {
     
   }
 
+  async function addToBookmark(event,postId)
+  {
+    event.preventDefault();
+    console.log(postId)
+    await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/v2/users/add-to-bookmarks`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({"user_name":store.getState().userName,"postId":postId})
+    })
+    alert("saved")
+  }
+
   const styleSheet={
     "newPostButton":{position:"absolute",top:"80px",left:"50px",backgroundColor:"white",border:"1px solid black",borderRadius:"7px"}
   }
@@ -111,13 +123,7 @@ function AllPosts() {
       {
       windowWidth > 700 ?
       <div className='all-posts-main-div'>
-        {
-          /* <div className='toDisplayCommentBoxWithFlex'>
-          {
-            (store.getState().commentWindowStatus==true)?<CommentWindow data={commentWindowData} />:<div></div>
-          }
-        </div> */
-        }
+
         {/*left side */}
         <div className='all-posts-left-div'>
           <div    onClick={()=>navigate('./ProfileDashBoard')}     className='all-posts-left-div-child'>
@@ -168,7 +174,13 @@ function AllPosts() {
             <br/>
             <label>express your thoughts, ideas.</label>
           </div>
+          <div className='toDisplayCommentBoxWithFlex'>
+            {
+              (store.getState().commentWindowStatus==true)?<CommentWindow data={commentWindowData} />:<div></div>
+            }
+          </div> 
           {
+            
             posts.map(x=>
               {
                 // console.log(x)
@@ -179,12 +191,13 @@ function AllPosts() {
                       <img style={{width:"30px",marginRight:"5px",borderRadius:"20px"}} src={x.profilePic?x.profilePic:personIcon}/>
                       <a
                       style={{textDecoration:"none"}}  href=''  
-                      onClick={()=>navigate('name',{"state":x.author})} 
+                      onClick={()=>navigate('name',{"state":x.author})
+                    } 
                       >{x.author}
                       </a>
                     </div>
                     <CiBookmark size={25}  
-                     onClick={()=>{alert('post saved')}} 
+                     onClick={(event)=>{addToBookmark(event,x._id)}} 
                      />
                   </div>
                   {/* <br/> */}
@@ -259,7 +272,7 @@ function AllPosts() {
                               {
                                   return <div>
                                     <center>
-                                      <video style={{borderRadius:"20px"}} src={element.src} width="400px" height="300px" controls loop controlsList='nodownload'/>
+                                      <video style={{borderRadius:"20px",border:"2px solid blue"}} src={element.src} width="400px" height="300px" controls loop controlsList='nodownload'/>
                                       </center>
                                     <br/>
                                   </div>
@@ -333,6 +346,11 @@ function AllPosts() {
         <div onClick={()=>{navigate('/user/newpost')}} className='AllPostsChildWindow-mobile'>
           <p>+ new post</p>
         </div>
+        <div className='toDisplayCommentBoxWithFlex'>
+          {
+            (store.getState().commentWindowStatus==true)?<CommentWindow data={commentWindowData} />:<div></div>
+          }
+        </div> 
         
         {
             posts.map(x=>

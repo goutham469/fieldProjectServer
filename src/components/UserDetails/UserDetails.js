@@ -70,8 +70,7 @@ function UserDetails() {
             </div>
 
             <div style={{display:"flex",justifyContent:"space-around",flexWrap:"wrap"}}>
-                <div className='userDetails-child'>
-                    <div>
+            <div>
                         <center><b>Friends</b></center>
                         <div className='userDetails-child-friends'>
                             {
@@ -89,7 +88,6 @@ function UserDetails() {
                             }
                         </div>
                     </div>
-                </div>
 
                 <div >
                     <div>

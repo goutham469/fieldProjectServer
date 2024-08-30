@@ -20,7 +20,8 @@ function ProfileDashBoard() {
       personalDataChildComponent:{width:"40em",backgroundColor:"#b2b2b2",padding:"10px",margin:"10px",borderRadius:"10px"}
     }
 
-    console.log(postsData)
+    // console.log(postsData)
+    console.log(personalData)
 
 
   async function uploadProfilePic(event)
@@ -127,7 +128,7 @@ function ProfileDashBoard() {
                   </div>
                 </div>
                 
-                <div className='logoutButton' onClick={(event)=>{ store.dispatch({type:'logout'}); navigate('/') }}  >
+                <div className='btn logoutButton' onClick={(event)=>{ store.dispatch({type:'logout'}); navigate('/') }}  >
                   <IoLogOutOutline color="black" size={25}/>
                   <button style={{backgroundColor:"#b2b2b2",border:"none"}}> Logout </button>
                 </div>
@@ -148,21 +149,39 @@ function ProfileDashBoard() {
  
 
         <div style={styleSheet.personalDataChildComponent}>
-          <h4>friends</h4>
-          {
-            personalData && personalData.friends ?
-            <div style={{maxHeight:"80vh",overflowY:"scroll"}}>
-              {
-                personalData.friends.map(x=>{
-                  return <p style={{backgroundColor:"#6b6b6b",color:"white",width:"200px",borderRadius:"5px",padding:"3px",margin:"2px"}}>{x.userName}</p>
-                })
-              }
-            </div>
-            :
-            <div>500 Not found</div>
-          }
+          <div>
+            <h4>friends</h4>
+            {
+              personalData && personalData.friends ?
+              <div style={{maxHeight:"80vh",overflowY:"scroll"}}>
+                {
+                  personalData.friends.map(x=>{
+                    return <p style={{backgroundColor:"#6b6b6b",color:"white",width:"200px",borderRadius:"5px",padding:"3px",margin:"2px"}}>{x.userName}</p>
+                  })
+                }
+              </div>
+              :
+              <div>500 Not found</div>
+            }
+          </div>
+
         </div>
       </div>
+
+      <div>
+        <h4>bookmarks</h4>
+        {
+          personalData && personalData.bookmarks ?
+          <div>
+            {
+              personalData.bookmarks.map(x=><p>{x}</p>)
+            }
+          </div>
+          :
+          <b>You have not saved any post.</b>
+        }
+      </div>
+
 
 
       <h4>My posts</h4>
@@ -284,6 +303,7 @@ function ProfileDashBoard() {
           </div>
         }
       </div>
+      
 
     </div>
   )

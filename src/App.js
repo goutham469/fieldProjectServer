@@ -52,6 +52,10 @@ import PacManGame from './games/PacManGame/PacManGame';
 import BookMarks from './components/BookMarks/BookMarks';
 import FriendRequests from './components/FriendRequests/FriendRequests';
 
+// admin dashboard
+import Master from './Admin/Master/Master';
+import OnlineUsers from './Admin/OnlineUsers/OnlineUsers';
+
 
 function App() {
  
@@ -237,6 +241,16 @@ function App() {
               element:<PacManGame/>
             }
           ]
+        }
+      ]
+    },
+    {
+      path:'admin',
+      element:<Master/>,
+      children:[
+        {
+          path:'',
+          element:<OnlineUsers/>
         }
       ]
     },

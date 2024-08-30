@@ -1,7 +1,7 @@
 .all-posts-main-div{
     display: flex;
     justify-content: space-between;
-    height: 100vh;
+    height: 93vh;
 }
 .all-posts-posts-scroll{
     margin-top: 25px;  
@@ -51,11 +51,6 @@
     margin-left: 5px;
     padding: 10px;
     width: 95vw;
-}
-.toDisplayCommentBoxWithFlex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .all-posts-ads-main-div{ 
     background-color: #d3c7c7;

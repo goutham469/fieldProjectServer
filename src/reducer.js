@@ -1,5 +1,4 @@
-import socket from "./socket";
-
+ 
 let initialStateSignUp = {
     userName : '',
     email : '',
@@ -14,9 +13,9 @@ let initialState = {
     signUpUserName:'',
     signUpEmailId:'', 
     commentWindowStatus:false,
-    navbarStatus:0
+    navbarStatus:0,
+    posts:[]
 }
-
 
 
 function checkIsSigned()
@@ -45,18 +44,13 @@ function reducer(state=checkIsSigned(),action)
 
             localStorage.setItem("userdata",JSON.stringify(action.data))
             localStorage.setItem("username",action.userName)
-            
-            socket.emit('login',{"userName":action.userName})
 
             return {...state, signed:true,userName:action.userName}
         case 'logout': 
             localStorage.clear()
 
-            socket.emit("logout",{"socketId":socket.id})
-
             return {...state,signed:false,userName:''}
-        case 'openChat':
-            // document.cookie = `chatIdOpened=${action.chatId}; path=/;`;
+        case 'openChat': 
             localStorage.setItem("chatIdOpened",action.chatId)
             return {...state,chatIdOpened:action.chatId}
         case 'signUp':
@@ -76,8 +70,7 @@ function reducer(state=checkIsSigned(),action)
         case 'commentWindowClose':
             return {...state,commentWindowStatus:false}
 
-        default:
-            console.log(state)
+        default: 
             return state;
     }
 }

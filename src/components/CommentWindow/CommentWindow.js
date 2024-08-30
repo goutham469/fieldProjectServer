@@ -4,10 +4,9 @@ import { RxCross1 } from "react-icons/rx";
 import { AiOutlineSend } from "react-icons/ai";
 import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
-import './CommentWindow.css'
+import './CommentWindow.css' 
 
-import store from '../../store';
-import { type } from '@testing-library/user-event/dist/type';
+import store from '../../store'; 
 
 function CommentWindow(props) {
 
@@ -17,42 +16,28 @@ function CommentWindow(props) {
     let[CommentsWindowArticleId,updateCommentsWindowArticleId]=useState();
     let[activateCommentButton,updateActivateCommentButton]=useState();
     
-    useEffect(()=>{
-        // console.log(props)
-        updatex(props.data.comments)
-        // console.log("updatex used : ",x,props)
-        // console.log(props.data.articleId)
-        updateCommentsWindowArticleId(props.data._id)
-
-        // console.log(store.getState().commentWindowStatus)
+    useEffect(()=>{ 
+        updatex(props.data.comments) 
+        updateCommentsWindowArticleId(props.data._id) 
     })
 
     function closeChildCommentsWindow()
-    {
-        console.log("closing comments window")
-
+    { 
         store.dispatch({
             type:'commentWindowClose'
-        })
-        // console.log(store.getState().commentWindowStatus)
+        }) 
         document.querySelector('.toDisplayCommentBoxWithFlex').style.display='none';
     }
     
-
-
     async function postAComment()
     {
         let base_url = process.env.REACT_APP_SERVER_BASE_URL
 
         if(commentData)
         {
-            let obj = {"comment":commentData,"userName":store.getState().userName,"PostId":CommentsWindowArticleId}
+            let obj = {"comment":commentData,"userName":store.getState().userName,"PostId":CommentsWindowArticleId} 
 
-            console.log(obj)
-
-            document.querySelector('.CommentWindowPostCommentInput').value = '';
-
-            // console.log(articleId);
+            document.querySelector('.CommentWindowPostCommentInput').value = ''; 
 
             await fetch(`${base_url}/posts/postComment`,{
                 method:'POST',
@@ -63,7 +48,6 @@ function CommentWindow(props) {
             }).then(data=>data.json()).then(z=>{console.log(z);alert("comment posted")}).catch(err=>alert(err))
         }else{alert('empty comment,not posted')}
     }
-
 
   return (
     <div className='row CommentsWindowOuterEdge'>
@@ -88,7 +72,7 @@ function CommentWindow(props) {
                                         <div className='row col-lg-12 col-12'>
                                             <div className='col-lg-1 col-4'>
                                                 {
-                                                    (x.TimePosted)?<p>{x.TimePosted}</p>:<p>time</p>
+                                                    (x.TimePosted)?<p>{x.TimePosted}</p>:<p></p>
                                                 }
                                             </div>
                                             <div className='col-lg-4 col-4'></div>
