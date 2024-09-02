@@ -1,0 +1,7 @@
+@import url('../variables.css');
+
+.notifications-navbar{
+    background-color: var(--background-color-primary);
+    height: fit-content;
+    padding: 10px;
+}

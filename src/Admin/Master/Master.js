@@ -11,5 +11,5 @@ function Master() {
     </div>
   )
 }
-
+ 
 export default Master

@@ -1,9 +1,12 @@
+@import url('../variables.css');
+
 .CommentsWindowOuterEdge{
     position:fixed;
     top: 10px;
     left: 5px;
 
-    background-color:#e3e4e8;
+    background-color:var(--background-color);
+    color: var(--text-color);
 
     min-height: 100px;
     width: 400px;
@@ -29,7 +32,10 @@
     overflow-y: scroll;
 }
 .comments0052{
-    background-color: #b1b1b4;
+    background-color: var(--background-color-primary);
+    border-bottom: 1px solid var(--text-color);
+    margin-bottom: 5px;
+    color: var(--text-color);
     border-radius: 10px;
     padding-left: 5px;
 }
@@ -61,4 +67,11 @@
     justify-content: center;
     align-items: center;
     margin-left: 100px;
+}
+.commentAddingSection{
+    border-top: 1px solid var(--text-color);
+}
+.CommentWindowPostCommentInput{
+    background-color: var(--background-color);
+    color: var(--text-color);
 }

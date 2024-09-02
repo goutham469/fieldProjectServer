@@ -115,11 +115,6 @@ function ProfileDashBoard() {
       localStorage.setItem("theme", newTheme);
     }
     
-    // Apply saved theme on page load
-    window.onload = () => {
-      const savedTheme = localStorage.getItem("theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    };
     
 
   return (
@@ -162,11 +157,21 @@ function ProfileDashBoard() {
 
 
                 <div> 
-                  <select onChange={(event) => toggleTheme(event)}>
+                  <b>Current theme :- {localStorage.getItem("theme")}</b>
+                  <br/>
+                  <select value={localStorage.getItem("theme")} onChange={(event) => toggleTheme(event)}>
                     <option value="light">light</option>
                     <option value="dark">dark</option>
-                    <option value="solarizedlight">solarizedlight</option>
-                    <option value="solarizeddark">solarizeddark</option>
+                    <option value="solarizedlight">solarized-light</option>
+                    <option value="solarizeddark">solarized-dark</option>
+                    <option value="norddark">nord-dark</option>
+                    <option value="dracula">dracula</option>
+                    <option value="materialdark">material-dark</option>
+                    <option value="nordlight">nord-light</option>
+                    <option value="custom1">custom-1</option>
+                    <option value="custom2">custom-2</option>
+                    <option value="materiallight">material-light</option>
+                    <option value="highcontrast">high-contrast</option>
                 </select>
                 </div>
                 

@@ -13,3 +13,80 @@
   --text-color: #ffffff;
   --primary-color: #1e90ff;
 }
+
+  [data-theme="solarizedlight"] {
+  --background-color: #FDF6E3; /* Dark mode */
+  --background-color-primary:#EEE8D5;
+  --text-color: #657B83;
+  --primary-color: #1e90ff;
+}
+
+
+[data-theme="solarizeddark"] {
+  --background-color: #002B36; /* Dark mode */
+  --background-color-primary:#073642;
+  --text-color: #839496;
+  --primary-color: #1e90ff;
+}
+
+
+[data-theme="nordlight"] {
+  --background-color: #ECEFF4; /* Dark mode */
+  --background-color-primary:#E5E9F0;
+  --text-color: #4C566A;
+  --primary-color: #1e90ff;
+}
+
+
+[data-theme="norddark"] {
+  --background-color: #2E3440; /* Dark mode */
+  --background-color-primary:#3B4252;
+  --text-color: #D8DEE9;
+  --primary-color: #1e90ff;
+}
+
+
+[data-theme="dracula"] {
+  --background-color: #282A36; /* Dark mode */
+  --background-color-primary:#44475A;
+  --text-color: #F8F8F2;
+  --primary-color: #1e90ff;
+}
+
+
+[data-theme="materiallight"] {
+  --background-color: #FFFBE6; /* Dark mode */
+  --background-color-primary:#D5ED9F;
+  --text-color: #00712D;
+  --primary-color: #FF9100;
+}
+
+
+[data-theme="materialdark"] {
+  --background-color: #263238; /* Dark mode */
+  --background-color-primary:#37474F;
+  --text-color: #CFD8DC;
+  --primary-color: #1e90ff;
+}
+
+
+[data-theme="highcontrast"] {
+  --background-color: #000000; /* Dark mode */
+  --background-color-primary:#1A1A1A;
+  --text-color: #FFFFFF;
+  --primary-color: #1e90ff;
+}
+
+[data-theme="custom1"] {
+  --background-color: #F1DEC6; /* Dark mode */
+  --background-color-primary:#FF8343;
+  --text-color: #4158A6;
+  --primary-color: #179BAE;
+}
+
+[data-theme="custom2"] {
+  --background-color: #FFD35A; /* Dark mode */
+  --background-color-primary:#FFA823;
+  --text-color: #6C946F;
+  --primary-color: #DC0083;
+}

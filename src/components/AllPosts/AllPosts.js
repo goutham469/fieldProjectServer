@@ -22,6 +22,7 @@ import { CiHeart } from "react-icons/ci";
 import { FaRegCommentDots } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 
+
 function AllPosts() {
   let navigate = useNavigate();
 

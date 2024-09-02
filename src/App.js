@@ -74,6 +74,11 @@ function App() {
 
   // connect();
 
+  window.onload = () => {
+    const savedTheme = localStorage.getItem("theme") ;
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  };
+
   useEffect(()=>{ 
     // connect();
     
