@@ -10,7 +10,7 @@ import { io } from 'socket.io-client'
 function MasterDashboard() {
   let navigate = useNavigate() 
   
-  useEffect(()=>{ 
+  useEffect(()=>{  
 
     if(store.getState().signed == false)
     {

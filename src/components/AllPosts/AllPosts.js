@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { IoPersonCircleOutline } from 'react-icons/io5'
 import { CiBookmark } from 'react-icons/ci'
-import viewsIcon from './assets/views.png'
-import likeIcon from './assets/like.png'
+// import viewsIcon from './assets/views.png'
+// import likeIcon from './assets/like.png'
 import likedIcon from './assets/liked.png'
-import commentIcon from './assets/comment.png'
+// import commentIcon from './assets/comment.png'
 import store from '../../store'
 
 import friendsIcon from './assets/friends.png'
@@ -18,6 +18,9 @@ import personIcon from '../AllUsers/person.png'
 
 import CommentWindow from '../CommentWindow/CommentWindow'
 import Time from '../Time/Time'
+import { CiHeart } from "react-icons/ci";
+import { FaRegCommentDots } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa";
 
 function AllPosts() {
   let navigate = useNavigate();
@@ -119,13 +122,13 @@ function AllPosts() {
   }
 
   return (
-    <div style={{paddingTop:"50px",display:"flex"}}>
+    <div style={{paddingTop:"50px",display:"flex",height:"100%"}}>
       {
       windowWidth > 700 ?
       <div className='all-posts-main-div'>
-
+ 
         {/*left side */}
-        <div className='all-posts-left-div'>
+        <div className='all-posts-left-div'> 
           <div    onClick={()=>navigate('./ProfileDashBoard')}     className='all-posts-left-div-child'>
             {
               store.getState().personalData.profilePicture?
@@ -304,32 +307,33 @@ function AllPosts() {
                   </div>
                   <div style={{display:"flex",justifyContent:"space-between",borderTop:"1px solid black",marginTop:"20px"}}>
                     <label>
-                      <b style={{marginRight:"5px"}}>like</b>
+                      <b style={{marginRight:"5px"}}>like</b> 
+
                         <img className={`like${x._id}liked`} src={likedIcon} width="17px"
                           style={{display:"none"}}
                          onClick={(event)=>{
                           IncrementLike(event,x._id,"unlike");
                           document.querySelector(`.like${x._id}liked`).style.display='none';
                           document.querySelector(`.like${x._id}notliked`).style.display='inline';
-                          }}/> 
+                          }}/>  
 
-                        <img className={`like${x._id}notliked`}  src={likeIcon} width="15px"
+                        <CiHeart className={`like${x._id}notliked`}  width="15px"
                          onClick={(event)=>{
                           IncrementLike(event,x._id,"like");
                           document.querySelector(`.like${x._id}notliked`).style.display='none'
                           document.querySelector(`.like${x._id}liked`).style.display='inline';
-                          }}/>  
-                      
-                        {/* <img className={`like${x._id}`} width="15px" src={likeIcon} onClick={(event)=>{IncrementLike(event,x._id)}}/> */}
+                          }}/> 
+
                     {x.likes}</label> 
                     <label>
                       <b>comment</b>
-                      <img className='btn' width="45px" src={commentIcon} onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
-                      {x.comments?x.comments.length:0}
+                      <FaRegCommentDots style={{marginLeft:"5px"}}  width="45px" onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
+                    
+                      <label style={{fontSize:"12px",marginLeft:"2px"}}>{x.comments?x.comments.length:0}</label>
                     </label>
-                    <label>
-                      <img width="20px" src={viewsIcon}/>
-                      {x.views ? x.views :1}
+                    <label> 
+                      <FaEye width="20px" />
+                      <label style={{fontSize:"12px",marginLeft:"2px"}}>{x.views ? x.views :1}</label>
                     </label>
                   </div>
                   </div>
@@ -470,29 +474,30 @@ function AllPosts() {
                   </div>
                   <div style={{display:"flex",justifyContent:"space-between"}}>
                     <label> 
-                        <img className={`like${x._id}liked`} src={likedIcon} width="17px"
+                      <img className={`like${x._id}liked`} src={likedIcon} width="17px"
                           style={{display:"none"}}
                          onClick={(event)=>{
                           IncrementLike(event,x._id,"unlike");
                           document.querySelector(`.like${x._id}liked`).style.display='none';
                           document.querySelector(`.like${x._id}notliked`).style.display='inline';
-                          }}/> 
+                          }}/>  
 
-                        <img className={`like${x._id}notliked`}  src={likeIcon} width="15px"
+                        <CiHeart className={`like${x._id}notliked`}  width="15px"
                          onClick={(event)=>{
                           IncrementLike(event,x._id,"like");
                           document.querySelector(`.like${x._id}notliked`).style.display='none'
                           document.querySelector(`.like${x._id}liked`).style.display='inline';
-                          }}/>  
-                      
-                        {/* <img className={`like${x._id}`} width="15px" src={likeIcon} onClick={(event)=>{IncrementLike(event,x._id)}}/> */}
-                    {x.likes}</label>
+                          }}/> 
+                      {x.likes}
+                    </label>
                     <label>
-                      <img className='btn' width="45px" src={commentIcon} onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
-                    {x.comments?x.comments.length:0}</label>
+                      <FaRegCommentDots style={{marginLeft:"5px"}}  width="45px" onClick={(event)=>{ShowCommentBox(event,x._id,x.comments,x)}}/>
+                      <label style={{fontSize:"12px",marginLeft:"2px"}}>{x.comments?x.comments.length:0}</label>
+                    </label>
                     <label>
-                      <img width="20px" src={viewsIcon}/>
-                    {x.views ? x.views :1}</label>
+                      <FaEye width="20px" />
+                      <label style={{fontSize:"12px",marginLeft:"2px"}}>{x.views ? x.views :1}</label>
+                    </label>
                   </div>
                   </div>
               }

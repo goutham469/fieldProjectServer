@@ -1,3 +1,5 @@
+@import url('../variables.css');
+
 .userDetails-back-button{
     background-color: white;
     border: 1px solid black;
@@ -16,4 +18,32 @@
 .userDetails-child-friends{
     max-height: 60vh;
     overflow-y: scroll;
+}
+.user-details-tab{
+    background-color: var(--background-color-primary);
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* style={{backgroundColor:"#f0f2f5",color:"black",borderRadius:"5px",padding:"5px",marginBottom:"5px",width:"300px"}} */
+.user-details-friends-list{ 
+    border-bottom: 1px solid var(--text-color);
+    color: var(--text-color); 
+    padding: 5px;
+    margin-bottom: 5px;
+    width: 300px;
+}
+.user-details-posts{
+    background-color: var(--background-color-primary);
+    margin-bottom: 5px;
+    padding: 3px;
+    border-radius: 5px;
+}
+.user-details-posts-2{
+    background-color: var(--background-color-primary);
+    border-bottom: 1px solid var(--text-color);
+    margin-bottom: 5px;
+    padding: 3px;
+    border-radius: 5px;
 }

@@ -9,12 +9,13 @@ import { useNavigate } from 'react-router-dom';
 
 import facebookIcon from './facebook.png'
 import serachIcon from '../LandingPage/assets/search.png'
-import gamesIcon from './games.png'
-import gamesHoverIcon from './gamesHover.png'
+// import gamesIcon from './games.png'
+// import gamesHoverIcon from './gamesHover.png'
+import { CgGames } from "react-icons/cg";
 
 
 function AppHeader() {
-  let navigate = useNavigate(); 
+  let navigate = useNavigate();
  
   let [componentChoosenColor,updateComponentChoosenColor] = useState(localStorage.getItem('appnavbar'));
   let [headerIconHover,setHeaderIconHover] = useState(0)
@@ -33,7 +34,7 @@ function AppHeader() {
         <div className='AppHeadertoDisplayFlex-navbar'>
           <div className='header-navbar-div'> 
             <FaHome size={30}
-             color={(componentChoosenColor==1)?"blue":"black"}
+             color={(componentChoosenColor==1)?"blue":"gold"}
 
               onClick={()=>{navigate('./');handleClick(1)}}
 
@@ -46,7 +47,7 @@ function AppHeader() {
           </div>
           <div className='header-navbar-div'>
             <IoMdPeople 
-            size={30} color={(componentChoosenColor==2)?"blue":"black"}
+            size={30} color={(componentChoosenColor==2)?"blue":"gold"}
              onClick={()=>{navigate('./people');handleClick(2)}}
              onMouseEnter={()=>setHeaderIconHover(2)}
               onMouseLeave={()=>setHeaderIconHover(0)}
@@ -57,7 +58,7 @@ function AppHeader() {
           </div>
           <div className='header-navbar-div'>
             <IoChatbubbleEllipsesOutline
-             size={30} color={(componentChoosenColor==3)?"blue":"black"} 
+             size={30} color={(componentChoosenColor==3)?"blue":"gold"} 
              onClick={()=>{navigate('./chat');handleClick(3)}}
              onMouseEnter={()=>setHeaderIconHover(3)}
               onMouseLeave={()=>setHeaderIconHover(0)}
@@ -65,10 +66,10 @@ function AppHeader() {
             {
               headerIconHover == 3&&<div className='header-icon-hover'>chats</div>
             }
-          </div>
+          </div> 
           <div className='header-navbar-div'>
             <FaRegBell 
-            size={30} color={(componentChoosenColor==4)?"blue":"black"} 
+            size={30} color={(componentChoosenColor==4)?"blue":"gold"} 
             onClick={()=>{navigate('./Notifications');handleClick(4)}}
             onMouseEnter={()=>setHeaderIconHover(4)}
             onMouseLeave={()=>setHeaderIconHover(0)}
@@ -79,7 +80,7 @@ function AppHeader() {
           </div>
           <div className='header-navbar-div'>
             <IoPersonCircleOutline 
-            size={30} color={(componentChoosenColor==5)?"blue":"black"} 
+            size={30} color={(componentChoosenColor==5)?"blue":"gold"} 
             onClick={()=>{navigate('./ProfileDashBoard');handleClick(5)}}
             onMouseEnter={()=>setHeaderIconHover(5)}
             onMouseLeave={()=>setHeaderIconHover(0)}
@@ -88,12 +89,12 @@ function AppHeader() {
               headerIconHover == 5&&<div className='header-icon-hover'>profile</div>
             }
           </div>
-          <div className='header-navbar-div'>
-            <img width="30px" height="30px"   
-            src={(componentChoosenColor==6)?gamesHoverIcon:gamesIcon} 
-            onClick={()=>{navigate('./games');handleClick(6)}}
-            onMouseEnter={()=>setHeaderIconHover(6)}
-            onMouseLeave={()=>setHeaderIconHover(0)}
+          <div className='header-navbar-div'> 
+             <CgGames
+             size={30} color={(componentChoosenColor==6)?"blue":"gold"} 
+             onClick={()=>{navigate('./games');handleClick(6)}}
+             onMouseEnter={()=>setHeaderIconHover(6)}
+             onMouseLeave={()=>setHeaderIconHover(0)}
              />
             {
               headerIconHover == 6&&<div className='header-icon-hover'>games</div>

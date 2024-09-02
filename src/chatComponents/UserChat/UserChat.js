@@ -66,7 +66,7 @@ function UserChat() {
     updateMessageToMeSent('');
 
   }
- 
+  
   return (
     <div className="UserChatOuterBoard-mobile">
 

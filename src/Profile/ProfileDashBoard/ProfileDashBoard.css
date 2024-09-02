@@ -1,3 +1,5 @@
+@import url('../variables.css');
+
 .ProfileDashBoardToDisplayContainer{
     display: flex;
     flex-wrap: wrap;
@@ -8,7 +10,7 @@
     height: 50px; 
     width: 120px;
     
-
+ 
     border-radius: 10px; 
     border: 1px solid black;
     color: rgb(0, 0, 0);
@@ -18,3 +20,45 @@
     color: rgb(241, 240, 240);
     font-weight: 600;
 } */
+.toggle-theme-button{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 15px;
+    border: 1px solid black;
+
+}
+/* const styleSheet = {
+    personalDataChildComponent:{width:"40em",backgroundColor:"#b2b2b2",padding:"10px",margin:"10px",borderRadius:"10px"}
+  } */
+.personalDataChildComponent{
+    width: 40em;
+    background-color: var(--background-color-primary);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.AllPostsChildWindow-mobile{
+    margin: 10px;
+}
+/* style={{backgroundColor:"#6b6b6b",color:"white",width:"200px",borderRadius:"5px",padding:"3px",margin:"2px"}} */
+.profile-tab-friends-list{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    width: 200px;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 2px;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family:Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.profile-tab-logout-button{
+    background-color: var(--background-color-primary);
+    border: none;
+}
+
+.profile-tab-logout-button:hover{
+    background-color: var(--background-color);
+    color: var(--text-color); 
+}

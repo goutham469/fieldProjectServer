@@ -1,0 +1,15 @@
+/* variables.css */
+:root {
+  --background-color: #ffffff; /* Light mode */
+  --text-color: #000000;
+  --primary-color: #007bff;
+  --background-color-primary:#cccccc;
+  /* Add other variables as needed */
+}
+
+[data-theme="dark"] {
+  --background-color: #000000; /* Dark mode */
+  --background-color-primary:#252525;
+  --text-color: #ffffff;
+  --primary-color: #1e90ff;
+}

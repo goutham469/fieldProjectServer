@@ -89,12 +89,44 @@ function ProfileDashBoard() {
       }
     }
 
+    // function toggleTheme() {
+    //   const currentTheme = document.documentElement.getAttribute("data-theme");
+    //   const newTheme = currentTheme === "dark" ? "light" : "dark";
+    //   document.documentElement.setAttribute("data-theme", newTheme);
+      
+    //   // Save the user's preference to localStorage
+    //   localStorage.setItem("theme", newTheme);
+    // }
+    
+    // // Apply saved theme on page load
+    // window.onload = () => {
+    //   const savedTheme = localStorage.getItem("theme") || "light";
+    //   document.documentElement.setAttribute("data-theme", savedTheme);
+    // };
+    function toggleTheme(event) {
+      event.preventDefault();
+      console.log(event.target.value)
+
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = event.target.value
+      document.documentElement.setAttribute("data-theme", newTheme);
+      
+      // Save the user's preference to localStorage
+      localStorage.setItem("theme", newTheme);
+    }
+    
+    // Apply saved theme on page load
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    };
+    
 
   return (
     <div style={{paddingTop:"80px"}}>
 
       <div className='ProfileDashBoardToDisplayContainer'>
-        <div style={styleSheet.personalDataChildComponent}>
+        <div  className='personalDataChildComponent'>
           <div>
             {/* {
               personalData && personalData.profilePicture ? 
@@ -127,11 +159,22 @@ function ProfileDashBoard() {
                     </label>
                   </div>
                 </div>
+
+
+                <div> 
+                  <select onChange={(event) => toggleTheme(event)}>
+                    <option value="light">light</option>
+                    <option value="dark">dark</option>
+                    <option value="solarizedlight">solarizedlight</option>
+                    <option value="solarizeddark">solarizeddark</option>
+                </select>
+                </div>
                 
                 <div className='btn logoutButton' onClick={(event)=>{ store.dispatch({type:'logout'}); navigate('/') }}  >
-                  <IoLogOutOutline color="black" size={25}/>
-                  <button style={{backgroundColor:"#b2b2b2",border:"none"}}> Logout </button>
+                  <IoLogOutOutline className='profile-tab-logout-button' size={25}/>
+                  <label className='profile-tab-logout-button'  > Logout </label>
                 </div>
+
             </div>
           </div>
 
@@ -148,7 +191,7 @@ function ProfileDashBoard() {
         </div>
  
 
-        <div style={styleSheet.personalDataChildComponent}>
+        <div  className='personalDataChildComponent'>
           <div>
             <h4>friends</h4>
             {
@@ -156,7 +199,7 @@ function ProfileDashBoard() {
               <div style={{maxHeight:"80vh",overflowY:"scroll"}}>
                 {
                   personalData.friends.map(x=>{
-                    return <p style={{backgroundColor:"#6b6b6b",color:"white",width:"200px",borderRadius:"5px",padding:"3px",margin:"2px"}}>{x.userName}</p>
+                    return <p className='profile-tab-friends-list'>{x.userName}</p>
                   })
                 }
               </div>
@@ -168,7 +211,7 @@ function ProfileDashBoard() {
         </div>
       </div>
 
-      <div>
+      <div className='personalDataChildComponent'>
         <h4>bookmarks</h4>
         {
           personalData && personalData.bookmarks ?
@@ -185,7 +228,7 @@ function ProfileDashBoard() {
 
 
       <h4>My posts</h4>
-      <div  className=''>
+      <div  className='personalDataChildComponent'>
         {
           postsData && postsData.length > 0 ?
           <div>
@@ -255,7 +298,7 @@ function ProfileDashBoard() {
                 
                             else if(element.type == 'img')
                             {
-                                return <img style={{borderRadius:"20px"}} width="300px"   src={element.src}/>
+                                return <img style={{borderRadius:"20px"}} width="250px"   src={element.src}/>
                             }
                 
                             else if(element.type == 'video')

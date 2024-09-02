@@ -1,12 +1,24 @@
+@import url('../variables.css');
+
 .all-users-navbar-main{
     width: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--background-color-primary);
+    height: fit-content;
 }
 .all-users-navbars{
-    background-color: #c7c9cd;
+    /* background-color: #c7c9cd; */
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-radius: 5px;
     width: 200px;
     padding: 5px;
     margin: 5px;
+}
+.all-users-navbars:hover{
+    background-color: var(--background-color-primary);
+    border: 3px solid var(--background-color);
 }
 .AllUsersComponentParent{
     display: flex;
@@ -17,7 +29,9 @@
     overflow-y: scroll;
 }
 .AllUsersChildComponenent{
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background-color: var(--background-color-primary);
+    color: var(--text-color);
     border-radius: 10px;
     margin: 10px;
     padding-bottom: 5px;
@@ -38,8 +52,10 @@
 .allusers-user-child-button-add-friend{
     border-radius: 5px;
     border: none;
-    background-color:#dfe9f0;
-    color: #005fc6;
+    /* background-color:#dfe9f0; */
+    background-color: var(--background-color-primary);
+    /* color: #005fc6; */
+    color: var(--primary-color);
     font-weight: 600;
     width: 80%;
     margin: 3px;
@@ -63,10 +79,13 @@
 .AllUsersChildComponenent-mobile{
     display: flex; 
     width: 100%; 
-    background-color: rgb(177, 177, 165);
+    /* background-color: rgb(177, 177, 165); */
+    background-color: var(--background-color-primary);
+    color: var(--text-color);
     border-bottom: 1px solid black; 
     border-radius: 10px;
     margin: 10px;
+    padding-bottom: 5px;
 
 }
 .allusers-person-image{
@@ -79,7 +98,9 @@
 
     background-color: none;
     border: 1px solid black;
-    background-color: #c7c9cd;
+    /* background-color: #c7c9cd; */
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-radius: 5px;
     margin-right: 10px;
 

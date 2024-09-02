@@ -11,8 +11,8 @@ import { IoMdNotifications } from "react-icons/io";
 import store from '../../store';
 import { useNavigate } from 'react-router-dom';
 
-
-function AllUsers() {
+ 
+function AllUsers() { 
     const navigate = useNavigate()
 
     let [allUsers,updateAllUsers] = useState([])
@@ -58,10 +58,10 @@ function AllUsers() {
     }
 
   return (
-    <div>
+    <div style={{height:"100vh",margin:"0px"}}>
         {
             windowWidth > 600 ?
-            <div style={{paddingTop:"90px",display:"flex"}}>
+            <div style={{paddingTop:"60px",display:"flex"}}>
 
 
                 <div className='all-users-navbar-main'>
@@ -170,7 +170,7 @@ function AllUsers() {
                 </div>
             </div>
             :
-            <div style={{paddingTop:"90px",height:"100vh",overflowY:"scroll"}}>
+            <div style={{paddingTop:"60px",height:"100vh",overflowY:"scroll"}}>
                 <input
                 onChange={(event)=>setSearchQuery(event.target.value)}
                  style={{width:"300px",height:"35px",marginLeft:"50px",borderRadius:"10px",border:"1px solid black",padding:"2px"}}
@@ -201,9 +201,9 @@ function AllUsers() {
                                                     <br/>
                                                     <sub>{x.Profession ? x.Profession :"new to facebook"}</sub><br/>
 
-                                                    <button className='all-users-add-friend-mobile'  onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button>
+                                                    <button className='allusers-user-child-button-add-friend'  onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button>
                                                     
-                                                    <button className='all-users-add-friend-mobile'  >Remove</button>
+                                                    <button className='allusers-user-child-button-remove-friend'  >Remove</button>
                                                 </div> 
                                             </div>
                                         }
@@ -226,9 +226,9 @@ function AllUsers() {
                                                     <br/>
                                                     <sub>{x.Profession ? x.Profession :"new to facebook"}</sub><br/>
 
-                                                    <button className='all-users-add-friend-mobile'  onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button>
+                                                    <button className='allusers-user-child-button-add-friend'  onClick={(event)=>{followUser(event,x.userName)}}>Add Friend</button>
                                                     
-                                                    <button className='all-users-add-friend-mobile'  >Remove</button>
+                                                    <button className='allusers-user-child-button-remove-friend'  >Remove</button>
                                                 </div> 
                                             </div>
                                         }

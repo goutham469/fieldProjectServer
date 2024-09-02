@@ -1,3 +1,5 @@
+@import url('../variables.css');
+
 .AppHeadertoDisplayFlex{
     position: fixed;
     width: 100vw;
@@ -6,7 +8,11 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding-top: 5px;
-    background-color: #ffffff;
+
+    /* background-color: #ffffff; */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-color);
 }
 .AppHeadertoDisplayFlex-navbar{
     /* width: 500px; */
@@ -34,7 +40,9 @@
     padding-left: 30px;
     width: 200px;
     height: 35px;
-    background-color: #f0f2f5;
+
+    /* background-color: #f0f2f5; */
+    background-color: var(--background-color-primary);
 }
 /* .header-navbar-div{
     padding: 7px;

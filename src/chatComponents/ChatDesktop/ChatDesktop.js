@@ -107,7 +107,7 @@ function ChatDesktop() {
         <div className='chatDesktop-left'>
             {
                 chatUsers.map(userData=>
-                    <div style={{borderBottom:"1px solid black"}}   onClick={()=>openChat(userData.userName)}>
+                    <div className='chat-desktop-user-name'   onClick={()=>openChat(userData.userName)}>
                          {
                             userData&&userData.profilePic ?
                             <img width="30px" height="30px" style={{borderRadius:"30px"}} src={userData.profilePic}/>
@@ -127,8 +127,8 @@ function ChatDesktop() {
         <div className='chatDesktop-right'>
             {
                 !chatChoosen ?
-                <div>
-                    <b>start chatting with your friends.</b>
+                <div style={{display:"flex",justifyContent:"space-around",alignItems:"center"}}>
+                    <b style={{marginTop:"40vh",fontSize:"36px"}}>Start chatting with your friends.</b>
                 </div>
                 :
                 <div className='chatDesktop-right-sub'> 
@@ -183,10 +183,11 @@ function ChatDesktop() {
                         <div className='message-sending-input-div'>
                             <form onSubmit={(event)=>sendMessage(event)}>
                                 <img src={attachIcon} width="20px" className='message-sending-input-div-attachIcon'/>
-                                <input  type='text' placeholder='Type a message.' 
-                                onChange={(event)=>{event.preventDefault();updateMessageToMeSent(event.target.value)}}
-                                value = {messageToMeSent}
-                                style={{width:"90%",border:"none",backgroundColor:"#d7d8da",borderLeft:"1px solid black",height:"30px"}}
+                                <input  
+                                    type='text' placeholder='Type a message.' 
+                                    onChange={(event)=>{event.preventDefault();updateMessageToMeSent(event.target.value)}}
+                                    value = {messageToMeSent}
+                                    className='chat-desktop-input-element'
                                 />
                                 <button onClick={(event)=>sendMessage(event)}>send</button>
                             </form>

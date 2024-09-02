@@ -1,7 +1,11 @@
+@import url('../variables.css');
+
 .chatDesktop-main-div{
     padding-top: 50px;
     width: 100%;
-    background-color: rgb(136, 151, 164);
+    /* background-color: rgb(136, 151, 164); */
+    background-color: var(--background-color);
+    color: var(--text-color);
     height: 100vh;
 
     display: flex;
@@ -10,20 +14,27 @@
 }
 .chatDesktop-left{
     overflow-y: scroll;
-    background-color: #f0f2f5;
+    color: var(--text-color);
     width: 100%;
     width: 400px;
 }
+.chat-desktop-user-name{
+    border-bottom: 1px solid var(--text-color);
+}
 .chatDesktop-right{
-    background-color: aliceblue;
-    width: 100%;
+    /* background-color: aliceblue; */
+    border-left: 1px solid var(--text-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    width: 100%; 
 }
 .chatDesktop-right-sub{
     display: flex;
     flex-direction: column;
 }
 .chatDesktop-right-top{
-    background-color: #d7d8da;
+    /* background-color: #d7d8da; */
+    background-color: var(--background-color-primary);
     border-bottom: 2px solid black;
 }
 .chatDesktop-right-sub-main{
@@ -43,18 +54,26 @@
     margin-top: 5px;
     padding-top: 5px;
     padding-bottom: 15px;
-    background-color: #d7d8da;
+    background-color: var(--background-color-primary);
     border-top: 2px solid black;
 }
 ::-webkit-scrollbar{
-    width: 8px; 
+    width: 4px; 
 }
 ::-webkit-scrollbar-thumb{
-    width: 5px;
-    background-color: #99a6ba;
+    width: 2px;
+    background-color: var(--text-color);
     border-radius: 5px;
 }
 .message-sending-input-div-attachIcon{
     position: relative;
     right: 5px;
+}
+/* style={{width:"90%",border:"none",backgroundColor:"#d7d8da",borderLeft:"1px solid black",height:"30px"}} */
+.chat-desktop-input-element{
+    width: 90%;
+    border: none;
+    background-color:var(--background-color-primary);
+    border-left: 1px solid var(--text-color);
+    height: 30px;
 }
