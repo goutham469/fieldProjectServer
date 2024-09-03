@@ -57,7 +57,7 @@ Content-Type: application/json
 
 {
     "userName":"goutham"
-}
+} 
 ###
 POST https://fieldprojectserver.onrender.com/users/getNonFriends
 Content-Type: application/json
