@@ -4,7 +4,7 @@ const path = require('path')
 
 
 serverInfoAPI.get('/srsdocument',(req,res)=>{
-    console.log(path.join(__dirname))
+    // console.log(path.join(__dirname))
     res.sendFile(path.join(__dirname,'../assets/specifications.docx'))
 })
 

@@ -1,0 +1,14 @@
+POST http://localhost:4000/v2/users/all-details
+Content-Type: application/json
+
+{
+    "user_name":"goutham"
+}
+###
+POST http://localhost:4000/v2/users/add-to-bookmarks
+Content-Type: application/json
+
+{
+    "user_name":"reddy",
+    "postId":4568
+}

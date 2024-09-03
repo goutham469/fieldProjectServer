@@ -6,7 +6,7 @@ usersAPI.use(exp.json())
 
 usersAPI.get('/', (req, res) => {
     res.send('hi');
-});
+}); 
 
 usersAPI.post('/createUser', DBAccessMiddleware, async (req, res) => {
     // console.log(req.body);
@@ -23,11 +23,11 @@ usersAPI.get('/getAllUsers', DBAccessMiddleware, async (req, res) => {
 
     let responseFromDatabase = await req.usersCollection.find().toArray();
     res.send(responseFromDatabase);
-});
+}); 
 
 usersAPI.post('/checkUserName', DBAccessMiddleware, async (req, res) => {
 
-    console.log(req.body)
+    // console.log(req.body)
     
     let response = await req.usersCollection.find({"userName":req.body.userName.toLowerCase()}).toArray()
     if(response.length == 0)
@@ -67,7 +67,7 @@ usersAPI.post('/checkLoginCredentials',DBAccessMiddleware,async (req,res)=>{
 })
 
 usersAPI.post('/getUserNameByEmailID',DBAccessMiddleware,async (req,res)=>{
-    let responseFromDatabase = await req.usersCollection.find({"email":req.body.email}).toArray();
+    let responseFromDatabase = await req.usersCollection.find({email:req.body.email},{_id:0,password:0,state:0,city:0,gender:0,email:0}).toArray();
     
     if(responseFromDatabase.length == 0)
     {
@@ -76,13 +76,14 @@ usersAPI.post('/getUserNameByEmailID',DBAccessMiddleware,async (req,res)=>{
     else
     {
         let users_associated = []
-        responseFromDatabase.forEach(x=>{users_associated.push(x.userName)})
+        responseFromDatabase.forEach(x=>{users_associated.push({"username":x.userName,"profilePicture":x.profilePicture})})
         if(users_associated.length == 0)
         {
             res.send({"message":"no_userName_associated"})
         }
         else
         {
+            // console.log(users_associated)
             res.send({"message":"userName_associated","usersAssociated":users_associated})
         }
     }
@@ -129,7 +130,7 @@ usersAPI.post('/updateProfilePic',DBAccessMiddleware,async (req,res)=>{
     let responseFromDatabase = await req.usersCollection.updateOne({userName:req.body.userName},{$set:{"profilePicture":req.body.url}})
     res.send(responseFromDatabase)
 })
-
+ 
 
 
 module.exports = usersAPI;

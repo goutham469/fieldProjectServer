@@ -34,7 +34,6 @@ messagesAPI.post('/getMessagesOfSenderToReceiver',DBAccessMiddleware,async (req,
 })
 
 messagesAPI.post('/sendMessage',DBAccessMiddleware,async (req,res)=>{
-
     let responseFromDatabase = await req.chatsCollection.updateOne({chatId:`${req.body.sender}to${req.body.receiver}`},
         {
           $push: {
@@ -46,8 +45,6 @@ messagesAPI.post('/sendMessage',DBAccessMiddleware,async (req,res)=>{
             }
         }
     )
-    
-
     await req.chatsCollection.updateOne({chatId:`${req.body.receiver}to${req.body.sender}`},
         {
           $push: {
@@ -59,10 +56,7 @@ messagesAPI.post('/sendMessage',DBAccessMiddleware,async (req,res)=>{
             }
         }
     )
-
     res.send(responseFromDatabase)
-
-
     }
 )
 

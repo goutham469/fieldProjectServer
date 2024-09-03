@@ -66,11 +66,11 @@ Content-Type: application/json
     "userName":"goutham"
 }
 ###
-POST http://localhost:4000/users/getPersonalData
+POST https://fieldprojectserver.onrender.com/users/getPersonalData
 Content-Type: application/json
 
 {
-    "user_name":"goutham"
+    "user_name":"console"
 }
 ###
 POST http://localhost:4000/users/updateProfilePic

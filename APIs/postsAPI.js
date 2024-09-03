@@ -10,6 +10,7 @@ postsAPI.use(bodyParser.urlencoded({ extended: true }))
 postsAPI.get('/getAllPosts',DBAccessMiddleware,async (req,res)=>{
     // console.log("requested")
     let reponseFromDataBase = await req.postsCollection.find().toArray();
+    await req.postsCollection.updateMany({},{$inc:{"views":1}})
 
     res.send({"status":"success","data":reponseFromDataBase})
 })
@@ -21,7 +22,7 @@ postsAPI.get('/getPostId',DBAccessMiddleware,async (req,res)=>{
 
     // console.log(currentCount)
     currentCount = currentCount.postId;
-    console.log(currentCount)
+    // console.log(currentCount)
 
     await req.countCollection.updateOne({"postId":currentCount},{$set:{"postId":currentCount+1}})
 
@@ -30,15 +31,21 @@ postsAPI.get('/getPostId',DBAccessMiddleware,async (req,res)=>{
 
 postsAPI.post('/createNewPost',DBAccessMiddleware,async (req,res)=>{
 
-    console.log(req.body)
-    let reponseFromDataBase = await req.postsCollection.insertOne(req.body)
+    // console.log(req.body)
+    let data = req.body
+    let profile_pic = await req.usersCollection.find({userName:req.body.author}).toArray()
+    profile_pic = profile_pic[0].profilePicture
+    // console.log(profile_pic)
+    
+    data.profilePic = profile_pic;
+    let reponseFromDataBase = await req.postsCollection.insertOne(data)
 
     res.send({"reponseFromDataBase":reponseFromDataBase})
 })
 
 postsAPI.post('/deletePost',DBAccessMiddleware,async (req,res)=>{
     let responseFromDataBase = await req.postsCollection.deleteOne({"_id":new ObjectId(req.body.postId)})
-    console.log(responseFromDataBase)
+    // console.log(responseFromDataBase)
 
     res.send(responseFromDataBase)
 })

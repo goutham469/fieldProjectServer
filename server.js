@@ -14,6 +14,8 @@ const mediaAPI = require('./APIs/mediaAPI')
 const chatsAPI = require('./APIs/chatsAPI')
 const messagesAPI = require('./APIs/messagesAPI')
 
+const usersAPI2 = require('./v2/usersAPI')
+
 app.use(exp.json())
 app.use(cors())
 
@@ -117,6 +119,8 @@ app.use('/serverInfo',serverInfoAPI)
 app.use('/media',mediaAPI)
 app.use('/chats',chatsAPI)
 app.use('/messages',messagesAPI)
+
+app.use('/v2/users',usersAPI2)
 
 app.get('*',(req,res)=>res.send("<h1>Route not found</h1>"))
 

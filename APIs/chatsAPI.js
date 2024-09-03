@@ -67,7 +67,7 @@ chatsAPI.post('/checkInFriendsList',DBAccessMiddleware,async (req,res)=>{
 
 chatsAPI.post('/addFriend',DBAccessMiddleware,async(req,res)=>{
     let newFriend = req.body.friendUserName;
-    console.log(newFriend)
+    // console.log(newFriend)
 
     let responseFromDatabase = await req.usersCollection.updateOne(
         { userName: req.body.userName },
