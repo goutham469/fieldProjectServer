@@ -31,9 +31,9 @@ usersAPI.post('/all-details',DBAccessMiddleware,async(req,res,next)=>{
     personalData = personalData[0]
     // console.log(personalData)
 
-    let bookmarks = await getBookMarkPosts(personalData.bookmarks,req.usersCollection)
+    // let bookmarks = await getBookMarkPosts(personalData.bookmarks,req.usersCollection)
     // console.log(bookmarks)
-    personalData.bookmarks = bookmarks
+    // personalData.bookmarks = bookmarks
 
     // console.log(personalData)
 
