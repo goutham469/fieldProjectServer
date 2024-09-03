@@ -88,7 +88,7 @@ function Description() {
               <div className='description-advantages' onMouseLeave={()=>setHoverChanges(state=>({...state,videoChatIcon:false}))}>
                 <b>video calling</b>
                 <br/>
-                <br/>
+                <br/> 
                 <ul style={{textAlign:"left"}}>
                   <li>call any of your friends list</li>
                   <li>or even a group call upto 50 memebers</li>

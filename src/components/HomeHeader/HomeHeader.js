@@ -36,6 +36,6 @@ function HomeHeader() {
         </div>
     </div>
   )
-}
+} 
 
 export default HomeHeader

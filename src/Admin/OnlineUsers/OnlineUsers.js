@@ -7,9 +7,11 @@ function OnlineUsers() {
 
     const [allUsers,setAllUsers] = useState([])
  
-    socket.on('all-users',(data)=>{
-        setAllUsers(data.users)
-    })
+    useEffect(()=>{
+        socket.on('all-users',(data)=>{
+            setAllUsers(data.users)
+        }) 
+    },[])
     
   return (
     <div>

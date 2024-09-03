@@ -1,7 +1,28 @@
+@import url('../variables.css');
+
 .admin-master{
-    background-color: black;
-    color: white;
-    height: 100vh;
+    background-color:var(--background-color);
+    color: var(--text-color); 
     width: 100vw;
     margin: 0px;
+    padding-top: 10px;
+}
+.admin-dashboard-nav-link{
+    background-color:var(--background-color-primary) ;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 3px;
+}
+.admin-dashboard-navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid var(--text-color);
+    margin: 5px;
+
+    flex-wrap: wrap;
+}
+.admin-outlet{
+    height: 90vh;
+    overflow-y: scroll;
 }

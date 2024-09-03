@@ -47,7 +47,9 @@ function reducer(state=checkIsSigned(),action)
 
             return {...state, signed:true,userName:action.userName}
         case 'logout': 
+            const theme = localStorage.getItem("theme")
             localStorage.clear()
+            localStorage.setItem("theme",theme)
 
             return {...state,signed:false,userName:''}
         case 'openChat': 

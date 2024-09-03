@@ -19,7 +19,7 @@ function LandingPage() {
   //   {
   //     navigate('/user')
   //   }
-  // },[])
+  // },[]) 
   
   return (
     <div className="landing-page">

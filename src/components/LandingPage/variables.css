@@ -85,8 +85,8 @@
 }
 
 [data-theme="custom2"] {
-  --background-color: #312f2a; /* Dark mode */
-  --background-color-primary:#000000;
-  --text-color: #DC0083;
-  --primary-color: #6C946F;
+  --background-color: #FFD35A; /* Dark mode */
+  --background-color-primary:#FFA823;
+  --text-color: #6C946F;
+  --primary-color: #DC0083;
 }

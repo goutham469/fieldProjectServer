@@ -34,7 +34,7 @@ function AppHeader() {
         <div className='AppHeadertoDisplayFlex-navbar'>
           <div className='header-navbar-div'> 
             <FaHome size={30}
-             color={(componentChoosenColor==1)?"blue":"gold"}
+             color={(componentChoosenColor==1)&&"blue"}
 
               onClick={()=>{navigate('./');handleClick(1)}}
 
@@ -47,7 +47,7 @@ function AppHeader() {
           </div>
           <div className='header-navbar-div'>
             <IoMdPeople 
-            size={30} color={(componentChoosenColor==2)?"blue":"gold"}
+            size={30} color={(componentChoosenColor==2)&&"blue"}
              onClick={()=>{navigate('./people');handleClick(2)}}
              onMouseEnter={()=>setHeaderIconHover(2)}
               onMouseLeave={()=>setHeaderIconHover(0)}
@@ -58,7 +58,7 @@ function AppHeader() {
           </div>
           <div className='header-navbar-div'>
             <IoChatbubbleEllipsesOutline
-             size={30} color={(componentChoosenColor==3)?"blue":"gold"} 
+             size={30} color={(componentChoosenColor==3)&&"blue"} 
              onClick={()=>{navigate('./chat');handleClick(3)}}
              onMouseEnter={()=>setHeaderIconHover(3)}
               onMouseLeave={()=>setHeaderIconHover(0)}
@@ -69,7 +69,7 @@ function AppHeader() {
           </div> 
           <div className='header-navbar-div'>
             <FaRegBell 
-            size={30} color={(componentChoosenColor==4)?"blue":"gold"} 
+            size={30} color={(componentChoosenColor==4)&&"blue"} 
             onClick={()=>{navigate('./Notifications');handleClick(4)}}
             onMouseEnter={()=>setHeaderIconHover(4)}
             onMouseLeave={()=>setHeaderIconHover(0)}
@@ -80,7 +80,7 @@ function AppHeader() {
           </div>
           <div className='header-navbar-div'>
             <IoPersonCircleOutline 
-            size={30} color={(componentChoosenColor==5)?"blue":"gold"} 
+            size={30} color={(componentChoosenColor==5)&&"blue"} 
             onClick={()=>{navigate('./ProfileDashBoard');handleClick(5)}}
             onMouseEnter={()=>setHeaderIconHover(5)}
             onMouseLeave={()=>setHeaderIconHover(0)}
@@ -91,7 +91,7 @@ function AppHeader() {
           </div>
           <div className='header-navbar-div'> 
              <CgGames
-             size={30} color={(componentChoosenColor==6)?"blue":"gold"} 
+             size={30} color={(componentChoosenColor==6)&&"blue"} 
              onClick={()=>{navigate('./games');handleClick(6)}}
              onMouseEnter={()=>setHeaderIconHover(6)}
              onMouseLeave={()=>setHeaderIconHover(0)}

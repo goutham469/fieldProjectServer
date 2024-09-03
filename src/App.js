@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
  
 
-
 import AppHeader from './components/AppHeader/AppHeader';
-
 import LandingPage from './components/LandingPage/LandingPage';
 import Description from './components/LandingPage/Description/Description';
 import Login from './components/Login/Login';
@@ -55,24 +55,10 @@ import FriendRequests from './components/FriendRequests/FriendRequests';
 // admin dashboard
 import Master from './Admin/Master/Master';
 import OnlineUsers from './Admin/OnlineUsers/OnlineUsers';
+import AdminAllUsers from './Admin/OnlineUsers/AdminAllUsers';
 
 
-function App() {
- 
-
-  // function connect() {
-  //   socket.on('connect', () => {
-  //     console.log('connected to socket.io server, id = ', socket.id);
-  //   });
-
-  //   socket.on('disconnect', () => {
-  //     console.log('disconnected from socket.io server');
-  //   });
-
-  //   console.log('socket connection success');
-  // }
-
-  // connect();
+function App() { 
 
   window.onload = () => {
     const savedTheme = localStorage.getItem("theme") ;
@@ -255,7 +241,31 @@ function App() {
       children:[
         {
           path:'',
+          element:<h1>Home</h1>
+        },
+        {
+          path:'all-users',
+          element:<AdminAllUsers/>
+        },
+        {
+          path:'all-posts',
+          element:<AllPosts/>
+        },
+        {
+          path:'online-active-users',
           element:<OnlineUsers/>
+        },
+        {
+          path:'metrics-and-statistics',
+          element:<b>metrics-and-statistics</b>
+        },
+        {
+          path:'help-center',
+          element:<b>help-center</b>
+        },
+        {
+          path:'advertisements',
+          element:<b>advertisements</b>
         }
       ]
     },
@@ -280,7 +290,9 @@ function App() {
           </div>
         </div>
         <div className='MasterContent2'>
+        <DndProvider backend={HTML5Backend}>
           <RouterProvider router={router}/>
+        </DndProvider>
         </div>
       </Provider>
     </div>
