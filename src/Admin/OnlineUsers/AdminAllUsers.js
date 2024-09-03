@@ -251,7 +251,7 @@ function AdminAllUsers() {
         data = await data.json();
         console.log(data);
         setAllUsers(data);
-    }
+    } 
 
     useEffect(() => {
         getData();
