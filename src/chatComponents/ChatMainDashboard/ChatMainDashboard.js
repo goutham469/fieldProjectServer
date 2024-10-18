@@ -17,13 +17,13 @@ function ChatMainDashboard() {
 
   useEffect(()=>{
     // console.log(store.getState().userName);
-    if(store.getState().userName)
-    {
-      let socket = io('http://localhost:8080',{
+    // if(store.getState().userName)
+    // {
+    //   let socket = io('http://localhost:5000',{
 
-      })
-      setSocket(socket);
-    }  
+    //   })
+    //   setSocket(socket);
+    // }  
     window.addEventListener('resize',()=>{
       setDisplayWidth(window.innerWidth)
     })

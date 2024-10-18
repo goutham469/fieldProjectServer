@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import socket from '../../socket'
 import { Outlet, useNavigate } from 'react-router-dom'
 import './Master.css'
@@ -13,9 +13,21 @@ function Master() {
   {
       response = jwtDecode(response.credential)
       if(response.email === process.env.REACT_APP_ADMIN_EMAIL)
-      {setSigned(true)}
+      {
+        setSigned(true)
+        localStorage.setItem("adminName",process.env.REACT_APP_ADMIN_EMAIL)
+      }
       else{alert("it is not registered admin email id !")}
   }
+  useEffect(()=>{
+    if(localStorage.getItem("adminName"))
+    {
+      if(localStorage.getItem("adminName") == process.env.REACT_APP_ADMIN_EMAIL)
+      {
+        setSigned(true)
+      }
+    }
+  },[])
 
   return (
     <div>

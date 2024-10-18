@@ -65,8 +65,7 @@ function App() {
     document.documentElement.setAttribute("data-theme", savedTheme);
   };
 
-  useEffect(()=>{ 
-    // connect();
+  useEffect(()=>{
     
     async function fetchServerInitially()
     {
